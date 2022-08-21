@@ -28,3 +28,4 @@ Stefan Vo can LEGALLY work on: "small dialog centered RPG with ~~2 other people~
   * celestials can connect with with the earth realm but not the other way around.
   * the mail person recieves the reactions from the reciever knowing the reciever can't return responses.
 * Interaction: 
+  * Test Webhook push
