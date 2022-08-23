@@ -74,14 +74,8 @@ public class Dialogue_Writer : MonoBehaviour
 			// This removes any white space from the text.
 			currentText = currentText.Trim();
 
-			//checks if there is any text to scroll and if the player is choosing
-			if (currentText.Split(' ').Length > 0)
-			{
-
-				// Display the text on screen!
-				StartCoroutine("ScrollText");
-
-			}
+			// Display the text on screen!
+			StartCoroutine("ScrollText");
 		}
 
 		// If we've read all the content and there's no choices, the story is finished!
