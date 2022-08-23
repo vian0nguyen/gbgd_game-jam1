@@ -164,6 +164,7 @@ public class Dialogue_Writer : MonoBehaviour
 			yield return new WaitForSeconds(1 - (scrollSpeed / 100));
 
 			//if the current state isn't talking, it sure is now
+			//put this here because the text automatically skipped after choosing a button and that didn't quite look right
 			if (gm.currentState != GameManager.GameState.Talking)
 				gm.currentState = GameManager.GameState.Talking;
 		}
