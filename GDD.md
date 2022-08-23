@@ -25,14 +25,25 @@ Deliver mail to mythological figures that have fallen to our earthly realm. At t
   * choose to deliver mail by hand and knock on door
     * if *good letter*: +
     * if *bad letter*: - 
-  * choose to delay delivering mail
-    * if *good letter*: - -; if given with *good letter*: - -; if given with *bad letter*: ==
-    * if *bad letter*: + +; if given with *bad letter*: - -; if given with *good letter*: = =
-### Mechanics Progression
+  * choose to destroy: 
+    * take mail from recipient but dont sent
+    * dont take mail and be honest
+  * keep mail
+    * if *good letter*: -
+    * if *bad letter*: +
+
+Some recipients might ask after mail that they've sent or are waiting to be delivered
+    
+  ### Mechanics Progression
 
 as you advance your relationships with mail recipients they reward you with tips which you can use to upgrade things
 
 as your relationships become more negative mail recipients will slowly stop answering the door to you (forcing you to drop off mail in box or delay thoughtfully)
+
+* send between meet realm
+* heaven hears about how good at mail you are
+* you send heaven mail to earth people
+* earth people want to send mail to heaven (ITS ILLEGAL)
 
 __upgrading your mail bag:__
 
