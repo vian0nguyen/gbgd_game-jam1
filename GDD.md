@@ -18,21 +18,18 @@ Deliver mail to mythological figures that have fallen to our earthly realm. At t
 ## Mechanics
 
 * pick up mail: your mail bag can only fit a certain amount of mail (3 to start)
-* drop off mail
-  * choose to leave mail in mail box w/o a word
-    * if *good letter*: ==
-    * if *bad letter*: ==
-  * choose to deliver mail by hand and knock on door
-    * if *good letter*: +
-    * if *bad letter*: - 
-  * choose to destroy: 
-    * take mail from recipient but dont sent
-    * dont take mail and be honest
-  * keep mail
+ * when mail is picked up it's message and effect will overcome you 
+* drop off mail - drop off mail at the door, no one appears but dialogue will appear
+* keep mail/delay AND recipient asks after it --> these letters go in your personal mail cubby
     * if *good letter*: -
-    * if *bad letter*: +
+    * if *bad letter*: + --> "ugh, didn't want that anyway."
 
-Some recipients might ask after mail that they've sent or are waiting to be delivered
+__Game Loop:__
+
+* your bag can hold 5 items
+* day cycles - you can pick up + resolve 2 bag trips a day?? or 10 items a day
+* Some recipients might ask after mail that they've sent or are waiting to be delivered --> "have you gotten anything from [blank]?
+ * Once a recipient asks after mail the more days go by compounds the effect of delaying mail
     
   ### Mechanics Progression
 
@@ -40,15 +37,8 @@ as you advance your relationships with mail recipients they reward you with tips
 
 as your relationships become more negative mail recipients will slowly stop answering the door to you (forcing you to drop off mail in box or delay thoughtfully)
 
-* send between meet realm
-* heaven hears about how good at mail you are
-* you send heaven mail to earth people
+* level 1 - send letters between meat realm
+* level 2you send spirit mail to earth people
 * earth people want to send mail to heaven (ITS ILLEGAL)
-
-__upgrading your mail bag:__
-
-* level 1: 3 items
-* level 2 : 7 items
-* level 3: 10 items
 
 ## Glossary
