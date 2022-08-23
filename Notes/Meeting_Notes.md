@@ -28,5 +28,6 @@ Stefan Vo can LEGALLY work on: "small dialog centered RPG with ~~2 other people~
 * You work in a Magic Mailroom that bridges the Earthly realm and the Spiritual realm
   * celestials can connect with with the earth realm but not the other way around.
   * the mail person recieves the reactions from the reciever knowing the reciever can't return responses.
+  * someone accidentally gets someone else's mail and is forwarding over?
 * Interaction: 
   * Test Webhook push
