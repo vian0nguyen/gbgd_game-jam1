@@ -15,14 +15,14 @@ public class Dialogue_Writer : MonoBehaviour
 		//sets up variables to be reset upon the scene starting
 		Initialize();
 
-		// Remove the default message
-		ResetDialogue();
-		StartStory();
+		//Hides UI by default
+		HideUI();
 	}
 
 	//initializes variables that should be reset upon scene starting
 	void Initialize()
 	{
+		//sets up button list
 		currentButtons = new List<Button>();
 	}
 
@@ -44,24 +44,6 @@ public class Dialogue_Writer : MonoBehaviour
 		// Remove all the UI on screen
 		ResetDialogue();
 
-		// Read all the content until we can't continue any more
-		if (story.canContinue)
-		{
-			// Continue gets the next line of the story
-			currentText = story.Continue();
-			// This removes any white space from the text.
-			currentText = currentText.Trim();
-
-			//checks if there is any text to scroll and if the player is choosing
-			if (currentText.Split(' ').Length > 0 && gm.currentState == GameManager.GameState.Talking)
-			{
-
-				// Display the text on screen!
-				StartCoroutine("ScrollText");
-
-			}
-		}
-
 		// Display all the choices, if there are any!
 		if (story.currentChoices.Count > 0)
 		{
@@ -76,17 +58,44 @@ public class Dialogue_Writer : MonoBehaviour
 				button.onClick.AddListener(delegate {
 					OnClickChoiceButton(choice);
 				});
+				//adds to list of current buttons
+				currentButtons.Add(button);
+			}
+			//selects first button in the list as the highlighted one
+			gm.SelectFirstButton(currentButtons[0].gameObject);
+		}
+
+		// Read all the content until we can't continue any more
+		if (story.canContinue)
+		{
+
+			// Continue gets the next line of the story
+			currentText = story.Continue();
+			// This removes any white space from the text.
+			currentText = currentText.Trim();
+
+			//checks if there is any text to scroll and if the player is choosing
+			if (currentText.Split(' ').Length > 0)
+			{
+
+				// Display the text on screen!
+				StartCoroutine("ScrollText");
+
 			}
 		}
 
 		// If we've read all the content and there's no choices, the story is finished!
-		/*else
+		else
 		{
-			Button choice = CreateChoiceView("End of story.\nRestart?");
-			choice.onClick.AddListener(delegate {
-				StartStory();
-			});
-		}*/
+			if (story.currentChoices.Count == 0)
+			{
+				Button choice = CreateChoiceView("End of story.\nRestart?");
+				choice.onClick.AddListener(delegate
+				{
+					StartStory();
+				});
+			}
+		}
 	}
 
 	// When we click the choice button, tell the story to choose that choice!
@@ -96,23 +105,15 @@ public class Dialogue_Writer : MonoBehaviour
 		RefreshView();
 	}
 
-	// Creates a textbox showing the the line of text
-	void CreateContentView(string text)
-	{
-		TextMeshPro storyText = Instantiate(textPrefab) as TextMeshPro;
-		storyText.text = text;
-		storyText.transform.SetParent(canvas.transform, false);
-	}
-
 	// Creates a button showing the choice text
 	Button CreateChoiceView(string text)
 	{
 		// Creates the button from a prefab
 		Button choice = Instantiate(buttonPrefab) as Button;
-		choice.transform.SetParent(canvas.transform, false);
+		choice.transform.SetParent(ButtonContainer.transform, false);
 
 		// Gets the text from the button prefab
-		Text choiceText = choice.GetComponentInChildren<Text>();
+		TextMeshProUGUI choiceText = choice.GetComponentInChildren<TextMeshProUGUI>();
 		choiceText.text = text;
 
 		// Make the button expand to fit the text
@@ -125,57 +126,103 @@ public class Dialogue_Writer : MonoBehaviour
 	// Destroys all the children of this gameobject (all the UI)
 	void ResetDialogue()
 	{
-		int childCount = canvas.transform.childCount;
+		//resets button references
+		ResetButtonList();
+		gm.RemoveFirstButton();
+
+		int childCount = ButtonContainer.transform.childCount;
 		for (int i = childCount - 1; i >= 0; --i)
 		{
-			GameObject.Destroy(canvas.transform.GetChild(i).gameObject);
+			GameObject.Destroy(ButtonContainer.transform.GetChild(i).gameObject);
 		}
 
 		//stops scrolling text;
 		StopCoroutine("ScrollText");
-	}
 
-	#endregion
+		//resets dialogue box
+		textObject.text = "";
+	}
 
 	//scrolls text
 	private IEnumerator ScrollText()
 	{
+		//begin scrolling functions
+		HideDialogueArrow();
+		textObject.text = "";
 
 		foreach (char letter in currentText)
 		{
-
 			//adds each letter from the string into the dialogue box and then waits for a bit
-			textPrefab.text += letter;
+			textObject.text += letter;
 
-			//checks if the audio source has a blip to use
-			if (dialogueBlip != null)
+			//checks if the audio source has a blip to use and if the dialogue audio is not playing
+			if (dialogueBlip != null && dialogueAudio.isPlaying == false)
 			{
-
-				//checks if the audio source is not playing
-				if (dialogueAudio.isPlaying == false)
-				{
-
-					//plays the blip as the dialogue scrolls
+					//plays dialogue blip
 					dialogueAudio.PlayOneShot(dialogueBlip);
-
-				}
-
 			}
-
 			yield return new WaitForSeconds(1 - (scrollSpeed / 100));
 
+			//if the current state isn't talking, it sure is now
+			if (gm.currentState != GameManager.GameState.Talking)
+				gm.currentState = GameManager.GameState.Talking;
 		}
 
-		//turns on arrow UI to advance
-		DialogueArrow.enabled = true;
-
+		//end of scrolling functions
+		ShowDialogueArrow();
+		gm.currentState = GameManager.GameState.WaitingToAdvance;
 	}
+
+	//skips the scrolling and fills in finished dialogue
+	public void SkipScroll()
+	{
+		StopCoroutine("ScrollText");
+		ShowDialogueArrow();
+		textObject.text = currentText;
+		gm.currentState = GameManager.GameState.WaitingToAdvance;
+	}
+
+	#endregion
 
 	//goes to specified story branch
 	void SelectNewStoryBranch(string branchToGoTo)
 	{
 		story.ChoosePathString(branchToGoTo);
 	}
+
+    #region UI Controls
+
+	//shows UI panel
+	public void ShowUI()
+	{
+		UIPanel.SetActive(true);
+	}
+
+	//hides UI panel
+	public void HideUI()
+	{
+		UIPanel.SetActive(false);
+	}
+
+	//clears out current buttons
+	void ResetButtonList()
+	{
+		currentButtons.Clear();
+	}
+
+	//shows dialogue arrow
+	void ShowDialogueArrow()
+	{
+		DialogueArrow.enabled = true;
+	}
+
+	//hides dialogue arrow
+	void HideDialogueArrow()
+	{
+		DialogueArrow.enabled = false;
+	}
+
+	#endregion
 
 	//player checks to advance the dialogue is called on button press
 
@@ -188,21 +235,22 @@ public class Dialogue_Writer : MonoBehaviour
 	private string currentText;
 
 	[SerializeField]
-	private Canvas canvas = null;
+	private RectTransform ButtonContainer = null;
 
 	// UI Prefabs
+	[Header ("UI Objects")]
 	[SerializeField]
-	private TextMeshPro textPrefab = null;
+	private TextMeshProUGUI textObject = null;
+	[SerializeField]
+	private GameObject UIPanel;
 	[SerializeField]
 	private Button buttonPrefab = null;
+	private List<Button> currentButtons;
 	public Image DialogueArrow;
-	[Header ("Buttons")]
-	public List<Button> currentButtons;
 
 	[Header("Text Scroll")]
 	public AudioSource dialogueAudio;
 	public AudioClip dialogueBlip;
-	public float scrollspeed;
 	[Range(90, 100)]
 	public float scrollSpeed = 90f;
 }

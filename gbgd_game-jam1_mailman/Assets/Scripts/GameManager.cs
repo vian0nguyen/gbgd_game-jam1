@@ -27,10 +27,9 @@ public class GameManager : MonoBehaviour
     }
 
     //Sets first button spawned as hovered over in the event system
-    //remember to nullify this after buttons are destroyed
     public void SelectFirstButton(GameObject firstButton)
     {
-        es.firstSelectedGameObject = firstButton;
+        es.SetSelectedGameObject(firstButton);
 
         //remember the color used for this highlight is "Selected Color"
     }
@@ -38,6 +37,6 @@ public class GameManager : MonoBehaviour
     //removes first selected gameObject
     public void RemoveFirstButton()
     {
-        es.firstSelectedGameObject = null;
+        es.SetSelectedGameObject(null);
     }
 }
