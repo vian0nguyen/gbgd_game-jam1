@@ -18,6 +18,11 @@ Stefan Vo can LEGALLY work on: "small dialog centered RPG with ~~2 other people~
 * MAYBE WRITING
 * interaction/puzzle design??
 
+#### Nicole: UX design BUT make it abstract
+* designing dialogue
+* mail design
+* hypnotic textures
+
 ### What is the game?
 
 * Mail Delivery Game
@@ -30,4 +35,3 @@ Stefan Vo can LEGALLY work on: "small dialog centered RPG with ~~2 other people~
   * the mail person recieves the reactions from the reciever knowing the reciever can't return responses.
   * someone accidentally gets someone else's mail and is forwarding over?
 * Interaction: 
-  * Test Webhook push
