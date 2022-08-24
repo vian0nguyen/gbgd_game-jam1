@@ -1,0 +1,15 @@
+This manual will explain how to format Ink documents for this game. (this document is a constant work in progress as we add more text/data to pull from the dialogue)
+
+If you haven't already, please download inky from their website to help write dialogue content: [a link](https://www.inklestudios.com/ink/)
+
+==Tags==
+To write tags, simply write # + tag marker + whatever data you want the game to use.
+
+Example: My hat is blue. #!Jimmy (and the console will print something like "The person speaking is Jimmy" because of the "!" marker that tells the game the name of the speaker)
+
+  =Tag Key=
+  
+  Your guide to all the tags in the game and what their data is used for.
+  
+  ~ - Prototype tag.  Mainly used to test the tag system and tag parsing system.  (Currently tells the console that the tag contains the "~" marker and whatever text comes after it)
+  
