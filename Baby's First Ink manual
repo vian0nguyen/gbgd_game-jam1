@@ -1,6 +1,6 @@
 This manual will explain how to format Ink documents for this game. (this document is a constant work in progress as we add more text/data to pull from the dialogue)
 
-If you haven't already, please download inky from their website to help write dialogue content: [a link](https://www.inklestudios.com/ink/)
+If you haven't already, please download inky from their website to help write dialogue content: https://www.inklestudios.com/ink/
 
 ==Tags==
 To write tags, simply write # + tag marker + whatever data you want the game to use.
