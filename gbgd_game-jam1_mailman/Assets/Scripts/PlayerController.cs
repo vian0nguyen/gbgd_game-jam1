@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
 
-    public GameManager gm;
-    public Dialogue_Writer dw;
-    
+    [SerializeField]
+    private GameManager gm;
+
+    public UnityEvent OnInteractButtonDown;
 
     // Start is called before the first frame update
     void Start()
@@ -20,35 +22,11 @@ public class PlayerController : MonoBehaviour
     {
 
         //checks if player presses the spacebar
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Submit"))
         {
-            CheckInteractionInput();
+            //plays all events from when the interaction button gets hit
+            OnInteractButtonDown.Invoke();
         }
         
     }
-
-    //Checks which state the game is in for input
-    void CheckInteractionInput()
-    {
-        switch (gm.currentState)
-        {
-
-            case GameManager.GameState.NotTalking:
-                gm.currentState = GameManager.GameState.Talking;
-                dw.ShowUI();
-                dw.StartStory();
-                break;
-
-            case GameManager.GameState.Talking:
-                dw.SkipScroll();
-                break;
-
-            case GameManager.GameState.WaitingToAdvance:
-                dw.RefreshView();
-                break;
-
-
-        }
-    }
-
 }

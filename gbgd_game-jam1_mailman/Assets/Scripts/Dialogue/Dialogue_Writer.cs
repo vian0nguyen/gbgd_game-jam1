@@ -5,6 +5,7 @@ using UnityEngine;
 using Ink.Runtime;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class Dialogue_Writer : MonoBehaviour
 {
@@ -50,6 +51,8 @@ public class Dialogue_Writer : MonoBehaviour
 			//the game state is now choosing
 			gm.currentState = GameManager.GameState.Choosing;
 
+			HideDialogueArrow();
+
 			for (int i = 0; i < story.currentChoices.Count; i++)
 			{
 				Choice choice = story.currentChoices[i];
@@ -83,13 +86,25 @@ public class Dialogue_Writer : MonoBehaviour
 		{
 			if (story.currentChoices.Count == 0)
 			{
-				Button choice = CreateChoiceView("End of story.\nRestart?");
+				/*Button choice = CreateChoiceView("End of story.\nRestart?");
 				choice.onClick.AddListener(delegate
 				{
 					StartStory();
-				});
+				});*/
+				HideDialogueArrow();
+				HideUI();
+
+				//plays out any functions when the dialogue ends
+				OnDialogueEnd.Invoke();
+				//play sound here?
+
+				gm.currentState = GameManager.GameState.NotTalking;
 			}
 		}
+
+		//check tags at current line of dialogue, if there are any
+		if (story.currentTags.Count > 0)
+			CheckTags();
 	}
 
 	// When we click the choice button, tell the story to choose that choice!
@@ -165,6 +180,7 @@ public class Dialogue_Writer : MonoBehaviour
 
 		//end of scrolling functions
 		ShowDialogueArrow();
+		OnLineEnd.Invoke();
 		gm.currentState = GameManager.GameState.WaitingToAdvance;
 	}
 
@@ -174,18 +190,47 @@ public class Dialogue_Writer : MonoBehaviour
 		StopCoroutine("ScrollText");
 		ShowDialogueArrow();
 		textObject.text = currentText;
+		
+		//calls on line end functions
+		OnLineEnd.Invoke();
 		gm.currentState = GameManager.GameState.WaitingToAdvance;
 	}
 
-	#endregion
+    #endregion
 
-	//goes to specified story branch
-	void SelectNewStoryBranch(string branchToGoTo)
+    #region Tag System
+
+	//checks tags of current line of dialogue for events
+	void CheckTags()
+	{
+		foreach(string tag in story.currentTags)
+		{
+			switch (tag) {
+				case string a when a.Contains("~"):
+					print("has ~ with data of " + GetTagData(tag));
+					break;
+			}
+		}
+	}
+
+    //goes to specified story branch
+    void SelectNewStoryBranch(string branchToGoTo)
 	{
 		story.ChoosePathString(branchToGoTo);
 	}
 
-    #region UI Controls
+	//takes data from the marked tag
+	string GetTagData(string tag)
+	{
+		//removes the marking from the string in the tag
+		string tagName = tag.Remove(0, 1);
+
+		return tagName;
+	}
+
+	#endregion
+
+	#region UI Controls
 
 	//shows UI panel
 	public void ShowUI()
@@ -215,6 +260,27 @@ public class Dialogue_Writer : MonoBehaviour
 	void HideDialogueArrow()
 	{
 		DialogueArrow.enabled = false;
+	}
+
+	//Checks which state the game is in for input
+	public void CheckInteractionInput()
+	{
+		switch (gm.currentState)
+		{
+			case GameManager.GameState.NotTalking:
+				gm.currentState = GameManager.GameState.Talking;
+				ShowUI();
+				StartStory();
+				break;
+
+			case GameManager.GameState.Talking:
+				SkipScroll();
+				break;
+
+			case GameManager.GameState.WaitingToAdvance:
+				RefreshView();
+				break;
+		}
 	}
 
 	#endregion
@@ -248,4 +314,20 @@ public class Dialogue_Writer : MonoBehaviour
 	public AudioClip dialogueBlip;
 	[Range(90, 100)]
 	public float scrollSpeed = 90f;
+
+	[Header("Events")]
+	public UnityEvent OnLineEnd;
+	public UnityEvent OnDialogueEnd;
 }
+
+/*
+ *TO DO
+ * End of dialogue events (delegates?)
+ * Format Ink file and document how to write it (find a way to incorporate a lot of Ink's functionality while making it work with the project at hand, though some stuff will get omitted due to how we're displaying text)
+ * Sound that plays when going to next dialogue line
+ * 
+ * ASK LATER
+ * Scriptable objects for cutscenes? (if we're having cutscenes at all) (if so, place possible tag in next line of dialogue, hide ui, play out cutscene, then use animation event to continue dialogue [refreshView]) (organize cutscene assets in arrays and just go down the list [no need to write anything in the tag])
+ * come up with interesting way to read people's mail lmao (TEXT EFFECTS??)
+ * are we having the text repeat itself after pressing a button? (feels a little redundant but idk)
+*/

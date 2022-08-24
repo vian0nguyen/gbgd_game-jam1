@@ -39,4 +39,14 @@ public class GameManager : MonoBehaviour
     {
         es.SetSelectedGameObject(null);
     }
+
+    public void EndLine()
+    {
+        print("The line has ended!");
+    }
+
+    public void EndDialogue()
+    {
+        print("The dialogue has ended!");
+    }
 }
