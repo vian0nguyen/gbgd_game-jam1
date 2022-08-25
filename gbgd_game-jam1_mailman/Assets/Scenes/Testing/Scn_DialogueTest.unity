@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 421189983}
-  inkJSONAsset: {fileID: 4900000, guid: e982b6d9b49de54489dbd3a6658eb4cc, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: ad71ccca56c76d942bcc8e838bd9449c, type: 3}
   ButtonContainer: {fileID: 205901364}
   textObject: {fileID: 1416781854}
   UIPanel: {fileID: 780729213}
