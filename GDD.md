@@ -17,12 +17,18 @@ Deliver mail to mythological figures that have fallen to our earthly realm. At t
 
 ## Mechanics
 
+### idea one
+
 * pick up mail: your mail bag can only fit a certain amount of mail (3 to start)
  * when mail is picked up it's message and effect will overcome you 
 * drop off mail - drop off mail at the door, no one appears but dialogue will appear
 * keep mail/delay AND recipient asks after it --> these letters go in your personal mail cubby
     * if *good letter*: -
     * if *bad letter*: + --> "ugh, didn't want that anyway."
+
+### idea two
+* you pick up mail
+ * choose to read it or not 
 
 __Game Loop:__
 
@@ -38,7 +44,6 @@ as you advance your relationships with mail recipients they reward you with tips
 as your relationships become more negative mail recipients will slowly stop answering the door to you (forcing you to drop off mail in box or delay thoughtfully)
 
 * level 1 - send letters between meat realm
-* level 2you send spirit mail to earth people
-* earth people want to send mail to heaven (ITS ILLEGAL)
+* level 2 - you send spirit mail to earth people
 
 ## Glossary
