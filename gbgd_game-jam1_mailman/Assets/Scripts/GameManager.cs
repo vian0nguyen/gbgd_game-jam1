@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         es.SetSelectedGameObject(null);
     }
 
+    #region Test Functions
     public void EndLine()
     {
         print("The line has ended!");
@@ -49,4 +50,11 @@ public class GameManager : MonoBehaviour
     {
         print("The dialogue has ended!");
     }
+
+    public void TagTest()
+    {
+        print("A certain tag was just called");
+    }
+
+    #endregion
 }

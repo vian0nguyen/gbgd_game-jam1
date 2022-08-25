@@ -27,10 +27,10 @@ public class Dialogue_Writer : MonoBehaviour
 		currentButtons = new List<Button>();
 	}
 
-    #region Ink Functions
+	#region Ink Functions
 
-    // Creates a new Story object with the compiled story which we can then play!
-    public void StartStory()
+	// Creates a new Story object with the compiled story which we can then play!
+	public void StartStory()
 	{
 		story = new Story(inkJSONAsset.text);
 		if (OnCreateStory != null) OnCreateStory(story);
@@ -77,6 +77,10 @@ public class Dialogue_Writer : MonoBehaviour
 			// This removes any white space from the text.
 			currentText = currentText.Trim();
 
+			//check tags at current line of dialogue, if there are any
+			if (story.currentTags.Count > 0)
+				CheckTags();
+
 			// Display the text on screen!
 			StartCoroutine("ScrollText");
 		}
@@ -91,20 +95,10 @@ public class Dialogue_Writer : MonoBehaviour
 				{
 					StartStory();
 				});*/
-				HideDialogueArrow();
-				HideUI();
 
-				//plays out any functions when the dialogue ends
-				OnDialogueEnd.Invoke();
-				//play sound here?
-
-				gm.currentState = GameManager.GameState.NotTalking;
+				EndDialogue();
 			}
 		}
-
-		//check tags at current line of dialogue, if there are any
-		if (story.currentTags.Count > 0)
-			CheckTags();
 	}
 
 	// When we click the choice button, tell the story to choose that choice!
@@ -152,6 +146,21 @@ public class Dialogue_Writer : MonoBehaviour
 		textObject.text = "";
 	}
 
+	//basic end to the dialogue
+	void EndDialogue()
+	{
+		//hides any dialogue UI
+		HideDialogueArrow();
+		HideUI();
+
+		//plays out any functions when the dialogue ends
+		//Don't put any checks for if the player is not talking here because the state changes after these events
+		OnDialogueEnd.Invoke();
+
+		//the player is no longer talking
+		gm.currentState = GameManager.GameState.NotTalking;
+	}
+
 	//scrolls text
 	private IEnumerator ScrollText()
 	{
@@ -167,8 +176,8 @@ public class Dialogue_Writer : MonoBehaviour
 			//checks if the audio source has a blip to use and if the dialogue audio is not playing
 			if (dialogueBlip != null && dialogueAudio.isPlaying == false)
 			{
-					//plays dialogue blip
-					dialogueAudio.PlayOneShot(dialogueBlip);
+				//plays dialogue blip
+				dialogueAudio.PlayOneShot(dialogueBlip);
 			}
 			yield return new WaitForSeconds(1 - (scrollSpeed / 100));
 
@@ -190,42 +199,63 @@ public class Dialogue_Writer : MonoBehaviour
 		StopCoroutine("ScrollText");
 		ShowDialogueArrow();
 		textObject.text = currentText;
-		
+
 		//calls on line end functions
 		OnLineEnd.Invoke();
 		gm.currentState = GameManager.GameState.WaitingToAdvance;
 	}
 
-    #endregion
+	#endregion
 
-    #region Tag System
+	#region Tag System
 
 	//checks tags of current line of dialogue for events
 	void CheckTags()
 	{
-		foreach(string tag in story.currentTags)
+		//runs through all current tags
+		foreach (string tag in story.currentTags)
 		{
-			switch (tag) {
+			//old method of checking tags purely through code
+			/*switch (tag) {
 				case string a when a.Contains("~"):
 					print("has ~ with data of " + GetTagData(tag));
 					break;
+			}*/
+
+			//this method allows anyone to edit what happens when a tag is called in the inspector
+			//runs through each tag in the tag list
+			foreach(Tag tagCheck in Tags)
+			{
+				//checks if the tag contains a certain marker from the tag list
+				if (tag.Contains(tagCheck.marker))
+				{
+					//calls whatever method(s) occur when this tag is called and passes the tag data through
+					tagCheck.TagFunctions.Invoke(GetTagData(tag));
+					//stops the loop
+					break;
+				}
 			}
 		}
 	}
 
-    //goes to specified story branch
-    void SelectNewStoryBranch(string branchToGoTo)
-	{
-		story.ChoosePathString(branchToGoTo);
-	}
-
-	//takes data from the marked tag
+	//takes data from the marked tag and returns it as a value
 	string GetTagData(string tag)
 	{
 		//removes the marking from the string in the tag
-		string tagName = tag.Remove(0, 1);
+		string tagData = tag.Remove(0, 1);
 
-		return tagName;
+		return tagData;
+	}
+
+	public void TestTag(string tagData)
+	{
+		print("this tag has data of " + tagData);
+	}
+
+	//goes to specified story branch
+	void SelectNewStoryBranch(string branchToGoTo)
+	{
+		story.ChoosePathString(branchToGoTo);
 	}
 
 	#endregion
@@ -299,7 +329,7 @@ public class Dialogue_Writer : MonoBehaviour
 	private RectTransform ButtonContainer = null;
 
 	// UI Prefabs
-	[Header ("UI Objects")]
+	[Header("UI Objects")]
 	[SerializeField]
 	private TextMeshProUGUI textObject = null;
 	[SerializeField]
@@ -318,11 +348,27 @@ public class Dialogue_Writer : MonoBehaviour
 	[Header("Events")]
 	public UnityEvent OnLineEnd;
 	public UnityEvent OnDialogueEnd;
+
+	[Header("Tag List")]
+	public Tag[] Tags;
+
+	[System.Serializable]
+	public struct Tag {
+		public string marker;
+		public TagFunctions TagFunctions;
+	}
+	
+	
+}
+
+//This class is only here so that an event that takes a string value parameter shows up in the inspector
+[System.Serializable]
+public class TagFunctions : UnityEvent<string>
+{
 }
 
 /*
  *TO DO
- * End of dialogue events (delegates?)
  * Format Ink file and document how to write it (find a way to incorporate a lot of Ink's functionality while making it work with the project at hand, though some stuff will get omitted due to how we're displaying text)
  * Sound that plays when going to next dialogue line
  * 
