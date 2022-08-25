@@ -27,6 +27,11 @@ Stefan Vo can LEGALLY work on: "small dialog centered RPG with ~~2 other people~
 * mythological monsters
 * mail design
 
+#### Kellie: Narrative Design
+* writing
+* research
+* co designing
+
 ### What is the game?
 
 * Mail Delivery Game
