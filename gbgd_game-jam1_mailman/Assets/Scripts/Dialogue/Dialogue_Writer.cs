@@ -292,6 +292,8 @@ public class Dialogue_Writer : MonoBehaviour
 		DialogueArrow.enabled = false;
 	}
 
+	#endregion
+
 	//Checks which state the game is in for input
 	public void CheckInteractionInput()
 	{
@@ -309,11 +311,10 @@ public class Dialogue_Writer : MonoBehaviour
 
 			case GameManager.GameState.WaitingToAdvance:
 				RefreshView();
+				//play sound here?
 				break;
 		}
 	}
-
-	#endregion
 
 	//player checks to advance the dialogue is called on button press
 
@@ -376,4 +377,5 @@ public class TagFunctions : UnityEvent<string>
  * Scriptable objects for cutscenes? (if we're having cutscenes at all) (if so, place possible tag in next line of dialogue, hide ui, play out cutscene, then use animation event to continue dialogue [refreshView]) (organize cutscene assets in arrays and just go down the list [no need to write anything in the tag])
  * come up with interesting way to read people's mail lmao (TEXT EFFECTS??)
  * are we having the text repeat itself after pressing a button? (feels a little redundant but idk)
+ * how are we formatting this ink file/how do we feel about the way it's formatted currently?
 */
