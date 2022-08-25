@@ -23,6 +23,10 @@ Stefan Vo can LEGALLY work on: "small dialog centered RPG with ~~2 other people~
 * mail design
 * hypnotic textures
 
+#### Sophie: Character Design
+* mythological monsters
+* mail design
+
 ### What is the game?
 
 * Mail Delivery Game
