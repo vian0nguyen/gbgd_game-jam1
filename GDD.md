@@ -9,6 +9,13 @@ Deliver mail to mythological figures that have fallen to our earthly realm. At t
 * player experience goals: 
 * Key questions:
   * what is the player choice in this game?
+  * what is the "conflict"? Self-growth?
+
+### Precedents
+
+* a short hike
+* kiki's deliver service
+* unpacking
 
 
 ## Storyboards
@@ -29,6 +36,7 @@ Deliver mail to mythological figures that have fallen to our earthly realm. At t
 ### idea two
 * you pick up mail
  * choose to read it or not 
+* deliver it -> get reaction/context from reciever (more context if you've read it; just a reaction if you didn't)
 
 __Game Loop:__
 
