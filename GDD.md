@@ -1,31 +1,25 @@
 # Mailman GDD
 
 ## General Summary
-
 Deliver mail to mythological figures that have fallen to our earthly realm. At the Magic Mailbox anything is possible, except Returns to Sender. The communication goes only one way, from the gods and goddesses to the demi gods and fallen deities.
 
 ## Objectives
-
 * player experience goals: 
 * Key questions:
   * what is the player choice in this game?
   * what is the "conflict"? Self-growth?
 
 ### Precedents
-
 * a short hike
 * kiki's deliver service
 * unpacking
 
 
 ## Storyboards
-
 [figma board](https://www.figma.com/file/fJZIhj5K0chMUrN2d5bEaw/MAIL-MAN_todo?node-id=9%3A2)
 
 ## Mechanics
-
 ### idea one
-
 * pick up mail: your mail bag can only fit a certain amount of mail (3 to start)
  * when mail is picked up it's message and effect will overcome you 
 * drop off mail - drop off mail at the door, no one appears but dialogue will appear
@@ -37,6 +31,13 @@ Deliver mail to mythological figures that have fallen to our earthly realm. At t
 * you pick up mail
  * choose to read it or not 
 * deliver it -> get reaction/context from reciever (more context if you've read it; just a reaction if you didn't)
+
+### idea three
+* inspired by scott's description of volunteering st the burning man post office
+* recipient addresses are vague, somwtimes have nick names
+* you must ask around to find context to who the recipient might be
+ * "i think youre looking for Phoung two doors down. Or at least she'll know who might know!"
+ * "Hmm I dunno if i've heard of a Crane Lady but Next door mentioned some angels that visited some time ago?"
 
 __Game Loop:__
 
