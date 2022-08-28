@@ -39,6 +39,12 @@ Deliver mail to mythological figures that have fallen to our earthly realm. At t
  * "i think youre looking for Phoung two doors down. Or at least she'll know who might know!"
  * "Hmm I dunno if i've heard of a Crane Lady but Next door mentioned some angels that visited some time ago?"
 
+### idea four
+* inspired by slice of life and kikis delivery service
+* each delivery teaches the player more about themselves, the value of communication and intimacy
+* their lore might be similar to mal blum's San Cristobal
+* ran away from an indifferent home and is now surrounded by a small community overflowing w care and love for each other
+
 __Game Loop:__
 
 * your bag can hold 5 items
