@@ -20,6 +20,18 @@ Deliver mail to mythological figures that have fallen to our earthly realm. At t
 [figma board](https://www.figma.com/file/fJZIhj5K0chMUrN2d5bEaw/MAIL-MAN_todo?node-id=9%3A2)
 
 ## Mechanics
+
+* day/night cycle to illustrate the time passing between sending then recieving a letter (is this real time or is it based on the # of letters you can drop off? maybe 3 in a day)
+* heaven - earth: gravity falls/paranorman type strangeness in town results in letters that CTA (ie clean up my tombstone, remember my shrine, offer forgiveness to someone who wronged me)
+  * spirit letters have vague earth recipients, use the environment and surrounding people to figure out who the letter is referring to. 
+  * spirit letters don't use language only objects (sign searching/fortune telling results)
+* earth - earth letters: sent when sender was on earth, recieved when they were in spirit. post humous letters. future letters to self.
+* earth - spirit letters: offerings as prayer or seeking guidance.
+ * spirit recipients need specific ritual to send to each (i.e. burning, leave at an altar)
+ * theres an assumption the sender won't recieve a traditional response but as the mailman you help facilitate the ritual
+
+---
+
 ### idea one
 * pick up mail: your mail bag can only fit a certain amount of mail (3 to start)
  * when mail is picked up it's message and effect will overcome you 
@@ -53,13 +65,13 @@ __Game Loop:__
 * Some recipients might ask after mail that they've sent or are waiting to be delivered --> "have you gotten anything from [blank]?
  * Once a recipient asks after mail the more days go by compounds the effect of delaying mail
     
-  ### Mechanics Progression
+### Mechanics Progression
 
-as you advance your relationships with mail recipients they reward you with tips which you can use to upgrade things
-
-as your relationships become more negative mail recipients will slowly stop answering the door to you (forcing you to drop off mail in box or delay thoughtfully)
-
-* level 1 - send letters between meat realm
-* level 2 - you send spirit mail to earth people
+ #### MVP
+ 5 mail; 4 townspeople; 2 gods; 2 day cycles
+ * day one: spirit - earth, spirit-earth, earth - spirit
+ * day 2: earth - spirit, spirit - earth
+ 
+ Player character acts as a proxy/facilitator for spiritual guidance. Gets multiple ways to interpret messages to recipients (spirit - earth) and facilitates ritual (earth - spirit)
 
 ## Glossary
