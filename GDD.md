@@ -3,6 +3,8 @@
 ## General Summary
 Deliver mail to mythological figures that have fallen to our earthly realm. At the Magic Mailbox anything is possible, except Returns to Sender. The communication goes only one way, from the gods and goddesses to the demi gods and fallen deities.
 
+-> might move away from mythology and more towards family spirits, elders, town mythos
+
 ## Objectives
 * player experience goals: 
 * Key questions:
@@ -60,10 +62,9 @@ Deliver mail to mythological figures that have fallen to our earthly realm. At t
 
 __Game Loop:__
 
-* your bag can hold 5 items
-* day cycles - you can pick up + resolve 2 bag trips a day?? or 10 items a day
+* your bag can hold 3 items
+* day cycles - you can pick up + resolve 1 bag trips a day
 * Some recipients might ask after mail that they've sent or are waiting to be delivered --> "have you gotten anything from [blank]?
- * Once a recipient asks after mail the more days go by compounds the effect of delaying mail
     
 ### Mechanics Progression
 
