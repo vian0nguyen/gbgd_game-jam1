@@ -23,30 +23,24 @@ Deliver mail to mythological figures that have fallen to our earthly realm. At t
 
 ## Mechanics
 
-* day/night cycle to illustrate the time passing between sending then recieving a letter (is this real time or is it based on the # of letters you can drop off? maybe 3 in a day)
-* heaven - earth: gravity falls/paranorman type strangeness in town results in letters that CTA (ie clean up my tombstone, remember my shrine, offer forgiveness to someone who wronged me)
+* heaven - earth: gravity falls/paranorman type strangeness in town results in letters that are guidance, prayer, etc
   * spirit letters have vague earth recipients, use the environment and surrounding people to figure out who the letter is referring to. 
   * spirit letters don't use language only objects (sign searching/fortune telling results)
-  * after some investigating there are possible choices of who can recieve the message
-   * different people have different interpretations of the meaning
-    * "who needs this message" over "who does this message go to" 
-   * spend time with them to release their spirit?? -- don't want to just spend kindness tokens
-
+ * investigate and find who will recieve the message
+   * the more people you talk to the more context will be offered in interpretations
+   * have different interpretations of the meaning upon gifting
+   * "who does this message go to" and "what could it mean"
+   * (optional?, nice to have) perform ritual with the obj with them -- 
 
 ---
 
 __Game Loop:__
 
 * your bag can hold 3 items
-* day cycles - you can pick up + resolve 1 bag trips a day
     
 ### Mechanics Progression
 
  #### MVP
- 5 mail; 4 townspeople; 2 gods; 2 day cycles
- * day one: spirit - earth, spirit-earth, earth - spirit
- * day 2: earth - spirit, spirit - earth
+ 5 mail; 4 townspeople; 2 gods
  
  Player character acts as a proxy/facilitator for spiritual guidance. Gets multiple ways to interpret messages to recipients (spirit - earth) and facilitates ritual (earth - spirit)
-
-## Glossary
