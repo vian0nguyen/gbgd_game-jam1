@@ -37,10 +37,15 @@ Deliver mail to mythological figures that have fallen to our earthly realm. At t
 __Game Loop:__
 
 * your bag can hold 3 items
+* you can talk to townspeople once you have mail in your bag
+* you can ask townspeople about an item in your mailbag
+* ask around until you find the valid recipient
+* Valid Participant: when you offer them their mail you get interpretations
+  * interpretations are informed context recieved when investigating recipients
     
 ### Mechanics Progression
 
  #### MVP
- 5 mail; 4 townspeople; 2 gods
+ 3 mail; 4 townspeople; 2 gods
  
  Player character acts as a proxy/facilitator for spiritual guidance. Gets multiple ways to interpret messages to recipients (spirit - earth) and facilitates ritual (earth - spirit)
