@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)https://twinery.org/2/#/stories/c3e4e2a3-e7b4-42f5-bdca-d00414f10be3/proof -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>test mail man
+</title>
+
+<style>
+body
+{
+	font: 10pt Cousine, monospace;
+	margin: 2em;
+}
+
+h1
+{
+	font-size: 14pt;
+	text-align: center;
+	margin-bottom: 2em;
+}
+
+tw-storydata
+{
+	display: block !important;
+}
+
+tw-passagedata
+{
+	display: block !important;
+	line-height: 200%;
+	margin-bottom: 2em;
+	white-space: pre-wrap;
+}
+
+tw-passagedata + tw-passagedata
+{
+	border-top: 1pt dashed black;
+	padding-top: 2em;
+}
+
+tw-passagedata:before
+{
+	content: attr(name);
+	display: block;
+	font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>test mail man
+</h1>
+<tw-storydata name="test mail man" startnode="6" creator="Twine" creator-version="2.5.1" format="Harlowe" format-version="3.3.3" ifid="2714E7A3-D4F3-44BF-98F4-FF84440653D9" options="" tags="" zoom="1" hidden=""><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Flower Mail" tags="" position="300,175" size="100,100">
+(link: "pick up flower")[(set: $mail to "flower")(set: $bag to $bag +1)(goto: "delivery")]
+[[leave it |mailroom]]</tw-passagedata><tw-passagedata pid="2" name="Water Mail" tags="" position="325,350" size="100,100">(link: "pick up water")[(set: $mail to "water")(set:$bag to $bag+1)(goto: "delivery")]
+[[leave it |mailroom]]</tw-passagedata><tw-passagedata pid="3" name="get flower" tags="" position="450,175" size="100,100">(set: $flower to true)
+got the flower mail
+off to [[delivery]]</tw-passagedata><tw-passagedata pid="4" name="delivery" tags="" position="575,275" size="100,100">you can talk to a couple people to figure out
+''$mail'' 
+
+(if: $mail is "flower")[[recognition gleams in her eyes|Fneighbor 1]]
+(if: $mail is "flower")[[he looks distantly at the flower|Fneighbor 2]]
+(if: $mail is "flower")[[nods knowingly|Fneighbor 3]]
+
+(if: $mail is "water")[[recognition gleams in her eyes|Wneighbor 1]]
+(if: $mail is "water")[[he looks distantly at the water|wneighbor 2]]
+(if: $mail is "water")[[nods knowingly|Wneighbor 3]]
+
+I know who it belongs to
+(if: $mail is "flower")[[the recipient is|frecipientID]]
+(if: $mail is "water")[[the recipient is|wrecipientID]]
+
+theres $bag items in your bag
+[[restart|Untitled Passage 1]] 
+</tw-passagedata><tw-passagedata pid="5" name="get water" tags="" position="450,350" size="100,100">(set: $water to true)
+got the water mail
+off to [[delivery]]</tw-passagedata><tw-passagedata pid="6" name="Untitled Passage 1" tags="" position="75,175" size="100,100">(set:$mail to empty)
+(set:$bag to 0)(set: $know to 0)
+Start and [[enter the mailroom|mailroom]]</tw-passagedata><tw-passagedata pid="7" name="mailroom" tags="" position="125,275" size="100,100">
+you can see two types of mail
+
+(if:$mail is empty)[[Flower Mail]]
+(if:$mail is empty)[[Water Mail]]</tw-passagedata><tw-passagedata pid="8" name="Fneighbor 3" tags="" position="700,525" size="100,100">The sun woman lost her child in a wild fire. years later the prairie eventually recovered and those flowers returned again. 
+(set: $know to $know +1)
+
+[[back|delivery]]</tw-passagedata><tw-passagedata pid="9" name="Fneighbor 1" tags="" position="425,525" size="100,100">Ah yes, the sun woman once loved a flower much like that one.
+(set: $know to $know +1)
+
+[[back|delivery]]</tw-passagedata><tw-passagedata pid="10" name="Fneighbor 2" tags="" position="550,525" size="100,100">that sun woman really likes bringing flower like that to the grave over yonder
+(set: $know to $know +1)
+
+[[back|delivery]]</tw-passagedata><tw-passagedata pid="11" name="Wneighbor 1" tags="" position="500,50" size="100,100">Ah yes, the cloud form adored that orb of water.
+(set: $know to $know +1)
+
+[[back|delivery]]</tw-passagedata><tw-passagedata pid="12" name="wneighbor 2" tags="" position="750,100" size="100,100">That water is the last of the cloud form's family home. He misses them all dearly.
+(set: $know to $know +1)
+
+[[back|delivery]]</tw-passagedata><tw-passagedata pid="13" name="Wneighbor 3" tags="" position="600,100" size="100,100">The cloud form holds that water dear. It might be from a special place in their heart
+(set: $know to $know +1)
+
+[[back|delivery]]</tw-passagedata><tw-passagedata pid="14" name="frecipientID" tags="" position="700,375" size="100,100">
+the flower belongs to:
+(if: $know &gt;= 1) [[the sun woman! |resolve]]
+(if: $know &gt;= 2)[[ it's a flower for someone she loved!|resolve]]
+(if: $know is 3) [[it's a symbol of the tragic loss of her child|resolve]]</tw-passagedata><tw-passagedata pid="15" name="resolve" tags="" position="875,300" size="100,100">(if: $know &gt;= 1) [ah yes.]
+(if: $know &gt;= 2)[thank you.]
+(if: $know is 3)[oh, wow. you really did it! thank you for taking the time.]
+
+
+[[Restart|Untitled Passage 1]] </tw-passagedata><tw-passagedata pid="16" name="wrecipientID" tags="" position="700,250" size="100,100">
+the water belongs to:
+(if: $know &gt;= 1) [[the water form!|resolve]]
+(if: $know &gt;= 2)[[it's water from a special place|resolve]]
+(if: $know is 3) [[it's whats left of their family home|resolve]]</tw-passagedata></tw-storydata>
+
+
+
+
+</body></html>
