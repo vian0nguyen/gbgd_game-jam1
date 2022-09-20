@@ -164,6 +164,7 @@ public class Dialogue_Writer : MonoBehaviour
 	//scrolls text
 	private IEnumerator ScrollText()
 	{
+		/*
 		//begin scrolling functions
 		HideDialogueArrow();
 		textObject.text = "";
@@ -185,12 +186,76 @@ public class Dialogue_Writer : MonoBehaviour
 			//put this here because the text automatically skipped after choosing a button and that didn't quite look right
 			if (gm.currentState != GameManager.GameState.Talking)
 				gm.currentState = GameManager.GameState.Talking;
+		}*/
+
+		//clears out current text
+		ClearOutText();
+
+		//gets text info
+		TMPro.TMP_TextInfo textInfo = textObject.textInfo;
+
+		//has text fade in
+		for (int i = 0; i < textInfo.characterCount; i++)
+		{
+			//gets reference to text material, vertex positions, and colors
+			TMPro.TMP_MeshInfo meshInfo = textInfo.meshInfo[textInfo.characterInfo[i].materialReferenceIndex];
+			Vector3[] verts = meshInfo.vertices;
+			Color32[] colors = meshInfo.colors32;
+
+			//goes through all vertices in character mesh
+			for (int k = 0; k < verts.Length; k++)
+			{
+				//sets text to opaque
+				colors[k] = new Color32(colors[k].r, colors[k].g, colors[k].b, 255);
+				textObject.mesh.colors32 = colors;
+				textObject.UpdateVertexData();
+
+				//checks if the character are opaque
+				//put events that happen when a character is shown here
+				if(k%4 == 0)
+                {
+					//waits based scrollspeed
+					yield return new WaitForSeconds(1 -(scrollSpeed/100));
+				}
+				
+			}
+
 		}
 
 		//end of scrolling functions
 		ShowDialogueArrow();
 		OnLineEnd.Invoke();
 		gm.currentState = GameManager.GameState.WaitingToAdvance;
+	}
+
+	//sets current vertex colors to transparent
+	void ClearOutText()
+    {
+		//sets current line
+		textObject.text = currentText;
+		textObject.ForceMeshUpdate();
+		TMPro.TMP_TextInfo textInfo = textObject.textInfo;
+
+		//clears out text (makes it invisible)
+		foreach (TMPro.TMP_CharacterInfo characterInfo in textInfo.characterInfo)
+		{
+			//gets reference to text material, vertex positions, and colors
+			TMPro.TMP_MeshInfo meshInfo = textInfo.meshInfo[characterInfo.materialReferenceIndex];
+			Vector3[] verts = meshInfo.vertices;
+			Color32[] colors = meshInfo.colors32;
+
+			//goes through each character's vertices and makes them transparent
+			for (int i = 0; i < verts.Length; i++)
+			{
+				//sets text to transparent
+				meshInfo.colors32[i] = new Color32(colors[i].r, colors[i].g, colors[i].b, 0);
+			}
+
+			//actually sets transparent text color
+			textObject.textInfo.meshInfo[characterInfo.materialReferenceIndex] = meshInfo;
+			textObject.UpdateVertexData();
+
+		}
 	}
 
 	//skips the scrolling and fills in finished dialogue
@@ -215,12 +280,6 @@ public class Dialogue_Writer : MonoBehaviour
 		//runs through all current tags
 		foreach (string tag in story.currentTags)
 		{
-			//old method of checking tags purely through code
-			/*switch (tag) {
-				case string a when a.Contains("~"):
-					print("has ~ with data of " + GetTagData(tag));
-					break;
-			}*/
 
 			//this method allows anyone to edit what happens when a tag is called in the inspector
 			//runs through each tag in the tag list
@@ -345,6 +404,14 @@ public class Dialogue_Writer : MonoBehaviour
 	public AudioClip dialogueBlip;
 	[Range(90, 100)]
 	public float scrollSpeed = 90f;
+
+	[Header("Text Scroll Tweening")]
+	[SerializeField]
+	AnimationCurve XModification;
+	[SerializeField]
+	AnimationCurve YModification;
+	[SerializeField]
+	float tweenDuration;
 
 	[Header("Events")]
 	public UnityEvent OnLineEnd;
