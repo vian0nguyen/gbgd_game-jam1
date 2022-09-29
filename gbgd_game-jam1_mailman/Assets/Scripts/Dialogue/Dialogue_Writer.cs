@@ -211,7 +211,6 @@ public class Dialogue_Writer : MonoBehaviour
 			//gets reference to text material, vertex positions, and colors
 			TMPro.TMP_MeshInfo meshInfo = textInfo.meshInfo[textInfo.characterInfo[i].materialReferenceIndex];
 			Vector3[] verts = meshInfo.vertices;
-			currentVertPositions = meshInfo.vertices;
 			Color32[] colors = meshInfo.colors32;
 
 			//goes through all vertices in character mesh
@@ -223,9 +222,8 @@ public class Dialogue_Writer : MonoBehaviour
 
 				textObject.UpdateVertexData();
 
-				//keeps track of tween coroutines started
-				Coroutine tweenInstance = StartCoroutine(LerpText(verts[k], k, verts));
-				tweenInstances.Add(tweenInstance);
+				//tweens the text into the text box
+				StartCoroutine(LerpText(verts[k], k, verts));
 			}
 			yield return new WaitForSeconds(1 - (scrollSpeed / 100));
 		}
@@ -264,13 +262,6 @@ public class Dialogue_Writer : MonoBehaviour
 		textObject.UpdateVertexData();
 	}
 
-	//sets vertices to original positions
-	void SetNewText(Vector3[] insertVerts)
-    {
-		insertVerts = currentVertPositions;
-		textObject.UpdateVertexData();
-	}
-
 	//sets current vertex colors to transparent
 	void ClearOutText()
     {
@@ -306,11 +297,10 @@ public class Dialogue_Writer : MonoBehaviour
 	{
 		StopAllCoroutines();
 
-		ClearOutText();
-		
 		ShowDialogueArrow();
-		//textObject.text = currentText;
-
+		
+		//resets the text
+		textObject.text = currentText;
 		textObject.ForceMeshUpdate();
 		TMPro.TMP_TextInfo textInfo = textObject.textInfo;
 
@@ -328,8 +318,6 @@ public class Dialogue_Writer : MonoBehaviour
 				//sets vertex to opaque
 				meshInfo.colors32[i] = new Color32(colors[i].r, colors[i].g, colors[i].b, 255);
 			}
-
-			SetNewText(meshInfo.vertices);
 
 			//actually sets text color
 			textObject.textInfo.meshInfo[characterInfo.materialReferenceIndex] = meshInfo;
@@ -489,8 +477,6 @@ public class Dialogue_Writer : MonoBehaviour
 	float tweenDuration;
 	[SerializeField]
 	Vector3 charPositionOffset;
-	private List<Coroutine> tweenInstances = new List<Coroutine>();
-	private Vector3[] currentVertPositions;
 
 	[Header("Events")]
 	public UnityEvent OnLineEnd;
