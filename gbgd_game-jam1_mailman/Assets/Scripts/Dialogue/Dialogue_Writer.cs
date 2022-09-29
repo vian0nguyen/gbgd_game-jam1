@@ -71,7 +71,6 @@ public class Dialogue_Writer : MonoBehaviour
 		// Read all the content until we can't continue any more
 		if (story.canContinue)
 		{
-
 			// Continue gets the next line of the story
 			currentText = story.Continue();
 			// This removes any white space from the text.
@@ -105,6 +104,7 @@ public class Dialogue_Writer : MonoBehaviour
 	void OnClickChoiceButton(Choice choice)
 	{
 		story.ChooseChoiceIndex(choice.index);
+		gm.currentState = GameManager.GameState.Talking;
 		RefreshView();
 	}
 
@@ -223,7 +223,9 @@ public class Dialogue_Writer : MonoBehaviour
 
 				textObject.UpdateVertexData();
 
-				tweenInstance = StartCoroutine(LerpText(verts[k], k, verts));
+				//keeps track of tween coroutines started
+				Coroutine tweenInstance = StartCoroutine(LerpText(verts[k], k, verts));
+				tweenInstances.Add(tweenInstance);
 			}
 			yield return new WaitForSeconds(1 - (scrollSpeed / 100));
 		}
@@ -262,10 +264,12 @@ public class Dialogue_Writer : MonoBehaviour
 		textObject.UpdateVertexData();
 	}
 
+	//sets vertices to original positions
 	void SetNewText(Vector3[] insertVerts)
     {
 		insertVerts = currentVertPositions;
-    }
+		textObject.UpdateVertexData();
+	}
 
 	//sets current vertex colors to transparent
 	void ClearOutText()
@@ -300,8 +304,10 @@ public class Dialogue_Writer : MonoBehaviour
 	//skips the scrolling and fills in finished dialogue
 	public void SkipScroll()
 	{
-		StopCoroutine("ScrollText");
-		StopCoroutine(tweenInstance);
+		StopAllCoroutines();
+
+		ClearOutText();
+		
 		ShowDialogueArrow();
 		//textObject.text = currentText;
 
@@ -322,6 +328,8 @@ public class Dialogue_Writer : MonoBehaviour
 				//sets vertex to opaque
 				meshInfo.colors32[i] = new Color32(colors[i].r, colors[i].g, colors[i].b, 255);
 			}
+
+			SetNewText(meshInfo.vertices);
 
 			//actually sets text color
 			textObject.textInfo.meshInfo[characterInfo.materialReferenceIndex] = meshInfo;
@@ -433,6 +441,7 @@ public class Dialogue_Writer : MonoBehaviour
 				break;
 
 			case GameManager.GameState.WaitingToAdvance:
+				gm.currentState = GameManager.GameState.Talking;
 				RefreshView();
 				//play sound here?
 				break;
@@ -480,7 +489,7 @@ public class Dialogue_Writer : MonoBehaviour
 	float tweenDuration;
 	[SerializeField]
 	Vector3 charPositionOffset;
-	private Coroutine tweenInstance = null;
+	private List<Coroutine> tweenInstances = new List<Coroutine>();
 	private Vector3[] currentVertPositions;
 
 	[Header("Events")]
