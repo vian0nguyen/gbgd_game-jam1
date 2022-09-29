@@ -194,32 +194,38 @@ public class Dialogue_Writer : MonoBehaviour
 		//gets text info
 		TMPro.TMP_TextInfo textInfo = textObject.textInfo;
 
-		//has text fade in
-		for (int i = 0; i < textInfo.characterCount; i++)
+		int visibleCharCount = 0;
+		
+		//runs through all visible characters
+		for (int j = 0; j < textInfo.characterCount; j++)
 		{
+			if (textInfo.characterInfo[j].isVisible)
+            {
+				visibleCharCount++;
+            }
+		}
+
+		//runs through each visible character
+		for (int i = 0; i < visibleCharCount; i++)
+        {
 			//gets reference to text material, vertex positions, and colors
 			TMPro.TMP_MeshInfo meshInfo = textInfo.meshInfo[textInfo.characterInfo[i].materialReferenceIndex];
 			Vector3[] verts = meshInfo.vertices;
+			currentVertPositions = meshInfo.vertices;
 			Color32[] colors = meshInfo.colors32;
 
 			//goes through all vertices in character mesh
-			for (int k = 0; k < verts.Length; k++)
+			for (int k = (i * 4); k < (i * 4) + 4; k++)
 			{
 				//sets text to opaque
 				colors[k] = new Color32(colors[k].r, colors[k].g, colors[k].b, 255);
 				textObject.mesh.colors32 = colors;
+
 				textObject.UpdateVertexData();
 
-				//checks if the character are opaque
-				//put events that happen when a character is shown here
-				if(k%4 == 0)
-                {
-					//waits based scrollspeed
-					yield return new WaitForSeconds(1 -(scrollSpeed/100));
-				}
-				
+				tweenInstance = StartCoroutine(LerpText(verts[k], k, verts));
 			}
-
+			yield return new WaitForSeconds(1 - (scrollSpeed / 100));
 		}
 
 		//end of scrolling functions
@@ -227,6 +233,39 @@ public class Dialogue_Writer : MonoBehaviour
 		OnLineEnd.Invoke();
 		gm.currentState = GameManager.GameState.WaitingToAdvance;
 	}
+
+	//has the character in the text move in (using vertex)
+	IEnumerator LerpText(Vector3 refPos, int index, Vector3[] vertArray)
+	{
+		//gets starting position of the character based on offset set by the dev
+		Vector3 startingPosition = refPos + charPositionOffset;
+
+		//tweens the text flying in
+		for (float i = 0; i < tweenDuration; i += Time.deltaTime)
+		{
+			//evaluates the position of the text depending at what part of the tween it's at (from 0 to 1, which is caluclated by dividing the amount of time passed by the tween's duration)
+			float posX = Mathf.Lerp(startingPosition.x, refPos.x, tweenEasingCurve.Evaluate(i / tweenDuration)) + XModification.Evaluate(i / tweenDuration);
+			float posY = Mathf.Lerp(startingPosition.y, refPos.y, tweenEasingCurve.Evaluate(i / tweenDuration)) + YModification.Evaluate(i / tweenDuration);
+
+			//creates new vertex position
+			Vector3 newVertPos = new Vector3(posX, posY, 0);
+			vertArray[index] = newVertPos;
+
+			yield return new WaitForSeconds(Time.deltaTime);
+
+			textObject.UpdateVertexData();
+
+		}
+
+		//snaps vertex to original position at the end of the loop
+		vertArray[index] = refPos;
+		textObject.UpdateVertexData();
+	}
+
+	void SetNewText(Vector3[] insertVerts)
+    {
+		insertVerts = currentVertPositions;
+    }
 
 	//sets current vertex colors to transparent
 	void ClearOutText()
@@ -262,8 +301,33 @@ public class Dialogue_Writer : MonoBehaviour
 	public void SkipScroll()
 	{
 		StopCoroutine("ScrollText");
+		StopCoroutine(tweenInstance);
 		ShowDialogueArrow();
-		textObject.text = currentText;
+		//textObject.text = currentText;
+
+		textObject.ForceMeshUpdate();
+		TMPro.TMP_TextInfo textInfo = textObject.textInfo;
+
+		//makes text visible
+		foreach (TMPro.TMP_CharacterInfo characterInfo in textInfo.characterInfo)
+		{
+			//gets reference to text material, vertex positions, and colors
+			TMPro.TMP_MeshInfo meshInfo = textInfo.meshInfo[characterInfo.materialReferenceIndex];
+			Vector3[] verts = meshInfo.vertices;
+			Color32[] colors = meshInfo.colors32;
+
+			//goes through each character's vertices and makes them fully opaque
+			for (int i = 0; i < verts.Length; i++)
+			{
+				//sets vertex to opaque
+				meshInfo.colors32[i] = new Color32(colors[i].r, colors[i].g, colors[i].b, 255);
+			}
+
+			//actually sets text color
+			textObject.textInfo.meshInfo[characterInfo.materialReferenceIndex] = meshInfo;
+			textObject.UpdateVertexData();
+
+		}
 
 		//calls on line end functions
 		OnLineEnd.Invoke();
@@ -411,7 +475,13 @@ public class Dialogue_Writer : MonoBehaviour
 	[SerializeField]
 	AnimationCurve YModification;
 	[SerializeField]
+	AnimationCurve tweenEasingCurve;
+	[SerializeField]
 	float tweenDuration;
+	[SerializeField]
+	Vector3 charPositionOffset;
+	private Coroutine tweenInstance = null;
+	private Vector3[] currentVertPositions;
 
 	[Header("Events")]
 	public UnityEvent OnLineEnd;
