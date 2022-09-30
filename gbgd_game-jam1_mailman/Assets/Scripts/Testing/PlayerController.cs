@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField]
-    private GameManager gm;
+    protected GameManager gm;
 
     public UnityEvent OnInteractButtonDown;
 
