@@ -46,6 +46,6 @@ __Game Loop:__
 ### Mechanics Progression
 
  #### MVP
- 3 mail; 4 townspeople; 2 gods
+ 3 mail; 4 townspeople; 3 gods
  
  Player character acts as a proxy/facilitator for spiritual guidance. Gets multiple ways to interpret messages to recipients (spirit - earth) and facilitates ritual (earth - spirit)
