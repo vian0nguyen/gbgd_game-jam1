@@ -11,7 +11,7 @@ public class Dialogue_Writer : MonoBehaviour
 {
 	public static event Action<Story> OnCreateStory;
 
-	void Awake()
+	public virtual void Awake()
 	{
 		//sets up variables to be reset upon the scene starting
 		Initialize();
@@ -414,7 +414,7 @@ public class Dialogue_Writer : MonoBehaviour
 	#endregion
 
 	//Checks which state the game is in for input
-	public void CheckInteractionInput()
+	public virtual void CheckInteractionInput()
 	{
 		switch (gm.currentState)
 		{
@@ -438,11 +438,21 @@ public class Dialogue_Writer : MonoBehaviour
 
 	//player checks to advance the dialogue is called on button press
 
-	[SerializeField]
-	private GameManager gm;
+	//reads info from tag that only has one element
+	public string ReadTagInfoSingle(string tag)
+    {
+		return (tag.Remove(0, 1));
+	}
 
-	[SerializeField]
-	private TextAsset inkJSONAsset = null;
+	//gets text from current npc (is used as a base)
+	public virtual void GetNPCTextAsset()
+	{
+
+	}
+
+	public GameManager gm;
+
+	public TextAsset inkJSONAsset = null;
 	public Story story;
 	private string currentText;
 

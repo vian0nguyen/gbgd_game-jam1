@@ -11,12 +11,22 @@ public class Player : PlayerController
     float moveY;
     #endregion
 
-    GameObject currentNPC = null;
     List<GameObject> NPCsInRange = new List<GameObject>();
+    gameManager_Prototype_1 gmp1;
+
+    private void Awake()
+    {
+        //checks if the gameManager is the one specifically for prototype 1
+        if (gm is gameManager_Prototype_1)
+            gmp1 = gm as gameManager_Prototype_1;
+
+    }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
+
         GetMovementInput();
     }
 
@@ -54,8 +64,9 @@ public class Player : PlayerController
             
             //checks if the player is in an NPC's talking range
             case "NPC":
-                NPCsInRange.Add(collision.gameObject);
-                currentNPC = NPCsInRange[NPCsInRange.Count - 1];
+                NPCsInRange.Add(collision.gameObject); 
+                gmp1.currentNPC = NPCsInRange[NPCsInRange.Count - 1];
+
                 break;
         }
     }
@@ -72,13 +83,13 @@ public class Player : PlayerController
                 //if the player leaves an NPC's talking range and there are no overlapping NPC's, the current npc is nullified
                 if(NPCsInRange.Count > 0)
                 {
-                    currentNPC = NPCsInRange[NPCsInRange.Count - 1];
+                    gmp1.currentNPC = NPCsInRange[NPCsInRange.Count - 1];
                 }
 
                 //if the player is in the range of another npc, the current npc is the last one that the player entered the talking range of
                 else
                 {
-                    currentNPC = null;   
+                    gmp1.currentNPC = null;   
                 }
                 break;
         }

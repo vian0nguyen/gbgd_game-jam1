@@ -9,11 +9,13 @@ public class gameManager_Prototype_1 : GameManager
     public int maxCapacity = 3;
     public struct Item
     {
-
+        string objectName;
     }
     #endregion
 
     public int arc;
+
+    public GameObject currentNPC = null;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +58,12 @@ public class gameManager_Prototype_1 : GameManager
         {
             //show dialogue that you don't have anything in your inventory
         }
+    }
+
+    //advances time in the game
+    public void IncrementArc()
+    {
+        arc++;
     }
 
 }

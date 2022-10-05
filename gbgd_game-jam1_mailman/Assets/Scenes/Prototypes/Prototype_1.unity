@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 21473430}
-  - component: {fileID: 21473429}
+  - component: {fileID: 21473431}
   - component: {fileID: 21473428}
   m_Layer: 0
   m_Name: DialogueManager
@@ -235,7 +235,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &21473429
+--- !u!4 &21473430
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21473427}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &21473431
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,11 +258,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 21473427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e161729775fd8d44a8b5448b6559c69c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b15c465de485c741b8086d014f761ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gm: {fileID: 0}
-  inkJSONAsset: {fileID: 4900000, guid: ad71ccca56c76d942bcc8e838bd9449c, type: 3}
+  gm: {fileID: 1958339530}
+  inkJSONAsset: {fileID: 0}
   ButtonContainer: {fileID: 38627091}
   textObject: {fileID: 211430610}
   UIPanel: {fileID: 537242669}
@@ -294,15 +308,6 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.30667138
-      value: 1.591722
-      inSlope: 0.7454138
-      outSlope: 0.7454138
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 0
@@ -342,73 +347,20 @@ MonoBehaviour:
   charPositionOffset: {x: 10, y: -20, z: 0}
   OnLineEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: EndLine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnDialogueEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: EndDialogue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   Tags:
-  - marker: ~
+  - marker: 
     TagFunctions:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 21473429}
-          m_MethodName: TestTag
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_MethodName: TagTest
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!4 &21473430
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 21473427}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+        m_Calls: []
+  - marker: 
+    TagFunctions:
+      m_PersistentCalls:
+        m_Calls: []
+  gmp1: {fileID: 0}
 --- !u!1 &28233109
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +397,7 @@ MonoBehaviour:
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_ForceModuleActive: 1
 --- !u!114 &28233111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,13 +565,54 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.3812765
       objectReference: {fileID: 0}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[0].recurringDialogue
+      value: 
+      objectReference: {fileID: 4900000, guid: ad71ccca56c76d942bcc8e838bd9449c, type: 3}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[1].recurringDialogue
+      value: 
+      objectReference: {fileID: 4900000, guid: e982b6d9b49de54489dbd3a6658eb4cc, type: 3}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[0].dialogueSet.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[1].dialogueSet.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[0].dialogueSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 4900000, guid: e982b6d9b49de54489dbd3a6658eb4cc, type: 3}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[1].dialogueSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 4900000, guid: 6ac22636aaa9a564ab0585910c63d7a6, type: 3}
     - target: {fileID: 6657585618865932956, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
         type: 3}
       propertyPath: m_Name
-      value: NPC
+      value: SampleNPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716, type: 3}
+--- !u!1 &145465783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6657585618865932956, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+    type: 3}
+  m_PrefabInstance: {fileID: 57010663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &211430608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,7 +1299,18 @@ MonoBehaviour:
   gm: {fileID: 1958339530}
   OnInteractButtonDown:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 21473431}
+        m_MethodName: CheckInteractionInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   rb2D: {fileID: 1687060396}
   speed: 3
 --- !u!1 &1839682530
@@ -1455,3 +1459,4 @@ MonoBehaviour:
   es: {fileID: 28233111}
   maxCapacity: 3
   arc: 0
+  currentNPC: {fileID: 145465783}
