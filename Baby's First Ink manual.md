@@ -23,5 +23,7 @@ In the **Unity inspector**
   
   Your guide to all the tags in the game and what their data is used for.
   
-  *  Prototype tag: Currently tells the console that the tag contains whatever text comes after it. Mainly used to test the tag system and tag parsing system.  
+  *  Prototype tag (~): Currently tells the console that the tag contains whatever text comes after it. Mainly used to test the tag system and tag parsing system.  
   
+### Choices
+When writing in choices, please make sure there is no space between the * and choice text, as it will muck up how Unity hovers over buttons.
