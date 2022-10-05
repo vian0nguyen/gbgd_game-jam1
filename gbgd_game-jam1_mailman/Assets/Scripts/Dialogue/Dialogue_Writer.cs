@@ -367,7 +367,14 @@ public class Dialogue_Writer : MonoBehaviour
 		//removes the marking from the string in the tag
 		string tagData = tag.Remove(0, 1);
 
-		return tagData;
+		if(!string.IsNullOrEmpty(tagData))
+			return tagData;
+
+        else
+        {
+			Debug.LogError("Couldn't parse tag because there is no data.");
+			return (null);
+        }
 	}
 
 	public void TestTag(string tagData)
