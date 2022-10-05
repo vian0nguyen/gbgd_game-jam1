@@ -34,6 +34,10 @@ public class Dialogue_Writer : MonoBehaviour
 	{
 		story = new Story(inkJSONAsset.text);
 		if (OnCreateStory != null) OnCreateStory(story);
+
+		//calls any functions that are supposed to happen when the dialogue begins
+		OnDialogueStart.Invoke();
+
 		RefreshView();
 	}
 
@@ -489,6 +493,7 @@ public class Dialogue_Writer : MonoBehaviour
 	Vector3 charPositionOffset;
 
 	[Header("Events")]
+	public UnityEvent OnDialogueStart;
 	public UnityEvent OnLineEnd;
 	public UnityEvent OnDialogueEnd;
 

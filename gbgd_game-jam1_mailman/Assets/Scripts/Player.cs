@@ -57,6 +57,12 @@ public class Player : PlayerController
             rb2D.velocity = new Vector2(moveX * speed, moveY * speed);
         }
     }
+    
+    //freezes the player's velocity so that they don't go sliding offscreen
+    public void FreezePlayer()
+    {
+        rb2D.velocity = Vector2.zero;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

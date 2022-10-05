@@ -18,24 +18,28 @@ public class Dialogue_Writer_Prototype_1 : Dialogue_Writer
 
     public override void CheckInteractionInput()
     {
-		switch (gmp1.currentState)
+		//only does this check if there's an npc to talk to
+		if (gmp1.currentNPC != null)
 		{
-			case GameManager.GameState.NotTalking:
-				gm.currentState = GameManager.GameState.Talking;
-				GetNPCTextAsset();
-				ShowUI();
-				StartStory();
-				break;
+			switch (gmp1.currentState)
+			{
+				case GameManager.GameState.NotTalking:
+					gm.currentState = GameManager.GameState.Talking;
+					GetNPCTextAsset();
+					ShowUI();
+					StartStory();
+					break;
 
-			case GameManager.GameState.Talking:
-				SkipScroll();
-				break;
+				case GameManager.GameState.Talking:
+					SkipScroll();
+					break;
 
-			case GameManager.GameState.WaitingToAdvance:
-				gm.currentState = GameManager.GameState.Talking;
-				RefreshView();
-				//play sound here?
-				break;
+				case GameManager.GameState.WaitingToAdvance:
+					gm.currentState = GameManager.GameState.Talking;
+					RefreshView();
+					//play sound here?
+					break;
+			}
 		}
 	}
 

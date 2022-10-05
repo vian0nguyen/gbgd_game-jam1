@@ -1,8 +1,8 @@
 I could grasp the orb in my hand. cold to the touch
 
- * take mail #take
+ *take mail #take
  ->takemail1
- * put back #leave
+ *put back #leave
  ->leavemail1
 
 ===takemail1===
