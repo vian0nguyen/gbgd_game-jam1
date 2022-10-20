@@ -24,6 +24,8 @@ In the **Unity inspector**
   Your guide to all the tags in the game and what their data is used for.
   
   *  Prototype tag (~): Currently tells the console that the tag contains whatever text comes after it. Mainly used to test the tag system and tag parsing system.  
+  *  Add to Inventory (+): Adds an item to inventory based on the name that follows it.  Ex: #+orb
+  *  Remove from Inventory (-): Removes an item from inventory based on name that follows it. Ex: #-orb
   
 ## Dialogue Formatting
 When writing dialogue lines, try to break things up by sentence/natural pause so that all the text can fit on screen.  The text will scroll the next line of dialogue automatically, so no need to fit all the dialogue on one line.
