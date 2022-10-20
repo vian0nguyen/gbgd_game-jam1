@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
     public void SelectFirstButton(GameObject firstButton)
     {
         es.SetSelectedGameObject(firstButton);
-
         //remember the color used for this highlight is "Selected Color"
     }
 

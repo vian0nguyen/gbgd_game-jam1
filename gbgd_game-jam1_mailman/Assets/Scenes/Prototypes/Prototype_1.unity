@@ -267,6 +267,7 @@ MonoBehaviour:
   textObject: {fileID: 211430610}
   UIPanel: {fileID: 537242669}
   buttonPrefab: {fileID: 11455116, guid: 11c3120127f0a6a45ad5df6567bf885d, type: 3}
+  currentButtons: []
   DialogueArrow: {fileID: 1447007419}
   dialogueAudio: {fileID: 21473428}
   dialogueBlip: {fileID: 0}
@@ -366,14 +367,36 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Tags:
-  - marker: 
+  - marker: +
     TagFunctions:
       m_PersistentCalls:
-        m_Calls: []
-  - marker: 
+        m_Calls:
+        - m_Target: {fileID: 1958339530}
+          m_MethodName: AddToInventory
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - marker: '-'
     TagFunctions:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1958339530}
+          m_MethodName: RemoveFromInventory
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   gmp1: {fileID: 0}
 --- !u!1 &28233109
 GameObject:
@@ -593,7 +616,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogueArcs.Array.data[1].recurringDialogue
       value: 
-      objectReference: {fileID: 4900000, guid: e982b6d9b49de54489dbd3a6658eb4cc, type: 3}
+      objectReference: {fileID: 4900000, guid: ad71ccca56c76d942bcc8e838bd9449c, type: 3}
     - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
         type: 3}
       propertyPath: dialogueArcs.Array.data[0].dialogueSet.Array.size
@@ -608,12 +631,12 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogueArcs.Array.data[0].dialogueSet.Array.data[0]
       value: 
-      objectReference: {fileID: 4900000, guid: e982b6d9b49de54489dbd3a6658eb4cc, type: 3}
+      objectReference: {fileID: 4900000, guid: 28508ec0055e1d9488333de97cce608b, type: 3}
     - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
         type: 3}
       propertyPath: dialogueArcs.Array.data[1].dialogueSet.Array.data[0]
       value: 
-      objectReference: {fileID: 4900000, guid: 6ac22636aaa9a564ab0585910c63d7a6, type: 3}
+      objectReference: {fileID: 4900000, guid: e982b6d9b49de54489dbd3a6658eb4cc, type: 3}
     - target: {fileID: 6657585618865932956, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
         type: 3}
       propertyPath: m_Name
@@ -1248,7 +1271,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687060393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.36, y: 2.78, z: 0}
+  m_LocalPosition: {x: 2.89, y: 2.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 647544141}

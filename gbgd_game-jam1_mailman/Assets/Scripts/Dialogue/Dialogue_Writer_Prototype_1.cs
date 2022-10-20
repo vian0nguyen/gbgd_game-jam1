@@ -54,5 +54,5 @@ public class Dialogue_Writer_Prototype_1 : Dialogue_Writer
 		//increments number of times the player has spoken to this npc
 		npcInfo.timesSpokenTo++;
     }
-	
+
 }

@@ -5,17 +5,25 @@ using UnityEngine;
 public class gameManager_Prototype_1 : GameManager
 {
     #region Inventory
+    [SerializeField]
     public Dictionary<string, Item> inventory;
     public int maxCapacity = 3;
+    [System.Serializable]
     public struct Item
     {
-        string objectName;
+        public string objectName;
     }
     #endregion
 
     public int arc;
 
     public GameObject currentNPC = null;
+
+    private void Awake()
+    {
+        //sets up blank inventory
+        inventory = new Dictionary<string, Item>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +45,7 @@ public class gameManager_Prototype_1 : GameManager
         if (inventory.Count < maxCapacity)
         {
             inventory.Add(itemName, new Item());
+            print("Added " + itemName);
         }
 
         else
@@ -52,6 +61,7 @@ public class gameManager_Prototype_1 : GameManager
         if (inventory.Count > 0)
         {
             inventory.Remove(itemName);
+            print("Removed " + itemName);
         }
 
         else
@@ -67,3 +77,4 @@ public class gameManager_Prototype_1 : GameManager
     }
 
 }
+//create scriptables for objects that list their correct recipient and check names, regardless of case

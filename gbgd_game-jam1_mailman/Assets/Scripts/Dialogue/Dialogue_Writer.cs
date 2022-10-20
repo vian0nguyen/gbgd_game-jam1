@@ -68,6 +68,29 @@ public class Dialogue_Writer : MonoBehaviour
 				//adds to list of current buttons
 				currentButtons.Add(button);
 			}
+
+			for(int j = 0; j < currentButtons.Count; j++)
+            {
+				//creates new navigation settings
+				Navigation customNav = new Navigation();
+				customNav.mode = Navigation.Mode.Explicit;
+
+				//checks if this isn't the last button in the array
+				if (j < currentButtons.Count - 1)
+                {
+					//sets next button when navigation goes down
+					customNav.selectOnDown = currentButtons[j + 1];
+                }
+				
+				//checks if this isn't the first button
+				if (j > 0)
+                {
+					customNav.selectOnUp = currentButtons[j - 1];
+                }
+				//sets new navigation settings
+				currentButtons[j].navigation = customNav;
+			}
+
 			//selects first button in the list as the highlighted one
 			gm.SelectFirstButton(currentButtons[0].gameObject);
 		}
@@ -374,7 +397,7 @@ public class Dialogue_Writer : MonoBehaviour
         {
 			Debug.LogError("Couldn't parse tag because there is no data.");
 			return (null);
-        }
+        }// )spoon
 	}
 
 	public void TestTag(string tagData)
@@ -478,7 +501,7 @@ public class Dialogue_Writer : MonoBehaviour
 	private GameObject UIPanel;
 	[SerializeField]
 	private Button buttonPrefab = null;
-	private List<Button> currentButtons;
+	public List<Button> currentButtons;
 	public Image DialogueArrow;
 
 	[Header("Text Scroll")]
