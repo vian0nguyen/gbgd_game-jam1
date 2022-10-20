@@ -41,32 +41,50 @@ public class gameManager_Prototype_1 : GameManager
     //adds mail to player's inventory
     public void AddToInventory(string itemName)
     {
-        //checks if there is enough room in the player's inventory to add something
-        if (inventory.Count < maxCapacity)
+        //checks if there is a name to read
+        if (!string.IsNullOrEmpty(itemName))
         {
-            inventory.Add(itemName, new Item());
-            print("Added " + itemName);
+            //checks if there is enough room in the player's inventory to add something
+            if (inventory.Count < maxCapacity)
+            {
+                inventory.Add(itemName, new Item());
+                print("Added " + itemName);
+            }
+
+            else
+            {
+                //show dialogue that you can't hold anymore items
+            }
         }
 
         else
         {
-            //show dialogue that you can't hold anymore items
+            Debug.LogError("Please add a valid name after the tag marker");
         }
     }
 
     //removes mail from inventory
     public void RemoveFromInventory(string itemName)
     {
-        //checks if the player had anything to remove
-        if (inventory.Count > 0)
+        //checks if there is a name to read
+        if (!string.IsNullOrEmpty(itemName))
         {
-            inventory.Remove(itemName);
-            print("Removed " + itemName);
+            //checks if the player had anything to remove
+            if (inventory.Count > 0)
+            {
+                inventory.Remove(itemName);
+                print("Removed " + itemName);
+            }
+
+            else
+            {
+                //show dialogue that you don't have anything in your inventory
+            }
         }
 
         else
         {
-            //show dialogue that you don't have anything in your inventory
+            Debug.LogError("Please add a valid name after the tag marker");
         }
     }
 
