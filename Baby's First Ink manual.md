@@ -25,5 +25,5 @@ In the **Unity inspector**
   
   *  Prototype tag (~): Currently tells the console that the tag contains whatever text comes after it. Mainly used to test the tag system and tag parsing system.  
   
-## Choices
-When writing in choices, please make sure there is no space between the * and choice text, as it will muck up how Unity hovers over buttons.
+## Dialogue Formatting
+When writing dialogue lines, try to break things up by sentence/natural pause so that all the text can fit on screen.  The text will scroll the next line of dialogue automatically, so no need to fit all the dialogue on one line.
