@@ -554,5 +554,4 @@ public class TagFunctions : UnityEvent<string>
  * Scriptable objects for cutscenes? (if we're having cutscenes at all) (if so, place possible tag in next line of dialogue, hide ui, play out cutscene, then use animation event to continue dialogue [refreshView]) (organize cutscene assets in arrays and just go down the list [no need to write anything in the tag])
  * come up with interesting way to read people's mail lmao (TEXT EFFECTS??)
  * are we having the text repeat itself after pressing a button? (feels a little redundant but idk)
- * how are we formatting this ink file/how do we feel about the way it's formatted currently?
 */

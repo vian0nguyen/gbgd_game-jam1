@@ -8,6 +8,7 @@ public class gameManager_Prototype_1 : GameManager
     [SerializeField]
     public Dictionary<string, Item> inventory;
     public int maxCapacity = 3;
+    public List <string> PlayerInventory;
     [System.Serializable]
     public struct Item
     {
@@ -23,6 +24,7 @@ public class gameManager_Prototype_1 : GameManager
     {
         //sets up blank inventory
         inventory = new Dictionary<string, Item>();
+        PlayerInventory = new List<string>();
     }
 
     // Start is called before the first frame update
@@ -49,6 +51,11 @@ public class gameManager_Prototype_1 : GameManager
             {
                 inventory.Add(itemName, new Item());
                 print("Added " + itemName);
+
+                //only runs in editor
+#if UNITY_EDITOR
+                PlayerInventory.Add(itemName);
+#endif
             }
 
             else
@@ -74,6 +81,10 @@ public class gameManager_Prototype_1 : GameManager
             {
                 inventory.Remove(itemName);
                 print("Removed " + itemName);
+
+#if UNITY_EDITOR
+                PlayerInventory.Remove(itemName);
+#endif
             }
 
             else
@@ -96,3 +107,4 @@ public class gameManager_Prototype_1 : GameManager
 
 }
 //create scriptables for objects that list their correct recipient and check names, regardless of case
+//figure out how to apply data from previous text when arc changes (bools?)
