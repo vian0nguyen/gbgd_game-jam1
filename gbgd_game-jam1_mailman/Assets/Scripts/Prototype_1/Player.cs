@@ -70,8 +70,18 @@ public class Player : PlayerController
             
             //checks if the player is in an NPC's talking range
             case "NPC":
-                NPCsInRange.Add(collision.gameObject); 
-                gmp1.currentNPC = NPCsInRange[NPCsInRange.Count - 1];
+                NPCsInRange.Add(collision.gameObject);
+
+                //checks if this is first prototype
+                if (gm is gameManager_Prototype_1)
+                    gmp1.currentNPC = NPCsInRange[NPCsInRange.Count - 1];
+
+                //checks if this is 3rd prototype (will clean this up with a more finalized version)
+                else if (gm is gameManager_Prototype_3)
+                {
+                    gameManager_Prototype_3 gmp3 = gm as gameManager_Prototype_3;
+                    gmp3.currentNPC = NPCsInRange[NPCsInRange.Count - 1];
+                }
 
                 break;
         }
@@ -89,13 +99,28 @@ public class Player : PlayerController
                 //if the player leaves an NPC's talking range and there are no overlapping NPC's, the current npc is nullified
                 if(NPCsInRange.Count > 0)
                 {
-                    gmp1.currentNPC = NPCsInRange[NPCsInRange.Count - 1];
+                    if (gm is gameManager_Prototype_1)
+                        gmp1.currentNPC = NPCsInRange[NPCsInRange.Count - 1];
+
+                    else if (gm is gameManager_Prototype_3)
+                    {
+                        gameManager_Prototype_3 gmp3 = gm as gameManager_Prototype_3;
+                        gmp3.currentNPC = NPCsInRange[NPCsInRange.Count - 1];
+                    }
                 }
 
                 //if the player is in the range of another npc, the current npc is the last one that the player entered the talking range of
                 else
                 {
-                    gmp1.currentNPC = null;   
+                    if (gm is gameManager_Prototype_1)
+                        gmp1.currentNPC = null;
+
+                    else if (gm is gameManager_Prototype_3)
+                    {
+                        gameManager_Prototype_3 gmp3 = gm as gameManager_Prototype_3;
+                        gmp3.currentNPC = null;
+                    }
+
                 }
                 break;
         }

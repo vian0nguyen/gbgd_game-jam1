@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gameManager_Prototype_1 : GameManager
+public class gameManager_Prototype_3 : GameManager
 {
     #region Inventory
     [SerializeField]
@@ -106,3 +106,5 @@ public class gameManager_Prototype_1 : GameManager
     }
 
 }
+//create scriptables for objects that list their correct recipient and check names, regardless of case
+//figure out how to apply data from previous text when arc changes (bools?)
