@@ -56,16 +56,22 @@ public class QuestManager : MonoBehaviour
     {
         foreach (NPCScript character in npcs)
         {
+
+            bool isInScene = false;
+
             foreach(QuestlineScriptableObj.character questCharacter in quest.characters)
             {
                 if (questCharacter.NPCName.ToLower() == character.name.ToLower())
                 {
                     character.dialogueArcs = questCharacter.dialogueArcs;
+                    isInScene = true;
                     break;
                 }
-
-                Debug.LogError("NPC " + questCharacter.NPCName + " in questline not found in scene!");
             }
+
+            //only prints an error if the npc isn't found
+            if(isInScene == false)
+                Debug.LogError("NPC " + character.name + " in questline not found in scene!");
         }
     }
 

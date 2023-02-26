@@ -1,4 +1,4 @@
-I looked at Monsieur Fogg 
+I looked at Monsieur Fogg #^
 *   [... and I could contain myself no longer.] 
 -> Purpose
 *   ... but I said nothing and 
@@ -6,21 +6,21 @@ I looked at Monsieur Fogg
 
 ===Purpose===
 'What is the purpose of our journey, Monsieur?'
-'A wager,' he replied. #~asdfasd #blegh
+'A wager,' he replied. #~asdfasd #blegh #%
 *'A wager!'[] I returned. 
 -> Nod
 *'Ah[.'],' I replied, uncertain what I thought. 
 -> Pass
 
 ===Nod===            
-He nodded. 
+He nodded. #%
 *['But surely that is foolishness!'] 
 -> NodAgain
 *['A most serious matter then!']
 -> NodAgain
 
 ===NodAgain===
-He nodded again.
+He nodded again. #%
 *['But can we win?'] 
 -> Answer
 *['A modest wager, I trust?'] 
@@ -29,15 +29,15 @@ He nodded again.
 -> Pass
 
 ===Answer===    
-'That is what we will endeavour to find out,' he answered. 
+'That is what we will endeavour to find out,' he answered. #%
 -> Pass
 
 ===ModestWager===
-'Twenty thousand pounds,' he replied, quite flatly. 
+'Twenty thousand pounds,' he replied, quite flatly. #%
 -> Pass
     
 ===Pass===
-After that,
+After that, #^
 we passed the day in silence.
 -> END
 
