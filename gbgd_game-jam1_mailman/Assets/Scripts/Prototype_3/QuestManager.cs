@@ -151,9 +151,31 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    //runs during editor
     private void OnValidate()
     {
         UpdateNPCList();
+        UpdateNPCNames();
+    }
+
+    //updates name of npcs without having to set the list count to zero and re plug everything in
+    void UpdateNPCNames()
+    {
+        foreach (QuestlineScriptableObj quest in quests)
+        {
+            for (int i = 0; i < quest.characters.Count; i++)
+            {
+                if (quest.characters[i].NPCName != npcs[i].name)
+                {
+                    QuestlineScriptableObj.character newCharacter = new QuestlineScriptableObj.character();
+
+                    newCharacter.NPCName = npcs[i].name;
+                    newCharacter.dialogueArcs = quest.characters[i].dialogueArcs;
+
+                    quest.characters[i] = newCharacter;
+                }
+            }
+        }
     }
 
 }

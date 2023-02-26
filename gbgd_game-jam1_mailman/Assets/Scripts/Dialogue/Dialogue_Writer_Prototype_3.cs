@@ -47,16 +47,4 @@ public class Dialogue_Writer_Prototype_3 : Dialogue_Writer
 		}
 	}
 
-	public override void GetNPCTextAsset()
-    {
-		//gets dialogue catalogue from NPC
-		NPCScript npcInfo = gmp3.currentNPC.GetComponent<NPCScript>();
-
-		//Sets dialogue based on what arc the game is currently on
-		inkJSONAsset = npcInfo.GetCurrentText(gmp3.arc);
-
-		//increments number of times the player has spoken to this npc
-		npcInfo.timesSpokenTo++;
-    }
-
 }

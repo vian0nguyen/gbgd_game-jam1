@@ -17,7 +17,7 @@ public class Dialogue_Writer : MonoBehaviour
 		Initialize();
 
 		//Hides UI by default
-		HideUI();
+		TurnOffPanel();
 	}
 
 	//initializes variables that should be reset upon scene starting
@@ -419,11 +419,18 @@ public class Dialogue_Writer : MonoBehaviour
 	public void ShowUI()
 	{
 		UIPanel.SetActive(true);
+		PanelAnimation.Play("SpeechBubble_Ani_Show");
 	}
 
 	//hides UI panel
 	public void HideUI()
 	{
+		PanelAnimation.Play("SpeechBubble_Ani_Hide");
+	}
+
+	//disables UI Panel
+	public void TurnOffPanel()
+    {
 		UIPanel.SetActive(false);
 	}
 
@@ -445,6 +452,21 @@ public class Dialogue_Writer : MonoBehaviour
 		DialogueArrow.enabled = false;
 	}
 
+	//moves the worldspace canvas
+	public void MoveCanvas(Transform refPoint)
+    {
+		WorldSpaceCanvas.transform.position = refPoint.position;
+    }
+
+	//moves canvas over the current NPC
+	public void MoveCanvasToNPC()
+    {
+		//gets dialogue catalogue from NPC
+		NPCScript npcInfo = gm.currentNPC.GetComponent<NPCScript>();
+
+		MoveCanvas(npcInfo.speechBubbleRefPoint.transform);
+    }
+
 	#endregion
 
 	//Checks which state the game is in for input
@@ -454,6 +476,7 @@ public class Dialogue_Writer : MonoBehaviour
 		{
 			case GameManager.GameState.NotTalking:
 				gm.currentState = GameManager.GameState.Talking;
+				GetNPCTextAsset();
 				ShowUI();
 				StartStory();
 				break;
@@ -481,7 +504,14 @@ public class Dialogue_Writer : MonoBehaviour
 	//gets text from current npc (is used as a base)
 	public virtual void GetNPCTextAsset()
 	{
+		//gets dialogue catalogue from NPC
+		NPCScript npcInfo = gm.currentNPC.GetComponent<NPCScript>();
 
+		//Sets dialogue based on what arc the game is currently on
+		inkJSONAsset = npcInfo.GetCurrentText(gm.arc);
+
+		//increments number of times the player has spoken to this npc
+		npcInfo.timesSpokenTo++;
 	}
 
 	public GameManager gm;
@@ -500,9 +530,12 @@ public class Dialogue_Writer : MonoBehaviour
 	[SerializeField]
 	private GameObject UIPanel;
 	[SerializeField]
+	private Animation PanelAnimation;
+	[SerializeField]
 	private Button buttonPrefab = null;
 	public List<Button> currentButtons;
 	public Image DialogueArrow;
+	public GameObject WorldSpaceCanvas;
 
 	[Header("Text Scroll")]
 	public AudioSource dialogueAudio;

@@ -16,6 +16,8 @@ public class NPCScript : MonoBehaviour
     [HideInInspector]
     public int arcLastSpokenTo = 0;
 
+    public GameObject speechBubbleRefPoint;
+
     public TextAsset GetCurrentText(int arc)
     {
 
