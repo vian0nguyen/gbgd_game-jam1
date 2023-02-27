@@ -247,7 +247,7 @@ public class Dialogue_Writer : MonoBehaviour
 				textObject.UpdateVertexData();
 
 				//tweens the text into the text box
-				//StartCoroutine(LerpText(verts[k], k, verts));
+				StartCoroutine(LerpText(verts[k], k, verts));
 			}
 			yield return new WaitForSeconds(1 - (scrollSpeed / 100));
 		}
