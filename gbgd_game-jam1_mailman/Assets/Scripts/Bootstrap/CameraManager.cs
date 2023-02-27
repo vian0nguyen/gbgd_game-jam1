@@ -30,12 +30,17 @@ public class CameraManager : MonoBehaviour
     //adds current npc into view
     public void AddNPCToTG()
     {
-        dialogueTargetGroup.AddMember(gm.currentNPC.gameObject.transform, 1, 1);
+        dialogueTargetGroup.AddMember(gm.currentNPC.transform, 1, 1);
     }
 
     //removes npc from view
     public void RemoveNPCFromTG()
     {
-        dialogueTargetGroup.RemoveMember(gm.currentNPC.gameObject.transform);
+        //dialogueTargetGroup.RemoveMember(gm.currentNPC.gameObject.transform);
+
+        for(int i = 2; i < dialogueTargetGroup.m_Targets.Length; i++)
+        {
+            dialogueTargetGroup.RemoveMember(dialogueTargetGroup.m_Targets[i].target.transform);
+        }
     }
 }

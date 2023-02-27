@@ -942,17 +942,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1173157050}
-        m_MethodName: RemoveNPCFromTG
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1173157050}
         m_MethodName: EnablePlayerCam
         m_Mode: 2
         m_Arguments:
@@ -980,6 +969,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1720226522}
         m_MethodName: FreezePlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1981126311}
+        m_MethodName: InitializeCanvasLocation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1796,6 +1796,8 @@ MonoBehaviour:
   DialogueArrow: {fileID: 2027113677}
   WorldSpaceCanvas: {fileID: 215666087}
   SpeechBubbleMoveDuration: 0.25
+  speechBubblePlayerTag: ^
+  speechBubbleNPCTag: '%'
   dialogueAudio: {fileID: 1981126312}
   dialogueBlip: {fileID: 0}
   scrollSpeed: 90
@@ -1914,7 +1916,18 @@ MonoBehaviour:
       m_Calls: []
   OnDialogueEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1173157050}
+        m_MethodName: RemoveNPCFromTG
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   Tags:
   - marker: '!'
     TagFunctions:

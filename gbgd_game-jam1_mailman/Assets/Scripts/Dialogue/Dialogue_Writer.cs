@@ -456,7 +456,6 @@ public class Dialogue_Writer : MonoBehaviour
 	//actually moves the canvas via a tween
 	IEnumerator TweenCanvas(Transform reference)
     {
-
 		Vector3 targetPos = new Vector3(reference.position.x, reference.position.y, WorldSpaceCanvas.transform.position.z);
 
 		for (float i = 0; i < SpeechBubbleMoveDuration; i += Time.deltaTime)
@@ -472,6 +471,45 @@ public class Dialogue_Writer : MonoBehaviour
     {
 		MoveCanvas(gm.currentNPC.speechBubbleRefPoint.transform);
     }
+
+	public void InitializeCanvasLocation()
+    {
+		//creates a reference to just the first line of text
+		Story storyRef = new Story(inkJSONAsset.text);
+		// Continue gets the next line of the story
+		string firstLine = storyRef.Continue();
+		// This removes any white space from the text.
+		firstLine = firstLine.Trim();
+
+		foreach(string tag in storyRef.currentTags)
+        {
+			if(tag.Contains(speechBubblePlayerTag))
+            {
+				foreach(Tag playerTag in Tags)
+                {
+					if (playerTag.marker.Contains(speechBubblePlayerTag))
+                    {
+						print("cool");
+						playerTag.TagFunctions.Invoke(GetTagData(speechBubblePlayerTag));
+						break;
+					}
+                }
+            }
+			
+			else if (tag.Contains(speechBubbleNPCTag))
+            {
+				foreach (Tag npcTag in Tags)
+				{
+					if (npcTag.marker.Contains(speechBubbleNPCTag))
+					{
+						npcTag.TagFunctions.Invoke(GetTagData(speechBubbleNPCTag));
+						break;
+					}
+				}
+			}
+        }
+
+	}
 
 	#endregion
 
@@ -548,6 +586,7 @@ public class Dialogue_Writer : MonoBehaviour
 	public Image DialogueArrow;
 	public GameObject WorldSpaceCanvas;
 	public float SpeechBubbleMoveDuration;
+	public string speechBubblePlayerTag, speechBubbleNPCTag;
 
 	[Header("Text Scroll")]
 	public AudioSource dialogueAudio;

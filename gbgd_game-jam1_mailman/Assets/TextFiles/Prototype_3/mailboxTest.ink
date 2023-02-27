@@ -1,4 +1,4 @@
-Choose an item: #^placeholder
+Choose an item: #^
 
 * [The Orb]
 -> Orb
