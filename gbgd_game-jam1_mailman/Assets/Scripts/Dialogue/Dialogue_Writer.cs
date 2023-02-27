@@ -35,9 +35,6 @@ public class Dialogue_Writer : MonoBehaviour
 		story = new Story(inkJSONAsset.text);
 		if (OnCreateStory != null) OnCreateStory(story);
 
-		//calls any functions that are supposed to happen when the dialogue begins
-		OnDialogueStart.Invoke();
-
 		RefreshView();
 	}
 
@@ -250,7 +247,7 @@ public class Dialogue_Writer : MonoBehaviour
 				textObject.UpdateVertexData();
 
 				//tweens the text into the text box
-				StartCoroutine(LerpText(verts[k], k, verts));
+				//StartCoroutine(LerpText(verts[k], k, verts));
 			}
 			yield return new WaitForSeconds(1 - (scrollSpeed / 100));
 		}
@@ -290,7 +287,7 @@ public class Dialogue_Writer : MonoBehaviour
 	}
 
 	//sets current vertex colors to transparent
-	void ClearOutText()
+	public void ClearOutText()
     {
 		//sets current line
 		textObject.text = currentText;
@@ -315,7 +312,6 @@ public class Dialogue_Writer : MonoBehaviour
 			//actually sets transparent text color
 			textObject.textInfo.meshInfo[characterInfo.materialReferenceIndex] = meshInfo;
 			textObject.UpdateVertexData();
-
 		}
 	}
 
@@ -325,7 +321,7 @@ public class Dialogue_Writer : MonoBehaviour
 		StopAllCoroutines();
 
 		ShowDialogueArrow();
-		
+
 		//resets the text
 		textObject.text = currentText;
 		textObject.ForceMeshUpdate();
@@ -395,7 +391,6 @@ public class Dialogue_Writer : MonoBehaviour
 
         else
         {
-			Debug.LogError("Couldn't parse tag because there is no data.");
 			return (null);
         }// )spoon
 	}
@@ -455,16 +450,27 @@ public class Dialogue_Writer : MonoBehaviour
 	//moves the worldspace canvas
 	public void MoveCanvas(Transform refPoint)
     {
-		WorldSpaceCanvas.transform.position = refPoint.position;
+		StartCoroutine(TweenCanvas(refPoint));
+    }
+
+	//actually moves the canvas via a tween
+	IEnumerator TweenCanvas(Transform reference)
+    {
+
+		Vector3 targetPos = new Vector3(reference.position.x, reference.position.y, WorldSpaceCanvas.transform.position.z);
+
+		for (float i = 0; i < SpeechBubbleMoveDuration; i += Time.deltaTime)
+        {
+			WorldSpaceCanvas.transform.position = Vector3.Lerp(WorldSpaceCanvas.transform.position, targetPos, i / SpeechBubbleMoveDuration);
+
+			yield return new WaitForSeconds(Time.deltaTime);
+        }
     }
 
 	//moves canvas over the current NPC
 	public void MoveCanvasToNPC()
     {
-		//gets dialogue catalogue from NPC
-		NPCScript npcInfo = gm.currentNPC.GetComponent<NPCScript>();
-
-		MoveCanvas(npcInfo.speechBubbleRefPoint.transform);
+		MoveCanvas(gm.currentNPC.speechBubbleRefPoint.transform);
     }
 
 	#endregion
@@ -475,10 +481,18 @@ public class Dialogue_Writer : MonoBehaviour
 		switch (gm.currentState)
 		{
 			case GameManager.GameState.NotTalking:
-				gm.currentState = GameManager.GameState.Talking;
-				GetNPCTextAsset();
-				ShowUI();
-				StartStory();
+				//checks if there is an npc to talk to
+				if (gm.currentNPC != null)
+				{
+					gm.currentState = GameManager.GameState.Talking;
+
+					//calls any functions that are supposed to happen when the dialogue begins
+					OnDialogueStart.Invoke();
+
+					GetNPCTextAsset();
+					ShowUI();
+				}
+
 				break;
 
 			case GameManager.GameState.Talking:
@@ -504,14 +518,11 @@ public class Dialogue_Writer : MonoBehaviour
 	//gets text from current npc (is used as a base)
 	public virtual void GetNPCTextAsset()
 	{
-		//gets dialogue catalogue from NPC
-		NPCScript npcInfo = gm.currentNPC.GetComponent<NPCScript>();
-
 		//Sets dialogue based on what arc the game is currently on
-		inkJSONAsset = npcInfo.GetCurrentText(gm.arc);
+		inkJSONAsset = gm.currentNPC.GetCurrentText(gm.arc);
 
 		//increments number of times the player has spoken to this npc
-		npcInfo.timesSpokenTo++;
+		gm.currentNPC.timesSpokenTo++;
 	}
 
 	public GameManager gm;
@@ -536,6 +547,7 @@ public class Dialogue_Writer : MonoBehaviour
 	public List<Button> currentButtons;
 	public Image DialogueArrow;
 	public GameObject WorldSpaceCanvas;
+	public float SpeechBubbleMoveDuration;
 
 	[Header("Text Scroll")]
 	public AudioSource dialogueAudio;
@@ -580,11 +592,7 @@ public class TagFunctions : UnityEvent<string>
 
 /*
  *TO DO
- * Format Ink file and document how to write it (find a way to incorporate a lot of Ink's functionality while making it work with the project at hand, though some stuff will get omitted due to how we're displaying text)
  * Sound that plays when going to next dialogue line
  * 
  * ASK LATER
- * Scriptable objects for cutscenes? (if we're having cutscenes at all) (if so, place possible tag in next line of dialogue, hide ui, play out cutscene, then use animation event to continue dialogue [refreshView]) (organize cutscene assets in arrays and just go down the list [no need to write anything in the tag])
- * come up with interesting way to read people's mail lmao (TEXT EFFECTS??)
- * are we having the text repeat itself after pressing a button? (feels a little redundant but idk)
 */

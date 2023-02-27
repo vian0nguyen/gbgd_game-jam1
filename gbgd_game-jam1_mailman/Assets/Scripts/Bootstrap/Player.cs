@@ -63,7 +63,7 @@ public class Player : PlayerController
             case "NPC":
                 NPCsInRange.Add(collision.gameObject);
 
-                gm.currentNPC = NPCsInRange[NPCsInRange.Count - 1];
+                gm.currentNPC = NPCsInRange[NPCsInRange.Count - 1].GetComponent<NPCScript>();
 
                 break;
         }
@@ -81,7 +81,7 @@ public class Player : PlayerController
                 //if the player leaves an NPC's talking range and there are no overlapping NPC's, the current npc is nullified
                 if(NPCsInRange.Count > 0)
                 {
-                    gm.currentNPC = NPCsInRange[NPCsInRange.Count - 1];
+                    gm.currentNPC = NPCsInRange[NPCsInRange.Count - 1].GetComponent<NPCScript>();
                 }
 
                 //if the player is in the range of another npc, the current npc is the last one that the player entered the talking range of

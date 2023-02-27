@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     public int arc;
 
-    public GameObject currentNPC = null;
+    public NPCScript currentNPC = null;
 
     private void Awake()
     {
