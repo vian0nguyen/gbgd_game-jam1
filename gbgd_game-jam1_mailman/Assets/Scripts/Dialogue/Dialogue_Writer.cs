@@ -395,6 +395,12 @@ public class Dialogue_Writer : MonoBehaviour
         }// )spoon
 	}
 
+	//reads info from tag that only has one element
+	public string ReadTagInfoSingle(string tag)
+	{
+		return (tag.Remove(0, 1));
+	}
+
 	public void TestTag(string tagData)
 	{
 		print("this tag has data of " + tagData);
@@ -543,14 +549,6 @@ public class Dialogue_Writer : MonoBehaviour
 				//play sound here?
 				break;
 		}
-	}
-
-	//player checks to advance the dialogue is called on button press
-
-	//reads info from tag that only has one element
-	public string ReadTagInfoSingle(string tag)
-    {
-		return (tag.Remove(0, 1));
 	}
 
 	//gets text from current npc (is used as a base)

@@ -16,10 +16,12 @@ MonoBehaviour:
   - NPCName: NPC
     dialogueArcs:
     - dialogueSet: []
-      recurringDialogue: {fileID: 4900000, guid: e982b6d9b49de54489dbd3a6658eb4cc,
+      recurringDialogue: {fileID: 4900000, guid: 6ac22636aaa9a564ab0585910c63d7a6,
         type: 3}
   - NPCName: NPC (1)
+    dialogueArcs: []
+  - NPCName: NPC_Multiple
     dialogueArcs:
     - dialogueSet: []
-      recurringDialogue: {fileID: 4900000, guid: 6ac22636aaa9a564ab0585910c63d7a6,
+      recurringDialogue: {fileID: 4900000, guid: 2b1fa905c76210541bed6f2eccf7186a,
         type: 3}
