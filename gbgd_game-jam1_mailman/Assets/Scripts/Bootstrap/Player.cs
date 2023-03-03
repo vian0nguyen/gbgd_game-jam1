@@ -93,6 +93,4 @@ public class Player : PlayerController
         }
     }
     #endregion
-
-    #endregion
 }
