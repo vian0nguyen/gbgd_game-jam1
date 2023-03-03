@@ -18,7 +18,6 @@ public class NPCMultiScript : NPCScript
         {
             selectedSprite.gameObject.transform.localScale = Vector3.Lerp(selectedSprite.gameObject.transform.localScale, new Vector3(spriteShrinkFactor, spriteShrinkFactor, spriteShrinkFactor), i);
             selectedSprite.color = Color.Lerp(selectedSprite.color, darkenedColor, i);
-            selectedSprite.sortingOrder = 0;
 
             yield return new WaitForSeconds(Time.deltaTime);
         }
@@ -31,7 +30,6 @@ public class NPCMultiScript : NPCScript
         {
             selectedSprite.transform.localScale = Vector3.Lerp(selectedSprite.transform.localScale, Vector3.one, i);
             selectedSprite.color = Color.Lerp(selectedSprite.color, Color.white, i);
-            selectedSprite.sortingOrder = 1;
 
             yield return new WaitForSeconds(Time.deltaTime);
         }
