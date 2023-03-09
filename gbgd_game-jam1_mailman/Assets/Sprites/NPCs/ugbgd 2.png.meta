@@ -153,10 +153,10 @@ TextureImporter:
       name: ugbgd 2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 683
-        width: 341
-        height: 341
+        x: 62
+        y: 685
+        width: 222
+        height: 242
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,10 +174,10 @@ TextureImporter:
       name: ugbgd 2_1
       rect:
         serializedVersion: 2
-        x: 341
-        y: 683
-        width: 341
-        height: 341
+        x: 401
+        y: 685
+        width: 222
+        height: 242
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +195,10 @@ TextureImporter:
       name: ugbgd 2_2
       rect:
         serializedVersion: 2
-        x: 682
-        y: 683
-        width: 341
-        height: 341
+        x: 746
+        y: 685
+        width: 222
+        height: 242
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,10 +216,10 @@ TextureImporter:
       name: ugbgd 2_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 342
-        width: 341
-        height: 341
+        x: 46
+        y: 373
+        width: 201
+        height: 231
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,10 +237,10 @@ TextureImporter:
       name: ugbgd 2_4
       rect:
         serializedVersion: 2
-        x: 341
-        y: 342
-        width: 341
-        height: 341
+        x: 385
+        y: 373
+        width: 201
+        height: 231
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,10 +258,10 @@ TextureImporter:
       name: ugbgd 2_5
       rect:
         serializedVersion: 2
-        x: 682
-        y: 342
-        width: 341
-        height: 341
+        x: 730
+        y: 373
+        width: 201
+        height: 231
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,9 +280,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1
-        width: 341
-        height: 341
+        y: 0
+        width: 246
+        height: 308
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,10 +300,10 @@ TextureImporter:
       name: ugbgd 2_7
       rect:
         serializedVersion: 2
-        x: 341
-        y: 1
-        width: 341
-        height: 341
+        x: 339
+        y: 0
+        width: 246
+        height: 308
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,10 +321,10 @@ TextureImporter:
       name: ugbgd 2_8
       rect:
         serializedVersion: 2
-        x: 682
-        y: 1
-        width: 341
-        height: 341
+        x: 684
+        y: 0
+        width: 246
+        height: 308
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

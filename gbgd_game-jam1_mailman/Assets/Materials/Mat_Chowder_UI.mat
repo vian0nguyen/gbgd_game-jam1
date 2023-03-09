@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat_Chowder_UI
-  m_Shader: {fileID: -6465566751694194690, guid: 5dc0a464c580835498b2c1ccc0b70e8b,
+  m_Shader: {fileID: -6465566751694194690, guid: c6d6652268d7d6940904c9167698a324,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -30,6 +30,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Texture2D_5A241E21:
         m_Texture: {fileID: 2800000, guid: 8a8cd7b5e15204b42be2be32bf495381, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_94FC98BF:
+        m_Texture: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:

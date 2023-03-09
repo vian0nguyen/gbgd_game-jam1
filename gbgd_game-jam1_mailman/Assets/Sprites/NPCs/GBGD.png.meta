@@ -153,10 +153,10 @@ TextureImporter:
       name: GBGD_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 683
-        width: 341
-        height: 341
+        x: 43
+        y: 695
+        width: 269
+        height: 251
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,10 +174,10 @@ TextureImporter:
       name: GBGD_1
       rect:
         serializedVersion: 2
-        x: 341
-        y: 683
-        width: 341
-        height: 341
+        x: 383
+        y: 695
+        width: 269
+        height: 251
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +195,10 @@ TextureImporter:
       name: GBGD_2
       rect:
         serializedVersion: 2
-        x: 682
-        y: 683
-        width: 341
-        height: 341
+        x: 722
+        y: 695
+        width: 269
+        height: 251
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,10 +216,10 @@ TextureImporter:
       name: GBGD_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 342
-        width: 341
-        height: 341
+        x: 106
+        y: 420
+        width: 157
+        height: 124
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,10 +237,10 @@ TextureImporter:
       name: GBGD_4
       rect:
         serializedVersion: 2
-        x: 341
-        y: 342
-        width: 341
-        height: 341
+        x: 446
+        y: 420
+        width: 157
+        height: 124
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,10 +258,10 @@ TextureImporter:
       name: GBGD_5
       rect:
         serializedVersion: 2
-        x: 682
-        y: 342
-        width: 341
-        height: 341
+        x: 785
+        y: 420
+        width: 157
+        height: 124
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,9 +280,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1
-        width: 341
-        height: 341
+        y: 0
+        width: 295
+        height: 214
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,10 +300,10 @@ TextureImporter:
       name: GBGD_7
       rect:
         serializedVersion: 2
-        x: 341
-        y: 1
-        width: 341
-        height: 341
+        x: 340
+        y: 0
+        width: 295
+        height: 214
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,10 +321,10 @@ TextureImporter:
       name: GBGD_8
       rect:
         serializedVersion: 2
-        x: 682
-        y: 1
-        width: 341
-        height: 341
+        x: 679
+        y: 0
+        width: 295
+        height: 214
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
