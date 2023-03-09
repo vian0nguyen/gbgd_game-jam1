@@ -905,7 +905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 2fb859fa3f2e0274694b549ad42203cf, type: 2}
+  m_Material: {fileID: 2100000, guid: 25993148838138b46a0a9c36a3d60fbe, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_Maskable: 1
@@ -1381,7 +1381,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4334783836991956000, guid: 7e9ae13cfab746945810f8c8d33856f0,
+  m_Sprite: {fileID: 7353621977714259684, guid: 02abd75c2dc19e24ab3457a69e2131b2,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2310,6 +2310,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 3.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855700956249388904, guid: 3d147ef60bd2ba345a7f9f5d86126469,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855700956249388904, guid: 3d147ef60bd2ba345a7f9f5d86126469,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.77
       objectReference: {fileID: 0}
     - target: {fileID: 5855700956249388904, guid: 3d147ef60bd2ba345a7f9f5d86126469,
         type: 3}
