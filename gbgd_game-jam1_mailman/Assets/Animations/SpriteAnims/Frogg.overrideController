@@ -7,5 +7,5 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Frogg
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6d5645b6bb988b4ea96669d8a7f3014, type: 2}
   m_Clips: []

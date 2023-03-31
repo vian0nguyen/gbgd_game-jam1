@@ -7,5 +7,7 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LeadDuck
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 05c571cbaf16b044aabf3e7d1285b3f3, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 768b4ce78710b7a45baa4a85fae36f9e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c360ce571e5dad6458b8adf13dade431, type: 2}

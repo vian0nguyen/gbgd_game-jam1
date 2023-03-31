@@ -11,7 +11,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 8334845872985881050}
-    m_Position: {x: 234.86487, y: 255.47296, z: 0}
+    m_Position: {x: 240, y: 270, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -28,7 +28,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DuckNerd
+  m_Name: Player
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
