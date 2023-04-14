@@ -6,6 +6,8 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Frogg
+  m_Name: Frog
   m_Controller: {fileID: 9100000, guid: e6d5645b6bb988b4ea96669d8a7f3014, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 768b4ce78710b7a45baa4a85fae36f9e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3f8584f212e2d104f88b4d74ad71ea31, type: 2}
