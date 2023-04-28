@@ -15,7 +15,8 @@ Remember the script! #*LeaderDuck
 Ahem. #*LeaderDuck
 Since cake is SO important, we have lots of top-secret cake business. Can we trust you to keep it zipped? #*LeaderDuck
 * You can count on me!
-Great. We believe you, completely. Therefore, this first delivery is not a test. Can you send this Ingredient Package to the Toad Gang? #*LeaderDuck
+Great. We believe you, completely. #*LeaderDuck
+Therefore, this first delivery is not a test. Can you send this Ingredient Package to the Toad Gang? #*LeaderDuck
 It's good pay! Just don't ask why we aren't doing it ourselves. #*HungryDuck
 I'm sure you've heard of Toad's reputation. So, please, show us you can be delicate around him? #*NerdDuck
 We won't wish you luck, because it won't help you! #*HungryDuck

@@ -13,8 +13,16 @@ MonoBehaviour:
   m_Name: Quest_TestTextFiles
   m_EditorClassIdentifier: 
   characters:
-  - NPCName: NPC
+  - NPCName: NPC_Multiple
     dialogueArcs:
-    - dialogueSet: []
+    - dialogueSet:
+      - {fileID: 4900000, guid: 64fb883cf468c5542a3d4fcd5123a01f, type: 3}
+      - {fileID: 4900000, guid: e591a03cbf7f8334c941ee962330fd8a, type: 3}
+      - {fileID: 4900000, guid: 271198a2766ac534f9c8f75026ae986e, type: 3}
+      - {fileID: 4900000, guid: c5a541e044f9c29498d881f04ace817e, type: 3}
+      - {fileID: 4900000, guid: bab3fa317ce3e7145b1c7e83126836ae, type: 3}
+      - {fileID: 4900000, guid: dff9eff1ef828a9488d9e2a9bc59e93d, type: 3}
+      - {fileID: 4900000, guid: aa5ce17e7a0523a4da993d080864b932, type: 3}
+      - {fileID: 4900000, guid: cfd0043ca0344a645a1743508b9c9901, type: 3}
       recurringDialogue: {fileID: 4900000, guid: a97efa0c022af02408921b771033ffc8,
         type: 3}
