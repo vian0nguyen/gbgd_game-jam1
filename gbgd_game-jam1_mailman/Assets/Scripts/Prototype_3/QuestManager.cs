@@ -76,7 +76,7 @@ public class QuestManager : MonoBehaviour
     }
 
     //updates the npc list in all quests if an npc is added or removed from references
-    void UpdateNPCList()
+    public void UpdateNPCList()
     {
         foreach(QuestlineScriptableObj quest in quests)
         {
@@ -157,15 +157,8 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    //runs during editor
-    private void OnValidate()
-    {
-        UpdateNPCList();
-        UpdateNPCNames();
-    }
-
     //updates name of npcs without having to set the list count to zero and re plug everything in
-    void UpdateNPCNames()
+    public void UpdateNPCNames()
     {
         foreach (QuestlineScriptableObj quest in quests)
         {
