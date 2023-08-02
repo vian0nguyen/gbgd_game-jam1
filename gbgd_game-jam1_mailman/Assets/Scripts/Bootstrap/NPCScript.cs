@@ -9,6 +9,7 @@ public class NPCScript : MonoBehaviour
     {
         public TextAsset[] dialogueSet;
         public TextAsset recurringDialogue;
+        public Vector2[] warpPoints;
     }
 
     public DialogueArc[] dialogueArcs;
