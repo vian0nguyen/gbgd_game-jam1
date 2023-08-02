@@ -51,6 +51,7 @@ public class QuestManager : MonoBehaviour
         return null;
     }
 
+    #region NPC Dialogue List Fill In
     //automatically fills in dialogue of all npc's based on quest
     public void FillNPCDialogue(QuestlineScriptableObj quest)
     {
@@ -174,6 +175,15 @@ public class QuestManager : MonoBehaviour
                     quest.characters[i] = newCharacter;
                 }
             }
+        }
+    }
+    #endregion
+
+    public void MoveAllNPCs()
+    {
+        for (int i = 0; i < npcs.Length; i++)
+        {
+
         }
     }
 

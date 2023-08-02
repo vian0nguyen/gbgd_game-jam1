@@ -26,3 +26,5 @@ MonoBehaviour:
       - {fileID: 4900000, guid: cfd0043ca0344a645a1743508b9c9901, type: 3}
       recurringDialogue: {fileID: 4900000, guid: a97efa0c022af02408921b771033ffc8,
         type: 3}
+      warpPoints:
+      - {x: 2.6902e-41, y: 7.78e-43}

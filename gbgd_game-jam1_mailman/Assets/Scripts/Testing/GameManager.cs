@@ -5,9 +5,10 @@ using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
-    public enum GameState { NotTalking, Talking, WaitingToAdvance, Choosing };
+    public enum GameState { NotTalking, Talking, WaitingToAdvance, Choosing, isTransitioning };
     [Header("Game States")]
     public GameState currentState;
+    public bool moveToNextArc;
 
     #region Inventory
     [Header ("Inventory")]
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
     void Initialize()
     {
         currentState = GameState.NotTalking;
+        moveToNextArc = false;
 
         #region Arc Setup
 #if UNITY_EDITOR
@@ -122,12 +124,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //advances time in the game
-    public void IncrementArc()
-    {
-        arc++;
-    }
-
     #endregion
 
     //Sets first button spawned as hovered over in the event system
@@ -141,6 +137,23 @@ public class GameManager : MonoBehaviour
     public void RemoveFirstButton()
     {
         es.SetSelectedGameObject(null);
+    }
+
+    //at the end of the dialogue, a new arc will start
+    public void EnableNewArc()
+    {
+        moveToNextArc = true;
+    }
+
+    //sets new arc
+    public void SetNewArc()
+    {
+        //checks if we're able to move to the next arc
+        if (moveToNextArc)
+        {
+            arc++;
+            moveToNextArc = false;
+        }
     }
 
     #region Test Functions
