@@ -13,18 +13,21 @@ MonoBehaviour:
   m_Name: Test_QuestLine
   m_EditorClassIdentifier: 
   characters:
-  - NPCName: NPC
+  - NPCName: ToadGang
     dialogueArcs:
     - dialogueSet: []
-      recurringDialogue: {fileID: 4900000, guid: 6ac22636aaa9a564ab0585910c63d7a6,
+      recurringDialogue: {fileID: 4900000, guid: dff9eff1ef828a9488d9e2a9bc59e93d,
         type: 3}
-  - NPCName: NPC (1)
+      warpPoints: []
+  - NPCName: Grandma
     dialogueArcs:
     - dialogueSet: []
-      recurringDialogue: {fileID: 4900000, guid: ad71ccca56c76d942bcc8e838bd9449c,
+      recurringDialogue: {fileID: 4900000, guid: c5a541e044f9c29498d881f04ace817e,
         type: 3}
-  - NPCName: NPC_Multiple
+      warpPoints: []
+  - NPCName: DuckGang
     dialogueArcs:
     - dialogueSet: []
-      recurringDialogue: {fileID: 4900000, guid: 2b1fa905c76210541bed6f2eccf7186a,
+      recurringDialogue: {fileID: 4900000, guid: cfd0043ca0344a645a1743508b9c9901,
         type: 3}
+      warpPoints: []
