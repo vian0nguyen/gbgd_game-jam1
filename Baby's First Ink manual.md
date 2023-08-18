@@ -24,8 +24,11 @@ In the **Unity inspector**
   Your guide to all the tags in the game and what their data is used for.
   
   *  Prototype tag (~): Currently tells the console that the tag contains whatever text comes after it. Mainly used to test the tag system and tag parsing system.  
-  *  Add to Inventory (+): Adds an item to inventory based on the name that follows it.  Ex: #+orb
-  *  Remove from Inventory (-): Removes an item from inventory based on name that follows it. Ex: #-orb
+  *  Set Quest tag (!): Sets the main questline for the dialogue.  Put name of quest scriptable object after the tag to specify which quest you want (and make sure said quest is in the "Quests" array in the QuestManager.
+  *  Move Canvas tag (^): Moves world canvas to where the player is
+  *  Choose Speaking Sprite (*): Chooses speaking sprite if the character is a MULTI NPC object. Put name of character after the tag to specify which one in the group is speaking (make sure the name is in the child objects of the multi NPC)
+  *  New Arc tag (>): Enables arc to be advanced once this dialogue was over (can be placed anywhere in the ink file)
+  *  Move Canvas to NPC tag (%): Moves world canvas to the NPC that's speaking
   
 ## Dialogue Formatting
 When writing dialogue lines, try to break things up by sentence/natural pause so that all the text can fit on screen.  The text will scroll the next line of dialogue automatically, so no need to fit all the dialogue on one line.
