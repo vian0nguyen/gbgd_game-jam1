@@ -33,5 +33,5 @@ In the **Unity inspector**
 ## Dialogue Formatting
 When writing dialogue lines, try to break things up by sentence/natural pause so that all the text can fit on screen.  The text will scroll the next line of dialogue automatically, so no need to fit all the dialogue on one line.
 
-##NPC Setup
+## NPC Setup
 When adding dialogue for NPC's, don't add them to the NPC's in the scene.  Instead, go to Assets/Scripts/ScriptableObjects/Quests and look for which questline you want to add the dialogue to, and then look for which character, which arc, and where in the dialogue set you want to add the dialogue to.
