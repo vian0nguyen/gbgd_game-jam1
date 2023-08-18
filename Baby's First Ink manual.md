@@ -19,6 +19,8 @@ In the **Unity inspector**
 3. add one to the "Size" slot
 4. write in the new marker in the "marker" slot and whatever functions are called when that tag is called (drag and drop in the inspector).
 
+With names, make sure the names are EXACTLY the same as whatever you're referencing (cases included)
+
 ### Tag Key
   
   Your guide to all the tags in the game and what their data is used for.
