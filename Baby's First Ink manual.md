@@ -33,5 +33,19 @@ In the **Unity inspector**
 ## Dialogue Formatting
 When writing dialogue lines, try to break things up by sentence/natural pause so that all the text can fit on screen.  The text will scroll the next line of dialogue automatically, so no need to fit all the dialogue on one line.
 
+
 ## NPC Setup
 When adding dialogue for NPC's, don't add them to the NPC's in the scene.  Instead, go to Assets/Scripts/ScriptableObjects/Quests and look for which questline you want to add the dialogue to, and then look for which character, which arc, and where in the dialogue set you want to add the dialogue to.
+
+1. Go into QuestManager in the scene
+2. Click on the field in the Quests array to find the scriptable object
+3. Make sure NPC’s are listed; if not, add the npc from the scene to the Npcs array, and hit Update Names
+4. Click on scriptable object in the Project tab
+5. Each Element under the “Dialogue Arcs” is the arc, and that arc contains a dialogue set, expand the lists until you get to Dialogue Set
+6. Put file into Dialogue Set
+  
+  * Dialogue Arcs will cycle through all the files in the Dialogue Set until it hits Recurring
+  * Recurring dialogue is what plays once you’ve finished all the important talking (filler dialogue/hints) <- Make sure that there is a recurring dialogue file or else the dialogue will break (the dialogue set can be left blank, though).
+  * If it’s multiple NPC’s, just tag the character that is the child object of the multi NPC object
+  * Need different recurring dialogues per quest arc for each NPC.
+  * Make 1 dialogue arc per story scene
