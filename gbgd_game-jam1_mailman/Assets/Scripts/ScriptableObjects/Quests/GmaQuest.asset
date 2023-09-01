@@ -17,7 +17,8 @@ MonoBehaviour:
     dialogueArcs:
     - dialogueSet:
       - {fileID: 4900000, guid: c5a541e044f9c29498d881f04ace817e, type: 3}
-      recurringDialogue: {fileID: 0}
+      recurringDialogue: {fileID: 4900000, guid: 6efdbead80d6c074989cba2d500c767a,
+        type: 3}
       warpPoints: []
     - dialogueSet: []
       recurringDialogue: {fileID: 0}

@@ -17,7 +17,8 @@ MonoBehaviour:
     dialogueArcs:
     - dialogueSet:
       - {fileID: 4900000, guid: 64fb883cf468c5542a3d4fcd5123a01f, type: 3}
-      recurringDialogue: {fileID: 0}
+      recurringDialogue: {fileID: 4900000, guid: a8f9fc5b13987674bb681010b0c125d6,
+        type: 3}
       warpPoints: []
   - NPCName: Nerd Duck
     dialogueArcs:
