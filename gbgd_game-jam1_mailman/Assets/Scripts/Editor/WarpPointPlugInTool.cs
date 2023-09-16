@@ -6,13 +6,14 @@ using UnityEditor;
 public class WarpPointPlugInTool : EditorWindow
 {
     public QuestlineScriptableObj questObject;
+    public areaManager areaManager;
     public string characterName;
     public int arcForWarpPoints;
 
     //use container and get children
     public Transform[] warpPoints;
     public Transform warpPointsContainer;
-    //public QuestManager qm;
+    public Transform finalWarpPoint;
 
     [MenuItem("Tools/Plug In Warp Points")]
     static void ShowWindow()
@@ -55,7 +56,8 @@ public class WarpPointPlugInTool : EditorWindow
         {
             if (npc.NPCName.ToUpper() == characterName.ToUpper())
             {
-                npc.dialogueArcs[arcForWarpPoints].warpPoints = warpPointVectors.ToArray();
+                //npc.dialogueArcs[arcForWarpPoints].warpPoints = warpPointVectors.ToArray();
+
                 break;
             }
         }
