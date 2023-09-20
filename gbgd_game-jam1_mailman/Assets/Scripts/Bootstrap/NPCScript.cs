@@ -9,8 +9,6 @@ public class NPCScript : MonoBehaviour
     {
         public dialogueSet[] dialogueSets;
         public TextAsset recurringDialogue;
-        public Vector2 finalWarpPoint;
-        public int finalAreaNumber;
         
     }
 

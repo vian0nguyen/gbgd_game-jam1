@@ -11,9 +11,8 @@ public class WarpPointPlugInTool : EditorWindow
     public int arcForWarpPoints;
 
     //use container and get children
-    public Transform[] warpPoints;
+    public Transform warpPointContainer;
     public Transform warpPointsContainer;
-    public Transform finalWarpPoint;
 
     [MenuItem("Tools/Plug In Warp Points")]
     static void ShowWindow()
@@ -36,7 +35,7 @@ public class WarpPointPlugInTool : EditorWindow
         EditorGUILayout.PropertyField(serializedWarpPoints, true); // True means show children
         so.ApplyModifiedProperties(); // Remember to apply modified properties
 
-        if (GUILayout.Button("Create"))
+        if (GUILayout.Button("Set Warp Points from Transforms"))
         {
             FillWarpPoints();
         }
@@ -47,16 +46,32 @@ public class WarpPointPlugInTool : EditorWindow
     {
         List<Vector2> warpPointVectors = new List<Vector2>();
 
-        foreach (Transform warpPoint in warpPoints)
+        //initial check in case no warp points were put into the warp container
+        if(warpPointContainer.childCount != 0)
+        {
+            Debug.LogError("Please make sure that the warp point container has child objects that serve as the markers for where you want the character to be in later dialogue!");
+            return;
+        }
+
+        //runs through all warp points listed by the USER
+        foreach (Transform warpPoint in warpPointContainer)
         {
             warpPointVectors.Add(warpPoint.position);
         }
 
-        foreach (QuestlineScriptableObj.character npc in questObject.characters)
+        //runs through every character in the arc in the QUEST
+        foreach (QuestlineScriptableObj.character npc in questObject.dialogueArcs[arcForWarpPoints].charactersSpeaking)
         {
+            //checks if the names match
             if (npc.NPCName.ToUpper() == characterName.ToUpper())
             {
-                //npc.dialogueArcs[arcForWarpPoints].warpPoints = warpPointVectors.ToArray();
+
+                //runs through all warp points in the tool
+                for (int i = 0; i < warpPointVectors.Count - 1; i++)
+                {
+                    //sets warp points to character in QUEST
+                    npc.dialogue.dialogueSets[i].warpPoint = warpPointVectors[i];
+                }
 
                 break;
             }

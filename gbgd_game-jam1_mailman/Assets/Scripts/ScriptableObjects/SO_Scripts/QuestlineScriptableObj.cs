@@ -11,8 +11,16 @@ public class QuestlineScriptableObj : ScriptableObject
     {
         public string NPCName;
 
-        public NPCScript.DialogueArc[] dialogueArcs;
+        public NPCScript.DialogueArc dialogue;
     }
 
-    public List<character> characters;
+    //public List<character> characters;
+    
+    [System.Serializable]
+    public struct arc
+    {
+        public List<character> charactersSpeaking;
+    }
+
+    public arc[] dialogueArcs;
 }
