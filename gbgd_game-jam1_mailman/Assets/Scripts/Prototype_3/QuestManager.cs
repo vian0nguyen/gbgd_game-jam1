@@ -212,7 +212,7 @@ public class QuestManager : MonoBehaviour
     //updates name of npcs without having to set the list count to zero and re plug everything in
     public void UpdateNPCNames()
     {
-        npcs = npcs.OrderByDescending(npcName => npcName.name).ToArray();
+        npcs = npcs.OrderByDescending(npcName => npcName.name).Reverse().ToArray();
 
         //runs through all quests
         foreach (QuestlineScriptableObj quest in quests)
@@ -246,7 +246,7 @@ public class QuestManager : MonoBehaviour
                 }
 
                 //clears out list and readds everything
-                tempCharacters = tempCharacters.OrderByDescending(tempChar => tempChar.NPCName).ToList();
+                tempCharacters = tempCharacters.OrderByDescending(tempChar => tempChar.NPCName).Reverse().ToList();
                 arc.charactersSpeaking.Clear();
                 foreach(QuestlineScriptableObj.character tempCharacter in tempCharacters)
                 {
