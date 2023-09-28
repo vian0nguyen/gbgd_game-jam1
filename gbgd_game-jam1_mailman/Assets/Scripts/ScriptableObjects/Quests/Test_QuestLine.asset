@@ -12,19 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbfb0de62d65d345ad26975fb7468db, type: 3}
   m_Name: Test_QuestLine
   m_EditorClassIdentifier: 
-  characters:
-  - NPCName: NPC
-    dialogueArcs:
-    - dialogueSet: []
-      recurringDialogue: {fileID: 4900000, guid: 6ac22636aaa9a564ab0585910c63d7a6,
-        type: 3}
-  - NPCName: NPC (1)
-    dialogueArcs:
-    - dialogueSet: []
-      recurringDialogue: {fileID: 4900000, guid: ad71ccca56c76d942bcc8e838bd9449c,
-        type: 3}
-  - NPCName: NPC_Multiple
-    dialogueArcs:
-    - dialogueSet: []
-      recurringDialogue: {fileID: 4900000, guid: 2b1fa905c76210541bed6f2eccf7186a,
-        type: 3}
+  dialogueArcs:
+  - charactersSpeaking:
+    - NPCName: ToadGang
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}
+    - NPCName: Grandma
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}
+    - NPCName: DuckGang
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}

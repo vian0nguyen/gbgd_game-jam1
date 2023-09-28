@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbfb0de62d65d345ad26975fb7468db, type: 3}
   m_Name: GmaQuest
   m_EditorClassIdentifier: 
-  characters:
-  - NPCName: Grandma
-    dialogueArcs:
-    - dialogueSet:
-      - {fileID: 4900000, guid: c5a541e044f9c29498d881f04ace817e, type: 3}
-      recurringDialogue: {fileID: 4900000, guid: 6efdbead80d6c074989cba2d500c767a,
-        type: 3}
-      warpPoints: []
-    - dialogueSet: []
-      recurringDialogue: {fileID: 0}
-      warpPoints: []
-    - dialogueSet: []
-      recurringDialogue: {fileID: 0}
-      warpPoints: []
+  dialogueArcs:
+  - charactersSpeaking:
+    - NPCName: ToadGang
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 4900000, guid: a97efa0c022af02408921b771033ffc8,
+          type: 3}
+    - NPCName: Grandma
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}
+    - NPCName: Grandma
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}
+    - NPCName: test
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}

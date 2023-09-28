@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [ExecuteAlways]
 public class QuestManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class QuestManager : MonoBehaviour
     public QuestlineScriptableObj currentQuest;
 
     public NPCScript[] npcs;
+
+    private QuestlineScriptableObj.character lastDeletedCharacter;
 
     private void Start()
     {
@@ -90,11 +93,18 @@ public class QuestManager : MonoBehaviour
     //updates the npc list in all quests if an npc is added or removed from references
     public void UpdateNPCList()
     {
+        //creates a temporary list to compare names
+        List<string> nameHolder = new List<string>();
+        foreach (NPCScript npc in npcs)
+        {
+            nameHolder.Add(npc.name);
+        }
+
         //runs through each quest
-        foreach(QuestlineScriptableObj quest in quests)
+        foreach (QuestlineScriptableObj quest in quests)
         {
             //runs through every arc in the quest
-            foreach(QuestlineScriptableObj.arc arc in quest.dialogueArcs) {
+            foreach (QuestlineScriptableObj.arc arc in quest.dialogueArcs) {
 
                 //checks if the list of npcs talking is the same length in the scene as the quest
                 if (npcs.Length != arc.charactersSpeaking.Count)
@@ -103,25 +113,29 @@ public class QuestManager : MonoBehaviour
                     if (arc.charactersSpeaking.Count > npcs.Length)
                     {
                         //checks if the list actually has any npcs
-                        if (npcs.Length != 0)
+                        if (npcs.Length > 0)
                         {
-                            //runs through every character in the arc in the QUEST
-                            foreach (QuestlineScriptableObj.character character in arc.charactersSpeaking)
+                            //runs through all npcs
+                            for (int i = 0; i < arc.charactersSpeaking.Count; i++)
                             {
-
-                                foreach (NPCScript npc in npcs)
+                                //checks if the name of the current npc matches 
+                                if (!nameHolder.Contains(arc.charactersSpeaking[i].NPCName))
                                 {
-                                    //if there is a matching npc, the skips to the next iteration
-                                    if (character.NPCName.ToLower() == npc.name.ToLower())
-                                    {
-                                        continue;
-                                    }
-
-                                    arc.charactersSpeaking.Remove(character);
-
+                                    arc.charactersSpeaking.Remove(arc.charactersSpeaking[i]);
+                                    print("Character removed");
                                 }
 
+                                //removes any duplicates
+                                for (int k = i - 1; k >= 0; k--)
+                                {
+                                    if(arc.charactersSpeaking[k].NPCName.ToUpper() == arc.charactersSpeaking[i].NPCName.ToUpper())
+                                    {
+                                        arc.charactersSpeaking.Remove(arc.charactersSpeaking[k]);
+                                        print("Character removed");
+                                    }
+                                }
                             }
+
                         }
                         
                         //if there are no npcs in the list, it clears
@@ -135,26 +149,40 @@ public class QuestManager : MonoBehaviour
                     //checks if an npc was added to the main list
                     else if (arc.charactersSpeaking.Count < npcs.Length)
                     {
+
                         //checks if there are actually any npcs in the list
-                        if (arc.charactersSpeaking.Count != 0)
+                        if (arc.charactersSpeaking.Count > 0)
                         {
-                            //runs through every character in the arc in the QUEST
+
+                            //creates a temporary list to compare names
+                            nameHolder = new List<string>();
                             foreach (QuestlineScriptableObj.character character in arc.charactersSpeaking)
                             {
-                                //runs through all the npcs in the SCENE
-                                foreach (NPCScript npc in npcs)
+                                nameHolder.Add(character.NPCName);
+                            }
+
+                            //runs through all npcs
+                            for (int i = 0; i < npcs.Length; i++)
+                            {
+                                //checks if the name of the current npc matches in the QUEST
+                                if (!nameHolder.Contains(npcs[i].name))
                                 {
-                                    //if there is a matching npc, the skips to the next iteration
-                                    if (character.NPCName.ToLower() == npc.name.ToLower())
-                                    {
-                                        continue;
-                                    }
-
                                     QuestlineScriptableObj.character newCharacter = new QuestlineScriptableObj.character();
-                                    newCharacter.NPCName = npc.name;
-
+                                    newCharacter.NPCName = npcs[i].name;
                                     arc.charactersSpeaking.Add(newCharacter);
+                                    print("Character added");
+                                }
+                            }
 
+                            //if the number of npcs in the scene is STILL more than the npcs in the quest, adds a blank character slot (for duplicates)
+                            if(npcs.Length > arc.charactersSpeaking.Count)
+                            {
+                                for (int h = 0; h < npcs.Length - arc.charactersSpeaking.Count; h++)
+                                {
+                                    QuestlineScriptableObj.character newBlankCharacter = new QuestlineScriptableObj.character();
+                                    newBlankCharacter.NPCName = "Blank NPC";
+                                    arc.charactersSpeaking.Add(newBlankCharacter);
+                                    print("Blank Character Added");
                                 }
                             }
                         }
@@ -184,50 +212,47 @@ public class QuestManager : MonoBehaviour
     //updates name of npcs without having to set the list count to zero and re plug everything in
     public void UpdateNPCNames()
     {
+        npcs = npcs.OrderByDescending(npcName => npcName.name).ToArray();
+
         //runs through all quests
         foreach (QuestlineScriptableObj quest in quests)
         {
             //runs through all the arcs in each quest
             foreach (QuestlineScriptableObj.arc arc in quest.dialogueArcs)
             {
-                //runs through all npcs in each quest
-                for (int i = 0; i < arc.charactersSpeaking.Count; i++)
+                //creates a temporary list
+                List<QuestlineScriptableObj.character> tempCharacters = new List<QuestlineScriptableObj.character>();
+
+                //creates a temporary list to compare names
+                List<string> nameHolder = new List<string>();
+                foreach (QuestlineScriptableObj.character character in arc.charactersSpeaking)
                 {
-                    //checks if the name in the scene matches the one in the quest
-                    if (arc.charactersSpeaking[i].NPCName != npcs[i].name)
-                    {
-                        QuestlineScriptableObj.character newCharacter = new QuestlineScriptableObj.character();
-
-                        newCharacter.NPCName = npcs[i].name;
-                        newCharacter.dialogue = arc.charactersSpeaking[i].dialogue;
-
-                        arc.charactersSpeaking[i] = newCharacter;
-                    }
+                    nameHolder.Add(character.NPCName);
                 }
 
+                //runs through all the npcs in the scene
+                for (int i = 0; i < npcs.Length; i++)
+                {
+                    //checks if the name is NOT in the list of npcs
+                    if(!nameHolder.Contains(npcs[i].name))
+                    {
+                        //creates a new character
+                        QuestlineScriptableObj.character replaceNPC = new QuestlineScriptableObj.character();
+                        replaceNPC.NPCName = npcs[i].name;
+                        arc.charactersSpeaking[i] = replaceNPC;
+                        print("Character replaced");
+                    }
+                    tempCharacters.Add(arc.charactersSpeaking[i]);
+                }
+
+                //clears out list and readds everything
+                tempCharacters = tempCharacters.OrderByDescending(tempChar => tempChar.NPCName).ToList();
+                arc.charactersSpeaking.Clear();
+                foreach(QuestlineScriptableObj.character tempCharacter in tempCharacters)
+                {
+                    arc.charactersSpeaking.Add(tempCharacter);
+                }
             }
-        }
-    }
-
-    //checks to see if all the values in the npc array are valid
-    bool ValidateSceneNPCValues()
-    {
-        foreach(NPCScript npc in npcs)
-        {
-            if (npc == null)
-                return false;
-        }
-
-        return true;
-    }
-
-    //updates when values in the INSPECTOR change
-    private void OnValidate()
-    {
-        //checks if all the values in the npcs array are valid, then updates the list
-        if (ValidateSceneNPCValues())
-        {
-            
         }
     }
 
