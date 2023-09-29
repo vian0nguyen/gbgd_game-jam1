@@ -495,7 +495,6 @@ public class Dialogue_Writer : MonoBehaviour
                 {
 					if (playerTag.marker.Contains(speechBubblePlayerTag))
                     {
-						print("cool");
 						playerTag.TagFunctions.Invoke(GetTagData(speechBubblePlayerTag));
 						break;
 					}

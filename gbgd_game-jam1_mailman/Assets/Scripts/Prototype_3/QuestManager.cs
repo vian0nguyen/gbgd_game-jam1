@@ -70,6 +70,9 @@ public class QuestManager : MonoBehaviour
             //goes through all the dialogue arcs in the quest
             for(int k = 0; k < quest.dialogueArcs.Length; k++)
             {
+
+                print(npcs.Length);
+                print(quest.dialogueArcs[k].charactersSpeaking.Count);
                 //goes through all the characters in the arc
                 for(int i=0; i < quest.dialogueArcs[k].charactersSpeaking.Count; i++)
                 {
@@ -78,14 +81,7 @@ public class QuestManager : MonoBehaviour
                     {
                         //sets npc's dialogue arc to whatever was in the scriptable object
                         character.dialogueArcs[k] = quest.dialogueArcs[k].charactersSpeaking[i].dialogue;
-
                         break;
-                    }
-
-                    //if the name in the scene doesn't match the arc, then returns an error
-                    else
-                    {
-                        Debug.LogError("Could not find character from quest in the game scene!");
                     }
                 }
 
@@ -129,14 +125,14 @@ public class QuestManager : MonoBehaviour
                                 }
 
                                 //removes any duplicates
-                                /*for (int k = i - 1; k >= 0; k--)
+                                for (int k = i - 1; k >= 0; k--)
                                 {
                                     if(arc.charactersSpeaking[k].NPCName.ToUpper() == arc.charactersSpeaking[i].NPCName.ToUpper())
                                     {
                                         arc.charactersSpeaking.Remove(arc.charactersSpeaking[k]);
                                         print("Character removed");
                                     }
-                                }*/
+                                }
                             }
 
                         }

@@ -4,5 +4,5 @@ Choose an item: #^
 -> Orb
 
 ===Orb===
-You have chosen the orb. #!Test_QuestLine
+You have chosen the orb. #!GmaQuest
 ->DONE
