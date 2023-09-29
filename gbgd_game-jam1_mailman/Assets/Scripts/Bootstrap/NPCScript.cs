@@ -9,7 +9,8 @@ public class NPCScript : MonoBehaviour
     {
         public dialogueSet[] dialogueSets;
         public TextAsset recurringDialogue;
-        
+        public Vector2 warpPoint;
+        public int areaNumber;
     }
 
     [System.Serializable]

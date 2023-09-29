@@ -6,6 +6,9 @@ using System.Linq;
 [ExecuteAlways]
 public class QuestManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameManager gm;
+
     public QuestlineScriptableObj[] quests;
     public QuestlineScriptableObj currentQuest;
 
@@ -67,7 +70,6 @@ public class QuestManager : MonoBehaviour
             //goes through all the dialogue arcs in the quest
             for(int k = 0; k < quest.dialogueArcs.Length; k++)
             {
-
                 //goes through all the characters in the arc
                 for(int i=0; i < quest.dialogueArcs[k].charactersSpeaking.Count; i++)
                 {
@@ -76,6 +78,7 @@ public class QuestManager : MonoBehaviour
                     {
                         //sets npc's dialogue arc to whatever was in the scriptable object
                         character.dialogueArcs[k] = quest.dialogueArcs[k].charactersSpeaking[i].dialogue;
+
                         break;
                     }
 
@@ -126,14 +129,14 @@ public class QuestManager : MonoBehaviour
                                 }
 
                                 //removes any duplicates
-                                for (int k = i - 1; k >= 0; k--)
+                                /*for (int k = i - 1; k >= 0; k--)
                                 {
                                     if(arc.charactersSpeaking[k].NPCName.ToUpper() == arc.charactersSpeaking[i].NPCName.ToUpper())
                                     {
                                         arc.charactersSpeaking.Remove(arc.charactersSpeaking[k]);
                                         print("Character removed");
                                     }
-                                }
+                                }*/
                             }
 
                         }
@@ -220,25 +223,55 @@ public class QuestManager : MonoBehaviour
             //runs through all the arcs in each quest
             foreach (QuestlineScriptableObj.arc arc in quest.dialogueArcs)
             {
+                //creates a temporary list and reorders the actual list
+                List<QuestlineScriptableObj.character> reorderHolder = new List<QuestlineScriptableObj.character>();
+                foreach (QuestlineScriptableObj.character oldnpc in arc.charactersSpeaking)
+                {
+                    reorderHolder.Add(oldnpc);
+                }
+                reorderHolder.OrderByDescending(reorderChar => reorderChar.NPCName).Reverse().ToList();
+                arc.charactersSpeaking.Clear();
+                foreach (QuestlineScriptableObj.character reorderedCharacter in reorderHolder)
+                {
+                    arc.charactersSpeaking.Add(reorderedCharacter);
+                }
+
                 //creates a temporary list
                 List<QuestlineScriptableObj.character> tempCharacters = new List<QuestlineScriptableObj.character>();
 
                 //creates a temporary list to compare names
                 List<string> nameHolder = new List<string>();
-                foreach (QuestlineScriptableObj.character character in arc.charactersSpeaking)
+                foreach (NPCScript npc in npcs)
                 {
-                    nameHolder.Add(character.NPCName);
+                    nameHolder.Add(npc.name);
+                }
+
+                //creates a temporary list to compare names
+                List<string> questNameHolder = new List<string>();
+                foreach (QuestlineScriptableObj.character questCharacter in arc.charactersSpeaking)
+                {
+                    questNameHolder.Add(questCharacter.NPCName);
                 }
 
                 //runs through all the npcs in the scene
-                for (int i = 0; i < npcs.Length; i++)
+                for (int i = 0; i < arc.charactersSpeaking.Count; i++)
                 {
                     //checks if the name is NOT in the list of npcs
-                    if(!nameHolder.Contains(npcs[i].name))
+                    if(!nameHolder.Contains(arc.charactersSpeaking[i].NPCName))
                     {
                         //creates a new character
                         QuestlineScriptableObj.character replaceNPC = new QuestlineScriptableObj.character();
-                        replaceNPC.NPCName = npcs[i].name;
+                        foreach(NPCScript sceneNPC in npcs)
+                        {
+                            //checks if the npc name is NOT in the quest
+                            if (!questNameHolder.Contains(sceneNPC.name))
+                            {
+                                replaceNPC.NPCName = sceneNPC.name;
+                                break;
+                            }
+                        }
+
+
                         arc.charactersSpeaking[i] = replaceNPC;
                         print("Character replaced");
                     }
@@ -262,8 +295,13 @@ public class QuestManager : MonoBehaviour
     {
         for (int i = 0; i < npcs.Length; i++)
         {
-
+            
         }
+    }
+
+    public void MoveNPCs(NPCScript npc)
+    {
+        //Vector2 destination = 
     }
 
 }
