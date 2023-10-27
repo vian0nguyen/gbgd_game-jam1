@@ -8,6 +8,8 @@ public class QuestManager : MonoBehaviour
 {
     [SerializeField]
     private GameManager gm;
+    [SerializeField]
+    private areaManager am;
 
     public QuestlineScriptableObj[] quests;
     public QuestlineScriptableObj currentQuest;
@@ -71,8 +73,6 @@ public class QuestManager : MonoBehaviour
             for(int k = 0; k < quest.dialogueArcs.Length; k++)
             {
 
-                print(npcs.Length);
-                print(quest.dialogueArcs[k].charactersSpeaking.Count);
                 //goes through all the characters in the arc
                 for(int i=0; i < quest.dialogueArcs[k].charactersSpeaking.Count; i++)
                 {
@@ -287,17 +287,41 @@ public class QuestManager : MonoBehaviour
 
     #endregion
 
-    public void MoveAllNPCs()
+    #region NPC Functions
+
+    //moves all npcs (used for end of an arc)
+    public void MoveAllNPCsOnReset()
     {
-        for (int i = 0; i < npcs.Length; i++)
+        foreach(NPCScript npc in npcs)
         {
-            
+            MoveNPC(npc);
         }
     }
 
-    public void MoveNPCs(NPCScript npc)
+    //moves npc to destination
+    public void MoveNPC(NPCScript npc)
     {
-        //Vector2 destination = 
-    }
+        NPCScript.dialogueSet chosenSet;
 
+        //checks if there is NO more dialogue after this arc
+        if (gm.arc >= npc.dialogueArcs.Length - 1)
+        {
+            chosenSet = npc.dialogueArcs[npc.dialogueArcs.Length - 1].dialogueSets[npc.timesSpokenTo];
+
+        }
+        //checks if there IS dialogue after this arc
+        else
+        {
+            chosenSet = npc.dialogueArcs[gm.arc].dialogueSets[npc.timesSpokenTo];
+        }
+
+        //checks if the area number is NOT negative or the area number given is within the bounds of the number of areas available
+        if (chosenSet.areaNumber > 0 || chosenSet.areaNumber < am.areas.Length)
+        {
+            //changes parent object of NPC and moves it
+            npc.transform.parent = am.areas[chosenSet.areaNumber].transform;
+            npc.transform.position = chosenSet.warpPoint;
+        }
+    }
+    #endregion
 }
