@@ -14,21 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueArcs:
   - charactersSpeaking:
-    - NPCName: DuckGang
+    - NPCName: testNPC
       dialogue:
-        dialogueSets: []
-        recurringDialogue: {fileID: 0}
-        warpPoint: {x: 0, y: 0}
-        areaNumber: 0
-    - NPCName: Grandma
-      dialogue:
-        dialogueSets: []
-        recurringDialogue: {fileID: 0}
-        warpPoint: {x: 0, y: 0}
-        areaNumber: 0
-    - NPCName: ToadGang
-      dialogue:
-        dialogueSets: []
+        dialogueSets:
+        - dialogue: {fileID: 0}
+          warpPoint: {x: 0, y: 0}
+          areaNumber: 0
         recurringDialogue: {fileID: 0}
         warpPoint: {x: 0, y: 0}
         areaNumber: 0
