@@ -17,10 +17,11 @@ Do you have something to tell us? #*Crab
 = crab_rages
 She said that you came from the ducks and delivered - #*Crab
 A CAKE! #*ToadGang
-The ducks' note asked her not to tell us. #*Crab
-But Grandma told us anyway! #*Bee
-Because we're the boss. #Tiger
-And you're gonna pay! #Tiger
-But we're not the ones you should be afraid of. #Crab
-Here he is: Toad! #Crab
+Unbelievable.
+Bzz. (And totally ungrateful, after all the kindness we've extended to you.)
+Any last wishes? #*Crab
+* What are you going to do to me? -> someone
+= someone
+Bzz! (Oh, WE won't be the ones doing ANYthing.) #*Bee
+That honor belongs to Toad! #*Crab
 -> END

@@ -1,25 +1,26 @@
 -> First_Toad_Meet
 === First_Toad_Meet ===
 Who's there? #*Tiger
-Bzz? (Did we hire you?) #*Bee
-* I'm delivering ingredients from the ducks.
-    -> deliver_ingredients_firsttime
-* Is this the Toad Gang?
+Bzz? (Is someone returning from doing our dirty work?) #*Bee
+* Nope, I'm just here with ingredients!
     -> deliver_ingredients_firsttime
 
 === deliver_ingredients_firsttime ===
-Oh, it's the ingredients. So they're not here to deliver our cakes. #*Crab
-Big Boss is busy. You can leave it with us. #*Crab
-Bzz? (Can we get them to deliver our cakes, too? That way, we won't have to pay!) #*Bee
-Yeah, you can do it, won't you? We don't bite. /Tiger grins./ #*Tiger
-* Sorry, I'm only here to deliver!
--> deliver_ingredients_firsttime_conclusion
-
-= deliver_ingredients_firsttime_conclusion
-Ugh, that's so disappointing. Again? #*Tiger
-Bzz! (What a loser!) #*Bee
-Whatever. They're not worth our time. #*Crab
-Oh, you're still here? #*Crab
-Bzz. (Here's the payment, loser. Bring it back to the ducks.) #*Bee
-You can go, now. #*Tiger
+Oh, it's ingredients. #*Crab
+Bzz? (Why didn't the Ducks come themselves?) #*Bee 
+I don't like strangers! #*Tiger
+You! Are you trying to snoop on us? #*Tiger
+* I'm delivering ingredients, I swear. I didn't even want to come here! -> tiger_escalates
+* Look, I don't want to cause any problems. -> tiger_escalates
+= tiger_escalates
+Oh, are you trying to run away with all our ingredients? #*Crab
+Bzz! (I bet they're trying to undermine our business!) #*Bee
+Give us that package! #*Tiger
+/With a swipe of his huge paw, Tiger snatches the package from your hand./ #ToadGang
+We'd better get back to work. #*Crab
+Bzz! (It's not easy to run this town!) #*Bee
+* But what about payment?
+Bzz! (Go back to the Ducks if you want payment!) #*Bee
+Now, get out! #*Crab
+/The Toad Gang shoves you out the door./ #ToadGang
 -> END
