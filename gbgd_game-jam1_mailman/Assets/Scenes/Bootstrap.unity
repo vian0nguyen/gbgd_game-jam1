@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3684,16 +3684,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2e0ef65a548b44799e4973c5e36e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
   quests:
   - {fileID: 11400000, guid: c3835cc84818a8e4e91f6c3ea42a9bc0, type: 2}
   - {fileID: 11400000, guid: d3bac17d439fc354299c322aedea9b6a, type: 2}
   - {fileID: 11400000, guid: 62b676e86fed79c4994c6e48d181a87a, type: 2}
-  - {fileID: 11400000, guid: 62b676e86fed79c4994c6e48d181a87a, type: 2}
   currentQuest: {fileID: 0}
   npcs:
-  - {fileID: 2126560793}
-  - {fileID: 1124649780}
   - {fileID: 2105702785}
+  - {fileID: 1124649780}
+  - {fileID: 2126560793}
 --- !u!4 &1829708549
 Transform:
   m_ObjectHideFlags: 0

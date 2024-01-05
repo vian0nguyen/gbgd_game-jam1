@@ -7,9 +7,18 @@ public class NPCScript : MonoBehaviour
     [System.Serializable]
     public struct DialogueArc
     {
-        public TextAsset[] dialogueSet;
+        public dialogueSet[] dialogueSets;
         public TextAsset recurringDialogue;
-        public Vector2[] warpPoints;
+        public Vector2 warpPoint;
+        public int areaNumber;
+    }
+
+    [System.Serializable]
+    public struct dialogueSet
+    {
+        public TextAsset dialogue;
+        public Vector2 warpPoint;
+        public int areaNumber;
     }
 
     public DialogueArc[] dialogueArcs;
@@ -24,10 +33,18 @@ public class NPCScript : MonoBehaviour
 
         UpdateNPCArc(arc);
 
+        //creates a holder for the current dialogue set
+        List<TextAsset> tempDialogueHolder = new List<TextAsset>();
+
         //checks if the current arc is greater than the number of dialogue arcs available
         if (arc >= dialogueArcs.Length)
         {
-            TextAsset[] finalDialogueSet = dialogueArcs[dialogueArcs.Length - 1].dialogueSet;
+            for(int i = 0; i < dialogueArcs[dialogueArcs.Length - 1].dialogueSets.Length; i++)
+            {
+                tempDialogueHolder.Add(dialogueArcs[dialogueArcs.Length - 1].dialogueSets[i].dialogue);
+            }
+
+            TextAsset[] finalDialogueSet = tempDialogueHolder.ToArray();
 
             //checks if the player has spoken to the npc enough times to trigger the recurring dialogue
             if (timesSpokenTo >= finalDialogueSet.Length || finalDialogueSet.Length == 0)
@@ -35,12 +52,17 @@ public class NPCScript : MonoBehaviour
 
             //otherwise, uses dialogue from the dialogue set
             else
-                return (dialogueArcs[dialogueArcs.Length - 1].dialogueSet[timesSpokenTo]);
+                return (tempDialogueHolder[timesSpokenTo]);
         }
         //otherwise, chooses dialogue from current arc
         else
         {
-            TextAsset[] currentDialogueSet = dialogueArcs[arc].dialogueSet;
+            for (int i = 0; i < dialogueArcs[arc].dialogueSets.Length; i++)
+            {
+                tempDialogueHolder.Add(dialogueArcs[arc].dialogueSets[i].dialogue);
+            }
+
+            TextAsset[] currentDialogueSet = tempDialogueHolder.ToArray();
 
             //checks if the player has spoken to the npc enough times to trigger the recurring dialogue
             if (timesSpokenTo >= currentDialogueSet.Length || currentDialogueSet.Length == 0)
@@ -48,7 +70,7 @@ public class NPCScript : MonoBehaviour
 
             //otherwise, uses dialogue from the dialogue set
             else
-                return (dialogueArcs[arc].dialogueSet[timesSpokenTo]);
+                return (currentDialogueSet[timesSpokenTo]);
         }
     }
 

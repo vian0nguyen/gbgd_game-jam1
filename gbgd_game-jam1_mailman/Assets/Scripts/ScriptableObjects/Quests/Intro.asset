@@ -12,22 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbfb0de62d65d345ad26975fb7468db, type: 3}
   m_Name: Intro
   m_EditorClassIdentifier: 
-  characters:
-  - NPCName: Hungry Duck
-    dialogueArcs:
-    - dialogueSet:
-      - {fileID: 4900000, guid: 64fb883cf468c5542a3d4fcd5123a01f, type: 3}
-      recurringDialogue: {fileID: 0}
-      warpPoints: []
-  - NPCName: Nerd Duck
-    dialogueArcs:
-    - dialogueSet:
-      - {fileID: 4900000, guid: 64fb883cf468c5542a3d4fcd5123a01f, type: 3}
-      recurringDialogue: {fileID: 0}
-      warpPoints: []
-  - NPCName: Leader Duck
-    dialogueArcs:
-    - dialogueSet: []
-      recurringDialogue: {fileID: 4900000, guid: 64fb883cf468c5542a3d4fcd5123a01f,
-        type: 3}
-      warpPoints: []
+  dialogueArcs:
+  - charactersSpeaking:
+    - NPCName: ToadGang
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}
+    - NPCName: Grandma
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}
+    - NPCName: DuckGang
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}
