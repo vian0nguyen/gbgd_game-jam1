@@ -51,3 +51,5 @@ When adding dialogue for NPC's, don't add them to the NPC's in the scene.  Inste
   * If it’s multiple NPC’s, just tag the character that is the child object of the multi NPC object
   * Need different recurring dialogues per quest arc for each NPC.
   * Make 1 dialogue arc per story scene
+
+**When testing a dialogue, go to the questManager in the scene, then under Current Quest, add the quest scriptable object you added dialogue for.  Once complete, remember to remove that quest scriptable from the Current Quest Value, as the player will have that set when they talk to the mailbox.**
