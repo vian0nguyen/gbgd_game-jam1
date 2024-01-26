@@ -3688,6 +3688,7 @@ MonoBehaviour:
   am: {fileID: 570161029}
   quests:
   - {fileID: 11400000, guid: 62b676e86fed79c4994c6e48d181a87a, type: 2}
+  - {fileID: 11400000, guid: d3bac17d439fc354299c322aedea9b6a, type: 2}
   currentQuest: {fileID: 0}
   npcs:
   - {fileID: 2105702785}
@@ -4760,7 +4761,7 @@ PrefabInstance:
     - target: {fileID: 8289860598517271338, guid: 3d147ef60bd2ba345a7f9f5d86126469,
         type: 3}
       propertyPath: dialogueArcs.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8289860598517271338, guid: 3d147ef60bd2ba345a7f9f5d86126469,
         type: 3}
@@ -4777,7 +4778,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogueArcs.Array.data[0].recurringDialogue
       value: 
-      objectReference: {fileID: 4900000, guid: a8f9fc5b13987674bb681010b0c125d6, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8289860598517271338, guid: 3d147ef60bd2ba345a7f9f5d86126469,
         type: 3}
       propertyPath: dialogueArcs.Array.data[0].dialogueSet.Array.size
@@ -4822,7 +4823,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogueArcs.Array.data[0].dialogueSets.Array.data[0].dialogue
       value: 
-      objectReference: {fileID: 4900000, guid: 64fb883cf468c5542a3d4fcd5123a01f, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8908981710886669993, guid: 3d147ef60bd2ba345a7f9f5d86126469,
         type: 3}
       propertyPath: m_Name
