@@ -17,9 +17,12 @@ public class QuestManager : MonoBehaviour
     public NPCScript[] npcs;
 
     private QuestlineScriptableObj.character lastDeletedCharacter;
+    private List<NPCScript> NPCsToMove;
 
     private void Start()
     {
+        NPCsToMove = new List<NPCScript>();
+
         //checks if there is a current quest to start with
         if (currentQuest != null)
         {
@@ -298,29 +301,84 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    //moves all npcs that are to move at the end of a dialogue
+    public void MoveNPCsPostDialogue()
+    {
+        foreach (NPCScript npc in NPCsToMove)
+        {
+            MoveNPC(npc);
+        }
+    }
+
     //moves npc to destination
     public void MoveNPC(NPCScript npc)
     {
         NPCScript.dialogueSet chosenSet;
 
         //checks if there is NO more dialogue after this arc
-        if (gm.arc >= npc.dialogueArcs.Length - 1)
+        if (gm.arc >= npc.dialogueArcs.Length)
         {
-            chosenSet = npc.dialogueArcs[npc.dialogueArcs.Length - 1].dialogueSets[npc.timesSpokenTo];
+            // check if times spoken to is greater than size of dialogue sets for recurring
+
+            //checks if the number of times spoken to is LESS than the amount of dialogue available in this arc's dialogue set
+            if(npc.timesSpokenTo <= npc.dialogueArcs[npc.dialogueArcs.Length - 1].dialogueSets.Length)
+            {
+                chosenSet = npc.dialogueArcs[npc.dialogueArcs.Length - 1].dialogueSets[npc.timesSpokenTo - 1];
+            }
+
+            //checks if the number of times spoken to is GREATER than the amount of dialogue available in this arc's dialogue set
+            else
+            {
+                chosenSet = new NPCScript.dialogueSet();
+                    
+                chosenSet.areaNumber = npc.dialogueArcs[npc.dialogueArcs.Length - 1].areaNumber;
+                chosenSet.warpPoint = npc.dialogueArcs[npc.dialogueArcs.Length - 1].warpPoint;
+            }
 
         }
         //checks if there IS dialogue after this arc
         else
         {
-            chosenSet = npc.dialogueArcs[gm.arc].dialogueSets[npc.timesSpokenTo];
+            
+            //checks if the number of times spoken to is LESS than the amount of dialogue available in this arc's dialogue set
+            if (npc.timesSpokenTo <= npc.dialogueArcs[gm.arc].dialogueSets.Length)
+            {
+                chosenSet = npc.dialogueArcs[gm.arc].dialogueSets[npc.timesSpokenTo - 1];
+                print(npc.timesSpokenTo - 1);
+            }
+
+            //checks if the number of times spoken to is GREATER than the amount of dialogue available in this arc's dialogue set
+            else
+            {
+                chosenSet = new NPCScript.dialogueSet();
+
+                chosenSet.areaNumber = npc.dialogueArcs[gm.arc].areaNumber;
+                chosenSet.warpPoint = npc.dialogueArcs[gm.arc].warpPoint;
+            }
         }
 
         //checks if the area number is NOT negative or the area number given is within the bounds of the number of areas available
-        if (chosenSet.areaNumber > 0 || chosenSet.areaNumber < am.areas.Length)
+        if (chosenSet.areaNumber >= 0 || chosenSet.areaNumber < am.areas.Length)
         {
             //changes parent object of NPC and moves it
             npc.transform.parent = am.areas[chosenSet.areaNumber].transform;
             npc.transform.position = chosenSet.warpPoint;
+        }
+
+        //prints a warning if the npc is set to be moved but isn't due to an invalid area number
+        else
+        {
+            Debug.LogWarning("NPC not moved because it has an invalid area number to move to!");
+        }
+    }
+
+    //adds npc to list of npc's to move after the dialogue is over
+    public void AddNPCToMove(string npcName) {
+        
+        //checks if there is an npc available
+        if (FindNPC(npcName) != null)
+        {
+            NPCsToMove.Add(FindNPC(npcName));
         }
     }
     #endregion

@@ -17,9 +17,18 @@ MonoBehaviour:
     - NPCName: testNPC
       dialogue:
         dialogueSets:
-        - dialogue: {fileID: 0}
-          warpPoint: {x: 0, y: 0}
+        - dialogue: {fileID: 4900000, guid: 86434c884d4dc6f44b4cb6c14258dff6, type: 3}
+          warpPoint: {x: 45, y: 2.2}
           areaNumber: 0
-        recurringDialogue: {fileID: 0}
-        warpPoint: {x: 0, y: 0}
-        areaNumber: 0
+        recurringDialogue: {fileID: 4900000, guid: b8f9e90238981cc44b8e30898a958591,
+          type: 3}
+        warpPoint: {x: -2, y: 2.2}
+        areaNumber: 3
+  - charactersSpeaking:
+    - NPCName: testNPC
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 4900000, guid: b8f9e90238981cc44b8e30898a958591,
+          type: 3}
+        warpPoint: {x: 12, y: 6}
+        areaNumber: 2

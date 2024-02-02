@@ -204,7 +204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &15051359
 MonoBehaviour:
@@ -811,6 +811,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &426233064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 426233065}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &426233065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426233064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 45, y: 2.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &466083800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,12 +2691,12 @@ PrefabInstance:
     - target: {fileID: 4622199667177109418, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.75
       objectReference: {fileID: 0}
     - target: {fileID: 4622199667177109418, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.76
       objectReference: {fileID: 0}
     - target: {fileID: 4622199667177109418, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
         type: 3}
@@ -2706,6 +2736,51 @@ PrefabInstance:
     - target: {fileID: 4622199667177109418, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[1].areaNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[0].warpPoint.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[0].warpPoint.y
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[1].warpPoint.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[1].warpPoint.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[0].recurringDialogue
+      value: 
+      objectReference: {fileID: 4900000, guid: 86434c884d4dc6f44b4cb6c14258dff6, type: 3}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[1].recurringDialogue
+      value: 
+      objectReference: {fileID: 4900000, guid: b8f9e90238981cc44b8e30898a958591, type: 3}
+    - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: dialogueArcs.Array.data[0].dialogueSets.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6657585618865932956, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
@@ -3398,7 +3473,7 @@ MonoBehaviour:
   am: {fileID: 570161029}
   quests:
   - {fileID: 11400000, guid: 28e594969494b934684248bd5b53a8e4, type: 2}
-  currentQuest: {fileID: 0}
+  currentQuest: {fileID: 11400000, guid: 28e594969494b934684248bd5b53a8e4, type: 2}
   npcs:
   - {fileID: 1501706970}
 --- !u!4 &1829708549
@@ -3413,7 +3488,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1977439337
 GameObject:
@@ -3540,7 +3615,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1981126311
 MonoBehaviour:
@@ -3719,6 +3794,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1829708548}
+        m_MethodName: MoveNPCsPostDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1995749020}
         m_MethodName: SetNewArc
         m_Mode: 1
@@ -3783,6 +3869,21 @@ MonoBehaviour:
         - m_Target: {fileID: 1995749020}
           m_MethodName: EnableNewArc
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - marker: '>'
+    TagFunctions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1829708548}
+          m_MethodName: AddNPCToMove
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

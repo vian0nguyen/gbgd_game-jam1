@@ -19,6 +19,11 @@ public class WarpPointPlugInTool : EditorWindow
         window.Show();
     }
 
+    private void OnEnable()
+    {
+        
+    }
+
     void OnGUI()
     {
         questObject = EditorGUILayout.ObjectField("Quest Scriptable Object: ", questObject, typeof(QuestlineScriptableObj), true) as QuestlineScriptableObj;
@@ -38,11 +43,10 @@ public class WarpPointPlugInTool : EditorWindow
                 //if you don't want the character to say anything new this arc, make their dialogue for this arc all recurring
 
                 warpPoints = new List<Transform>(new Transform[currentCharacter.dialogue.dialogueSets.Length]);
-                Debug.Log("cool");
                 
                 for (int i = 0; i < warpPoints.Count; i++) {
                     Transform point = warpPoints[i];
-                    EditorGUILayout.ObjectField("Warp Point " + i, point, typeof(Transform), true);
+                    warpPoints[i] = EditorGUILayout.ObjectField("Warp Point " + i, point, typeof(Transform), true) as Transform;
                 }
             }
         }

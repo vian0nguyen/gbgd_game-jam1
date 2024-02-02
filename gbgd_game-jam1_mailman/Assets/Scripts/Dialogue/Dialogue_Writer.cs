@@ -392,7 +392,7 @@ public class Dialogue_Writer : MonoBehaviour
         else
         {
 			return (null);
-        }// )spoon
+        }
 	}
 
 	//reads info from tag that only has one element
@@ -559,6 +559,26 @@ public class Dialogue_Writer : MonoBehaviour
 		//increments number of times the player has spoken to this npc
 		gm.currentNPC.timesSpokenTo++;
 	}
+
+	//gets dialogue index at this point in the story
+	int GetDialogueIndex(NPCScript npc)
+    {
+		int index = 0;
+
+		//checks if there is NO more dialogue after this arc
+		if (gm.arc >= npc.dialogueArcs.Length - 1)
+		{
+			//index = npc.dialogueArcs[npc.dialogueArcs.Length - 1].dialogueSets[npc.timesSpokenTo];
+
+		}
+		//checks if there IS dialogue after this arc
+		else
+		{
+			//index = npc.dialogueArcs[gm.arc].dialogueSets[npc.timesSpokenTo];
+		}
+
+		return index;
+    }
 
 	public GameManager gm;
 
