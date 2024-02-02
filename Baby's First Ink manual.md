@@ -53,3 +53,8 @@ When adding dialogue for NPC's, don't add them to the NPC's in the scene.  Inste
   * Make 1 dialogue arc per story scene
 
 **When testing a dialogue, go to the questManager in the scene, then under Current Quest, add the quest scriptable object you added dialogue for.  Once complete, remember to remove that quest scriptable from the Current Quest Value, as the player will have that set when they talk to the mailbox.**
+
+## Navigating Tools
+The dialogue system uses a lot of loops and can get confusing due to how there are no hard-coded numbers.  However, here are the main checks used to find the correct text file to use:
+  1. Which arc to use (if the game's arc is further along than the dialogue available, the dialogue in the last available arc is used)
+  2. Choosing which dialogue in the dialogue set to use (if the number of times the player has spoken to the NPC is GREATER than the number of available text files in the dialogue set, the RECURRING dialogue is used)
