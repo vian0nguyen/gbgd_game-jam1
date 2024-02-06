@@ -5,12 +5,12 @@ using UnityEngine;
 public class NPCScript : MonoBehaviour
 {
     [System.Serializable]
-    public struct DialogueArc
+    public class DialogueArc
     {
         public dialogueSet[] dialogueSets;
         public TextAsset recurringDialogue;
-        public Vector2 warpPoint;
-        public int areaNumber;
+        public Vector2 finalWarpPoint;
+        public int finalAreaNumber;
     }
 
     [System.Serializable]

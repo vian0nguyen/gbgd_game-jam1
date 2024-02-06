@@ -331,8 +331,8 @@ public class QuestManager : MonoBehaviour
             {
                 chosenSet = new NPCScript.dialogueSet();
                     
-                chosenSet.areaNumber = npc.dialogueArcs[npc.dialogueArcs.Length - 1].areaNumber;
-                chosenSet.warpPoint = npc.dialogueArcs[npc.dialogueArcs.Length - 1].warpPoint;
+                chosenSet.areaNumber = npc.dialogueArcs[npc.dialogueArcs.Length - 1].finalAreaNumber;
+                chosenSet.warpPoint = npc.dialogueArcs[npc.dialogueArcs.Length - 1].finalWarpPoint;
             }
 
         }
@@ -344,7 +344,6 @@ public class QuestManager : MonoBehaviour
             if (npc.timesSpokenTo <= npc.dialogueArcs[gm.arc].dialogueSets.Length)
             {
                 chosenSet = npc.dialogueArcs[gm.arc].dialogueSets[npc.timesSpokenTo - 1];
-                print(npc.timesSpokenTo - 1);
             }
 
             //checks if the number of times spoken to is GREATER than the amount of dialogue available in this arc's dialogue set
@@ -352,8 +351,8 @@ public class QuestManager : MonoBehaviour
             {
                 chosenSet = new NPCScript.dialogueSet();
 
-                chosenSet.areaNumber = npc.dialogueArcs[gm.arc].areaNumber;
-                chosenSet.warpPoint = npc.dialogueArcs[gm.arc].warpPoint;
+                chosenSet.areaNumber = npc.dialogueArcs[gm.arc].finalAreaNumber;
+                chosenSet.warpPoint = npc.dialogueArcs[gm.arc].finalWarpPoint;
             }
         }
 

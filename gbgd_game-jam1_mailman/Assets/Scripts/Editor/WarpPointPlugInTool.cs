@@ -10,7 +10,8 @@ public class WarpPointPlugInTool : EditorWindow
     public string characterName;
     public int arcForWarpPoints;
 
-    [SerializeField] public List<Transform> warpPoints;
+    [SerializeField] public Transform[] warpPoints;
+    public Transform recurringWarpPoint;
 
     [MenuItem("Tools/Plug In Warp Points")]
     static void ShowWindow()
@@ -21,7 +22,7 @@ public class WarpPointPlugInTool : EditorWindow
 
     private void OnEnable()
     {
-        
+
     }
 
     void OnGUI()
@@ -40,16 +41,37 @@ public class WarpPointPlugInTool : EditorWindow
 
             if(arcForWarpPoints >= 0 && arcForWarpPoints < questObject.dialogueArcs.Length)
             {
-                //if you don't want the character to say anything new this arc, make their dialogue for this arc all recurring
+                //warpPoints = new List<Transform>(new Transform[currentCharacter.dialogue.dialogueSets.Length]);
 
-                warpPoints = new List<Transform>(new Transform[currentCharacter.dialogue.dialogueSets.Length]);
+                //sets up a temporary 
+                int currentSize = currentCharacter.dialogue.dialogueSets.Length;
+
+                if(warpPoints.Length != currentSize)
+                {
+                    ResizeWarpPointArray(currentSize);
+                }
                 
-                for (int i = 0; i < warpPoints.Count; i++) {
+                for (int i = 0; i < warpPoints.Length; i++) {
                     Transform point = warpPoints[i];
                     warpPoints[i] = EditorGUILayout.ObjectField("Warp Point " + i, point, typeof(Transform), true) as Transform;
                 }
+
+            }
+
+            //prints an error if an invalid arc number is input
+            else
+            {
+                Debug.LogError("Please enter a valid arc number");
             }
         }
+        
+        //prints an error if a name that isn't in the quest is input
+        else
+        {
+            Debug.LogError("Please add a valid name from the quest");
+        }
+
+        recurringWarpPoint = EditorGUILayout.ObjectField("Final Warp Point", recurringWarpPoint, typeof(Transform), true) as Transform;
 
         so.ApplyModifiedProperties(); // Remember to apply modified properties
 
@@ -60,53 +82,33 @@ public class WarpPointPlugInTool : EditorWindow
             
     }
 
+    //fills in warp points for this specific character in this specific arc
     void FillWarpPoints()
     {
-        List<Vector2> warpPointVectors = new List<Vector2>();
-
-        //runs through all warp points listed by the USER
-        /*foreach (Transform warpPoint in warpPointContainer)
-        {
-            warpPointVectors.Add(warpPoint.position);
-            warpPointScript wpc = warpPoint.GetComponent<warpPointScript>();
-
-            if (wpc.repeats)
-            {
-                for(int i = 0; i < wpc.numberOfTimesRepeated - 1; i++)
-                {
-                    warpPointVectors.Add(warpPoint.position);
-                }
-            }
-
-        }*/
 
         //checks if there is a character and a quest
-        if ((characterName != null ) && questObject != null)
+        if (characterName != null && questObject != null && characterName !="-1")
         {
-
-            //runs through every character in the arc in the QUEST
-            foreach (QuestlineScriptableObj.character npc in questObject.dialogueArcs[arcForWarpPoints].charactersSpeaking)
+            //runs through all warp points in the tool
+            for (int i = 0; i < warpPoints.Length; i++)
             {
-                //checks if the names match
-                if (npc.NPCName.ToUpper() == characterName.ToUpper())
-                {
-
-                    //runs through all warp points in the tool
-                    for (int i = 0; i < warpPointVectors.Count - 1; i++)
-                    {
-                        //sets warp points to character in QUEST
-                        npc.dialogue.dialogueSets[i].warpPoint = warpPointVectors[i];
-                    }
-
-                    break;
-                }
+                //sets warp points to character in QUEST
+                GetCharacter(characterName).dialogue.dialogueSets[i].warpPoint = warpPoints[i].position;
             }
+            //sets recurring warp point position for this arc
+            GetCharacter(characterName).dialogue.finalWarpPoint = recurringWarpPoint.position;
 
         }
-        //new prefab: transforms that have scripts that say whether or not to repeat a warp point, also does math for if the number of repeats don't add up, and has parent transforms
+        //checks if there isn't a valid character name or arc number
+        else
+        {
+            Debug.LogError("Cannot set warp points because either the entered name is invalid or there is no valid questObject");
+        }
+        
     }
 
-    //checks if the name typed in exists
+    #region Character Name Functions
+    //checks if the name typed in exists <- Only works if the quest has actual names and arcs set up already
     bool ValidateName(string npcName)
     {
         if (npcName != null & questObject != null)
@@ -143,6 +145,13 @@ public class WarpPointPlugInTool : EditorWindow
         blankCharacter.NPCName = "-1";
 
         return blankCharacter;
+    }
+    #endregion
+
+    //resizes the warp point array if the amount of warp points changed
+    void ResizeWarpPointArray(int sizeRef)
+    {
+        warpPoints = new Transform[sizeRef];
     }
 
 }
