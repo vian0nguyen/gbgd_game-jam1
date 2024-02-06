@@ -35,22 +35,24 @@ public class WarpPointPlugInTool : EditorWindow
         ScriptableObject target = this; //makes a temporary scriptable object to reference
         SerializedObject so = new SerializedObject(target); //makes a serializable object from the scriptable object (so that we can access the properties and display them)
 
+        //checks if there is a valid character in the tool
         if (ValidateName(characterName))
         {
             QuestlineScriptableObj.character currentCharacter = GetCharacter(characterName);
 
+            //checks if there are enough arcs available in the quest
             if(arcForWarpPoints >= 0 && arcForWarpPoints < questObject.dialogueArcs.Length)
             {
-                //warpPoints = new List<Transform>(new Transform[currentCharacter.dialogue.dialogueSets.Length]);
-
-                //sets up a temporary 
+                //sets up a temporary size reference
                 int currentSize = currentCharacter.dialogue.dialogueSets.Length;
 
+                //checks if the length of the warp points has changed
                 if(warpPoints.Length != currentSize)
                 {
                     ResizeWarpPointArray(currentSize);
                 }
                 
+                //displays the transform fields in the inspector
                 for (int i = 0; i < warpPoints.Length; i++) {
                     Transform point = warpPoints[i];
                     warpPoints[i] = EditorGUILayout.ObjectField("Warp Point " + i, point, typeof(Transform), true) as Transform;
@@ -75,6 +77,7 @@ public class WarpPointPlugInTool : EditorWindow
 
         so.ApplyModifiedProperties(); // Remember to apply modified properties
 
+        //creates button to fill in the warp point positions in the QUEST
         if (GUILayout.Button("Set Warp Points from Transforms"))
         {
             FillWarpPoints();
