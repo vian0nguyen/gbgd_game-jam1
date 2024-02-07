@@ -18,6 +18,7 @@ public class QuestManager : MonoBehaviour
 
     private QuestlineScriptableObj.character lastDeletedCharacter;
     private List<NPCScript> NPCsToMove;
+    public AnimationClip fadeMoveNPCAnimationClip;
 
     private void Start()
     {
@@ -292,7 +293,7 @@ public class QuestManager : MonoBehaviour
 
     #region NPC Functions
 
-    //moves all npcs (used for end of an arc)
+    //moves all npcs (used for end of an arc) (only in npcs listed in the npcs list)
     public void MoveAllNPCsOnReset()
     {
         foreach(NPCScript npc in npcs)
@@ -308,6 +309,9 @@ public class QuestManager : MonoBehaviour
         {
             MoveNPC(npc);
         }
+
+        //clears list of npcs to move for reuse
+        NPCsToMove.Clear();
     }
 
     //moves npc to destination
@@ -381,4 +385,14 @@ public class QuestManager : MonoBehaviour
         }
     }
     #endregion
+
+    //plays the fade animation and moves the npcs
+    public void FadeMoveNPC()
+    {
+        //checks if there are npcs to move
+        if (NPCsToMove.Count != 0)
+        {
+            am.fade.Play(fadeMoveNPCAnimationClip.name);
+        }
+    }
 }

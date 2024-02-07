@@ -1,1 +1,1 @@
-This is file number 0.
+This is file number 0. #>testNPC

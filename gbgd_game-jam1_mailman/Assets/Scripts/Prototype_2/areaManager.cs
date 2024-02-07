@@ -9,6 +9,7 @@ public class areaManager : MonoBehaviour
     public GameObject startingArea;
     public int currentAreaIndex;
     public Animation fade;
+    public AnimationClip fadeAnimationClip;
 
     // Start is called before the first frame update
     void Start()
@@ -51,13 +52,13 @@ public class areaManager : MonoBehaviour
     public void AreaUp()
     {
         currentAreaIndex++;
-        fade.Play();
+        fade.Play(fadeAnimationClip.name);
     }
 
     //goes to lower area
     public void AreaDown()
     {
         currentAreaIndex--;
-        fade.Play();
+        fade.Play(fadeAnimationClip.name);
     }
 }
