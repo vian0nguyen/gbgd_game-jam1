@@ -54,6 +54,11 @@ When adding dialogue for NPC's, don't add them to the NPC's in the scene.  Inste
 
 **When testing a dialogue, go to the questManager in the scene, then under Current Quest, add the quest scriptable object you added dialogue for.  Once complete, remember to remove that quest scriptable from the Current Quest Value, as the player will have that set when they talk to the mailbox.**
 
+## Warping
+Something to remember when setting warp points for NPCs: Make sure to add the destination for where you want them to be at the END of their dialogue. Ex: Gma is at the building in area 1, but I want her to be at a different building in area 3 at the end of her dialogue, so I would set the warp point destination for the CURRENT arc (as in if the current npc is using "intro.txt" as its dialogue text file, then the warp point that goes to the building in area 3 would go in the same arc).
+
+There is a warp point tool that can be accessed from `Tools > Plug In Warp Points`.  From there, simply add which quest you are setting up warp points for, type in a valid NPC name (aka a name that's listed in the quest itself), type in which arc you wanted to set up warp points for, and then plug in empty transforms that are positioned where you want the npc to move to (including one recurring warp point for where the npc will move to next at the end of this arc).  Once you've done all that, hit "Set Warp Points from Transforms."
+
 ## Navigating Tools
 The dialogue system uses a lot of loops and can get confusing due to how there are no hard-coded numbers.  However, here are the main checks used to find the correct text file to use:
   1. Which arc to use (if the game's arc is further along than the dialogue available, the dialogue in the last available arc is used)
