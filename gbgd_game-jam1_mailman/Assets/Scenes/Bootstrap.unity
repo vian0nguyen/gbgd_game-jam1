@@ -3524,8 +3524,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.7
-  m_fontSizeBase: 19.7
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3608,7 +3608,7 @@ MonoBehaviour:
   quests:
   - {fileID: 11400000, guid: 62b676e86fed79c4994c6e48d181a87a, type: 2}
   - {fileID: 11400000, guid: d3bac17d439fc354299c322aedea9b6a, type: 2}
-  currentQuest: {fileID: 0}
+  currentQuest: {fileID: 11400000, guid: 62b676e86fed79c4994c6e48d181a87a, type: 2}
   npcs:
   - {fileID: 2105702785}
   - {fileID: 1124649780}
@@ -3927,7 +3927,7 @@ MonoBehaviour:
   speechBubbleNPCTag: '%'
   dialogueAudio: {fileID: 1981126312}
   dialogueBlip: {fileID: 0}
-  scrollSpeed: 90
+  scrollSpeed: 98
   XModification:
     serializedVersion: 2
     m_Curve:
@@ -4000,8 +4000,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  tweenDuration: 0.1
-  charPositionOffset: {x: 10, y: -20, z: 0}
+  tweenDuration: 0.08
+  charPositionOffset: {x: 2, y: -5, z: 0}
   OnDialogueStart:
     m_PersistentCalls:
       m_Calls:
