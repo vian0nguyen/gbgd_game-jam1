@@ -22,19 +22,47 @@ MonoBehaviour:
           areaNumber: 0
         recurringDialogue: {fileID: 4900000, guid: a8f9fc5b13987674bb681010b0c125d6,
           type: 3}
-        warpPoint: {x: 0, y: 0}
-        areaNumber: 0
+        finalWarpPoint: {x: 0, y: 0}
+        finalAreaNumber: 0
+    - NPCName: Grandma
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}
+        finalWarpPoint: {x: 0, y: 0}
+        finalAreaNumber: 1
+    - NPCName: ToadGang
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 4900000, guid: a8f9fc5b13987674bb681010b0c125d6,
+          type: 3}
+        finalWarpPoint: {x: 0, y: 0}
+        finalAreaNumber: 0
   - charactersSpeaking:
+    - NPCName: DuckGang
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}
+        finalWarpPoint: {x: 0, y: 0}
+        finalAreaNumber: 2
     - NPCName: ToadGang
       dialogue:
         dialogueSets:
         - dialogue: {fileID: 4900000, guid: e591a03cbf7f8334c941ee962330fd8a, type: 3}
           warpPoint: {x: 0, y: 0}
-          areaNumber: 0
+          areaNumber: 1
         recurringDialogue: {fileID: 4900000, guid: 7d35e1678644c70439932e90a6e0e657,
           type: 3}
-        warpPoint: {x: 0, y: 0}
-        areaNumber: 0
+        finalWarpPoint: {x: 0, y: 0}
+        finalAreaNumber: 0
+    - NPCName: Gma
+      dialogue:
+        dialogueSets:
+        - dialogue: {fileID: 4900000, guid: e591a03cbf7f8334c941ee962330fd8a, type: 3}
+          warpPoint: {x: 0, y: 0}
+          areaNumber: 1
+        recurringDialogue: {fileID: 0}
+        finalWarpPoint: {x: 0, y: 0}
+        finalAreaNumber: 1
   - charactersSpeaking:
     - NPCName: DuckGang
       dialogue:
@@ -43,8 +71,20 @@ MonoBehaviour:
           warpPoint: {x: 0, y: 0}
           areaNumber: 0
         recurringDialogue: {fileID: 0}
-        warpPoint: {x: 0, y: 0}
-        areaNumber: 0
+        finalWarpPoint: {x: 0, y: 0}
+        finalAreaNumber: 2
+    - NPCName: Grandma
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}
+        finalWarpPoint: {x: 0, y: 0}
+        finalAreaNumber: 1
+    - NPCName: ToadGang
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}
+        finalWarpPoint: {x: 0, y: 0}
+        finalAreaNumber: 0
   - charactersSpeaking:
     - NPCName: DuckGang
       dialogue:
@@ -54,5 +94,17 @@ MonoBehaviour:
           areaNumber: 0
         recurringDialogue: {fileID: 4900000, guid: 6c81cb67d267b884baed9066a38651a4,
           type: 3}
-        warpPoint: {x: 0, y: 0}
-        areaNumber: 0
+        finalWarpPoint: {x: 0, y: 0}
+        finalAreaNumber: 2
+    - NPCName: Grandma
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}
+        finalWarpPoint: {x: 0, y: 0}
+        finalAreaNumber: 1
+    - NPCName: ToadGang
+      dialogue:
+        dialogueSets: []
+        recurringDialogue: {fileID: 0}
+        finalWarpPoint: {x: 0, y: 0}
+        finalAreaNumber: 0

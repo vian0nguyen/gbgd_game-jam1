@@ -26,4 +26,5 @@ WAIT! Bind your beaks! #*LeaderDuck
 We can't talk about it HERE. #*LeaderDuck
 But you know what this means. Nerd Duck? #*LeaderDuck
 Oh, right, Phase 1! You, delivery pig! Here you go. #*NerdDuck
+# %
 -> END
