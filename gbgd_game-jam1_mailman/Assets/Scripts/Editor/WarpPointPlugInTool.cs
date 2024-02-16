@@ -22,7 +22,8 @@ public class WarpPointPlugInTool : EditorWindow
 
     private void OnEnable()
     {
-
+        //initializes warp points array
+        warpPoints = new Transform[0];
     }
 
     void OnGUI()
