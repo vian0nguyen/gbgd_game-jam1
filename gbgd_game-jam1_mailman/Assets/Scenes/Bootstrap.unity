@@ -973,6 +973,136 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &417445574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417445578}
+  - component: {fileID: 417445577}
+  - component: {fileID: 417445576}
+  - component: {fileID: 417445575}
+  m_Layer: 0
+  m_Name: Town SIgn
+  m_TagString: NPC
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &417445575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417445574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57252cf7900978b478febd0e3935800a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueArcs:
+  - dialogueSets: []
+    recurringDialogue: {fileID: 4900000, guid: dd67227e02484d94ea0188c7db23f8cd, type: 3}
+    finalWarpPoint: {x: 0, y: 0}
+    finalAreaNumber: 0
+  timesSpokenTo: 0
+  arcLastSpokenTo: 0
+  speechBubbleRefPoint: {fileID: 950585839}
+--- !u!61 &417445576
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417445574}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!212 &417445577
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417445574}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 70a3ffcc094dce14da12d88249997438, type: 3}
+  m_Color: {r: 0.4056604, g: 0.2238786, b: 0.2238786, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &417445578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417445574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.02, y: -4.22, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 950585840}
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &466083800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,6 +1963,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &950585839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 950585840}
+  m_Layer: 0
+  m_Name: Speech REf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &950585840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950585839}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 417445578}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &972076403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2434,13 +2594,23 @@ PrefabInstance:
     - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
         type: 3}
       propertyPath: dialogueArcs.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6234481461358566667, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
         type: 3}
       propertyPath: dialogueArcs.Array.data[0].recurringDialogue
       value: 
-      objectReference: {fileID: 4900000, guid: c5a541e044f9c29498d881f04ace817e, type: 3}
+      objectReference: {fileID: 4900000, guid: 3087f16131b9e0147a9a61088d88900f, type: 3}
+    - target: {fileID: 6283799110456694563, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4.5638227
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283799110456694563, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.78191113
+      objectReference: {fileID: 0}
     - target: {fileID: 6657585618865932956, guid: cc6a2cb10d4bf1b4eb5f43d22ef74716,
         type: 3}
       propertyPath: m_Name
@@ -3548,11 +3718,12 @@ MonoBehaviour:
   quests:
   - {fileID: 11400000, guid: 62b676e86fed79c4994c6e48d181a87a, type: 2}
   - {fileID: 11400000, guid: d3bac17d439fc354299c322aedea9b6a, type: 2}
-  currentQuest: {fileID: 11400000, guid: 62b676e86fed79c4994c6e48d181a87a, type: 2}
+  currentQuest: {fileID: 0}
   npcs:
   - {fileID: 2105702785}
   - {fileID: 1124649780}
   - {fileID: 2126560793}
+  - {fileID: 417445575}
   fadeMoveNPCAnimationClip: {fileID: 7400000, guid: 14a733b199f5caa40b34c6ece2b01ec7,
     type: 2}
 --- !u!4 &1829708549
