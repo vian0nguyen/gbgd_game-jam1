@@ -99,6 +99,7 @@ public class WarpPointPlugInTool : EditorWindow
                 //sets warp points to character in QUEST
                 GetCharacter(characterName).dialogue.dialogueSets[i].warpPoint = warpPoints[i].position;
             }
+
             //sets recurring warp point position for this arc
             GetCharacter(characterName).dialogue.finalWarpPoint = recurringWarpPoint.position;
 
