@@ -24,23 +24,47 @@ public class Player : PlayerController
     {
         base.Update();
 
-        GetMovementInput();
+        GetInput();
+
+        
+    }
+
+    //input list for different states in the game
+    void GetInput()
+    {
+        switch (gm.currentState)
+        {
+            //checks if the player is at the beginning of the game
+            case GameManager.GameState.isBeginning:
+                break;
+            
+            //checks if the player is in the ending of the game
+            case GameManager.GameState.isEnding:
+                break;
+            
+            //checks if the player is not talking at the moment
+            case GameManager.GameState.NotTalking:
+                GetMovementInput();
+                break;
+            
+            //checks if the player is transitioning
+            case GameManager.GameState.isTransitioning:
+                break;
+            default:
+                break;
+        }
     }
 
     void GetMovementInput()
     {
-        //checks if the player isn't talking
-        if (gm.currentState == GameManager.GameState.NotTalking)
-        {
-            //gets input from the player
-            moveX = Input.GetAxis("Horizontal");
-            moveY = Input.GetAxis("Vertical");
+        //gets input from the player
+        moveX = Input.GetAxis("Horizontal");
+        moveY = Input.GetAxis("Vertical");
 
-            //checks if there's any vertical input
-            if (canTransition && moveY != 0)
-            {
-                Transition(moveY);
-            }
+        //checks if there's any vertical input
+        if (canTransition && moveY != 0)
+        {
+            Transition(moveY);
         }
 
     }
