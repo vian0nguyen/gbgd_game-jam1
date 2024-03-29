@@ -25,4 +25,5 @@ Take our message back to the ducks. #*Tiger
 Bzz. (We don't want to keep dealing with startups! You'll be our example.) #*Bee
 /Crab snips his claws./ We won't enjoy it THAT much, we swear! #*Crab
 I'm not sorry. There's too much at stake. #Toad
+#@DuckGang
 -> END
