@@ -30,7 +30,7 @@ With names, make sure the names are EXACTLY the same as whatever you're referenc
   *  Move Canvas tag (^): Moves world canvas to where the player is
   *  Choose Speaking Sprite (*): Chooses speaking sprite if the character is a MULTI NPC object. Put name of character after the tag to specify which one in the group is speaking (make sure the name is in the child objects of the multi NPC)
   *  New Arc tag (>): Enables arc to be advanced once this dialogue was over (can be placed anywhere in the ink file)
-  *  Move Canvas to NPC tag (%): Moves world canvas to the NPC that's speaking
+  *  Move Canvas to NPC tag (%): Moves world canvas to the NPC that's speaking. Used when changing speakers in the middle of a dialog script.
   *  Warp NPC Location (@): Warps NPC to the specified location for the next time you talk to them
   
 ## Dialogue Formatting
