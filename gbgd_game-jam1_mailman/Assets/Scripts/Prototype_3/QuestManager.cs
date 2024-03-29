@@ -118,9 +118,17 @@ public class QuestManager : MonoBehaviour
                         //checks if the list actually has any npcs
                         if (npcs.Length > 0)
                         {
+                            int originalListLength = arc.charactersSpeaking.Count;
+
                             //runs through all npcs
                             for (int i = 0; i < arc.charactersSpeaking.Count; i++)
                             {
+                                //stops the loop if this iteration checks outside whatever's contained in the list
+                                if(i > arc.charactersSpeaking.Count)
+                                {
+                                    break;
+                                }
+
                                 //checks if the name of the current npc matches 
                                 if (!nameHolder.Contains(arc.charactersSpeaking[i].NPCName))
                                 {
@@ -128,15 +136,6 @@ public class QuestManager : MonoBehaviour
                                     print("Character removed");
                                 }
 
-                                //removes any duplicates
-                                for (int k = i - 1; k >= 0; k--)
-                                {
-                                    if(arc.charactersSpeaking[k].NPCName.ToUpper() == arc.charactersSpeaking[i].NPCName.ToUpper())
-                                    {
-                                        arc.charactersSpeaking.Remove(arc.charactersSpeaking[k]);
-                                        print("Character removed");
-                                    }
-                                }
                             }
 
                         }
@@ -180,13 +179,15 @@ public class QuestManager : MonoBehaviour
                             //if the number of npcs in the scene is STILL more than the npcs in the quest, adds a blank character slot (for duplicates)
                             if(npcs.Length > arc.charactersSpeaking.Count)
                             {
-                                for (int h = 0; h < npcs.Length - arc.charactersSpeaking.Count; h++)
+                                /*for (int h = 0; h < npcs.Length - arc.charactersSpeaking.Count; h++)
                                 {
                                     QuestlineScriptableObj.character newBlankCharacter = new QuestlineScriptableObj.character();
                                     newBlankCharacter.NPCName = "Blank NPC";
                                     arc.charactersSpeaking.Add(newBlankCharacter);
                                     print("Blank Character Added");
-                                }
+                                }*/
+                                //prints a warning
+                                Debug.LogWarning("No new character was added because you may have a duplicate name in the NPC list.");
                             }
                         }
 
@@ -373,6 +374,8 @@ public class QuestManager : MonoBehaviour
         {
             Debug.LogWarning("NPC not moved because it has an invalid area number to move to!");
         }
+
+        //add check for if the npc is already at the warp point, then don't call this method
     }
 
     //adds npc to list of npc's to move after the dialogue is over

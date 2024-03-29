@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
-    public enum GameState { NotTalking, Talking, WaitingToAdvance, Choosing, isTransitioning };
+    public enum GameState { isBeginning, NotTalking, Talking, WaitingToAdvance, Choosing, isTransitioning, isEnding };
     [Header("Game States")]
     public GameState currentState;
     public bool moveToNextArc;
@@ -173,4 +173,5 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+    //testing new github acc settings
 }

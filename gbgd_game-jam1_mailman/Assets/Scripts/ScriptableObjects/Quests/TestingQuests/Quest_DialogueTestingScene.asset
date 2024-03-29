@@ -20,14 +20,11 @@ MonoBehaviour:
         - dialogue: {fileID: 4900000, guid: 86434c884d4dc6f44b4cb6c14258dff6, type: 3}
           warpPoint: {x: 45, y: 2.2}
           areaNumber: 0
+        - dialogue: {fileID: 4900000, guid: 86434c884d4dc6f44b4cb6c14258dff6, type: 3}
+          warpPoint: {x: 45, y: 2.2}
+          areaNumber: 0
         recurringDialogue: {fileID: 4900000, guid: b8f9e90238981cc44b8e30898a958591,
           type: 3}
-        finalWarpPoint: {x: 0, y: 0}
-        finalAreaNumber: 0
-    - NPCName: testNPC (1)
-      dialogue:
-        dialogueSets: []
-        recurringDialogue: {fileID: 0}
         finalWarpPoint: {x: 0, y: 0}
         finalAreaNumber: 0
   - charactersSpeaking:
@@ -36,11 +33,5 @@ MonoBehaviour:
         dialogueSets: []
         recurringDialogue: {fileID: 4900000, guid: b8f9e90238981cc44b8e30898a958591,
           type: 3}
-        finalWarpPoint: {x: 0, y: 0}
-        finalAreaNumber: 0
-    - NPCName: testNPC (1)
-      dialogue:
-        dialogueSets: []
-        recurringDialogue: {fileID: 0}
         finalWarpPoint: {x: 0, y: 0}
         finalAreaNumber: 0
