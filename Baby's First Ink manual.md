@@ -31,6 +31,7 @@ With names, make sure the names are EXACTLY the same as whatever you're referenc
   *  Choose Speaking Sprite (*): Chooses speaking sprite if the character is a MULTI NPC object. Put name of character after the tag to specify which one in the group is speaking (make sure the name is in the child objects of the multi NPC)
   *  New Arc tag (>): Enables arc to be advanced once this dialogue was over (can be placed anywhere in the ink file)
   *  Move Canvas to NPC tag (%): Moves world canvas to the NPC that's speaking
+  *  Warp NPC Location (@): Warps NPC to the specified location for the next time you talk to them
   
 ## Dialogue Formatting
 When writing dialogue lines, try to break things up by sentence/natural pause so that all the text can fit on screen.  The text will scroll the next line of dialogue automatically, so no need to fit all the dialogue on one line.
