@@ -29,6 +29,5 @@ So, please, show us you can be delicate around Toad? #*NerdDuck
 We won't wish you luck, because it won't help you! #*HungryDuck
 Remember, your mission is to deliver ingredients to Toad Gang. Nothing else. #*LeaderDuck
 Don't let them rope you into any other tasks. They can be nefarious. #*NerdDuck
-/Grins creepily/ Bye. #*EmoDuck
-# %
+/Grins creepily/ Bye. #*EmoDuck #@DuckGang
 -> END
