@@ -387,7 +387,6 @@ public class QuestManager : MonoBehaviour
             NPCsToMove.Add(FindNPC(npcName));
         }
     }
-    #endregion
 
     //plays the fade animation and moves the npcs
     public void FadeMoveNPC()
@@ -396,6 +395,17 @@ public class QuestManager : MonoBehaviour
         if (NPCsToMove.Count != 0)
         {
             am.fade.Play(fadeMoveNPCAnimationClip.name);
+        }
+    }
+    #endregion
+
+    //ends the game
+    public void PlayEndSequence()
+    {
+        //checks if we are able to end the game
+        if (gm.endGame)
+        {
+            am.fade.Play(gm.EndClip.name);
         }
     }
 }

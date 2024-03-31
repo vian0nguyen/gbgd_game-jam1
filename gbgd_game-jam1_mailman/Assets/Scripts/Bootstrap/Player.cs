@@ -40,6 +40,7 @@ public class Player : PlayerController
             
             //checks if the player is in the ending of the game
             case GameState.isEnding:
+                GetResetInput();
                 break;
             
             //checks if the player is not talking at the moment

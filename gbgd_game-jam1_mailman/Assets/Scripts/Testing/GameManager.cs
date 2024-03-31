@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameState currentState;
     public bool moveToNextArc;
     public bool endGame;
+    public AnimationClip EndClip;
 
     #region Inventory
     [Header ("Inventory")]
@@ -165,19 +166,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PlayEndSequence()
+    //we are now able to end the game
+    public void EnableEndgame()
     {
-        if (endGame)
-        {
-
-        }
+        endGame = true;
     }
 
     //resets the game by loading the current scene
     public void ResetGame()
     {
-        int sceneNum = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(sceneNum);
+        string currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentScene);
     }
 
     #region Test Functions
