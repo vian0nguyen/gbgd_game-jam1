@@ -23,19 +23,19 @@ public class Dialogue_Writer_Prototype_1 : Dialogue_Writer
 		{
 			switch (gmp1.currentState)
 			{
-				case GameManager.GameState.NotTalking:
-					gm.currentState = GameManager.GameState.Talking;
+				case GameState.NotTalking:
+					gm.currentState = GameState.Talking;
 					GetNPCTextAsset();
 					ShowUI();
 					StartStory();
 					break;
 
-				case GameManager.GameState.Talking:
+				case GameState.Talking:
 					SkipScroll();
 					break;
 
-				case GameManager.GameState.WaitingToAdvance:
-					gm.currentState = GameManager.GameState.Talking;
+				case GameState.WaitingToAdvance:
+					gm.currentState = GameState.Talking;
 					RefreshView();
 					//play sound here?
 					break;

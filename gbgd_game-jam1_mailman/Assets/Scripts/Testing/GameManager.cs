@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public enum GameState { isBeginning, NotTalking, Talking, WaitingToAdvance, Choosing, isTransitioning, isEnding };
+
     [Header("Game States")]
     public GameState currentState;
     public bool moveToNextArc;
+    public bool endGame;
 
     #region Inventory
     [Header ("Inventory")]
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
     {
         currentState = GameState.NotTalking;
         moveToNextArc = false;
+        endGame = false;
 
         #region Arc Setup
 #if UNITY_EDITOR
@@ -62,6 +65,12 @@ public class GameManager : MonoBehaviour
         print("Not in Editor");
 #endif
         #endregion
+    }
+
+    //allows easier setting of game state (not from code though) (used in editor and animation events) (see guide below on what is what)
+    public void SetGameState(int state)
+    {
+        currentState = (GameState)state;
     }
 
     #region Inventory Functions
@@ -156,6 +165,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PlayEndSequence()
+    {
+        if (endGame)
+        {
+
+        }
+    }
+
+    //resets the game by loading the current scene
+    public void ResetGame()
+    {
+        int sceneNum = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(sceneNum);
+    }
+
     #region Test Functions
     public void EndLine()
     {
@@ -173,5 +197,15 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-    //testing new github acc settings
 }
+#region Game States
+public enum GameState { 
+        isBeginning = 0, 
+        NotTalking = 1,
+        Talking = 2,
+        WaitingToAdvance = 3,
+        Choosing = 4,
+        isTransitioning = 5,
+        isEnding = 6 
+ };
+#endregion

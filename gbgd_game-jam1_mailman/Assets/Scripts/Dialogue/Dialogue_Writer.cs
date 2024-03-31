@@ -50,7 +50,7 @@ public class Dialogue_Writer : MonoBehaviour
 		if (story.currentChoices.Count > 0)
 		{
 			//the game state is now choosing
-			gm.currentState = GameManager.GameState.Choosing;
+			gm.currentState = GameState.Choosing;
 
 			HideDialogueArrow();
 
@@ -128,7 +128,7 @@ public class Dialogue_Writer : MonoBehaviour
 	void OnClickChoiceButton(Choice choice)
 	{
 		story.ChooseChoiceIndex(choice.index);
-		gm.currentState = GameManager.GameState.Talking;
+		gm.currentState = GameState.Talking;
 		RefreshView();
 	}
 
@@ -182,7 +182,7 @@ public class Dialogue_Writer : MonoBehaviour
 		OnDialogueEnd.Invoke();
 
 		//the player is no longer talking
-		gm.currentState = GameManager.GameState.NotTalking;
+		gm.currentState = GameState.NotTalking;
 	}
 
 	//scrolls text
@@ -208,8 +208,8 @@ public class Dialogue_Writer : MonoBehaviour
 
 			//if the current state isn't talking, it sure is now
 			//put this here because the text automatically skipped after choosing a button and that didn't quite look right
-			if (gm.currentState != GameManager.GameState.Talking)
-				gm.currentState = GameManager.GameState.Talking;
+			if (gm.currentState != GameState.Talking)
+				gm.currentState = GameState.Talking;
 		}*/
 
 		//clears out current text
@@ -255,7 +255,7 @@ public class Dialogue_Writer : MonoBehaviour
 		//end of scrolling functions
 		ShowDialogueArrow();
 		OnLineEnd.Invoke();
-		gm.currentState = GameManager.GameState.WaitingToAdvance;
+		gm.currentState = GameState.WaitingToAdvance;
 	}
 
 	//has the character in the text move in (using vertex)
@@ -350,7 +350,7 @@ public class Dialogue_Writer : MonoBehaviour
 
 		//calls on line end functions
 		OnLineEnd.Invoke();
-		gm.currentState = GameManager.GameState.WaitingToAdvance;
+		gm.currentState = GameState.WaitingToAdvance;
 	}
 
 	#endregion
@@ -523,11 +523,11 @@ public class Dialogue_Writer : MonoBehaviour
 	{
 		switch (gm.currentState)
 		{
-			case GameManager.GameState.NotTalking:
+			case GameState.NotTalking:
 				//checks if there is an npc to talk to
 				if (gm.currentNPC != null)
 				{
-					gm.currentState = GameManager.GameState.Talking;
+					gm.currentState = GameState.Talking;
 
 					//calls any functions that are supposed to happen when the dialogue begins
 					OnDialogueStart.Invoke();
@@ -538,12 +538,12 @@ public class Dialogue_Writer : MonoBehaviour
 
 				break;
 
-			case GameManager.GameState.Talking:
+			case GameState.Talking:
 				SkipScroll();
 				break;
 
-			case GameManager.GameState.WaitingToAdvance:
-				gm.currentState = GameManager.GameState.Talking;
+			case GameState.WaitingToAdvance:
+				gm.currentState = GameState.Talking;
 				RefreshView();
 				//play sound here?
 				break;

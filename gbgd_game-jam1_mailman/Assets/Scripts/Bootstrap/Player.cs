@@ -35,20 +35,20 @@ public class Player : PlayerController
         switch (gm.currentState)
         {
             //checks if the player is at the beginning of the game
-            case GameManager.GameState.isBeginning:
+            case GameState.isBeginning:
                 break;
             
             //checks if the player is in the ending of the game
-            case GameManager.GameState.isEnding:
+            case GameState.isEnding:
                 break;
             
             //checks if the player is not talking at the moment
-            case GameManager.GameState.NotTalking:
+            case GameState.NotTalking:
                 GetMovementInput();
                 break;
             
             //checks if the player is transitioning
-            case GameManager.GameState.isTransitioning:
+            case GameState.isTransitioning:
                 break;
             default:
                 break;
@@ -69,6 +69,15 @@ public class Player : PlayerController
 
     }
 
+    //gets input for resetting the game (if the player presses any key
+    void GetResetInput()
+    {
+        if (Input.anyKeyDown && gm.currentState == GameState.isEnding)
+        {
+            gm.ResetGame();
+        }
+    }
+
     #region Physics
     private void FixedUpdate()
     {
@@ -78,7 +87,7 @@ public class Player : PlayerController
     void MovePlayer()
     {
         //checks if the player isn't talking
-        if(gm.currentState == GameManager.GameState.NotTalking)
+        if(gm.currentState == GameState.NotTalking)
         {
             //sets player's velocity
             rb2D.velocity = new Vector2(moveX * speed, 0);
@@ -152,7 +161,7 @@ public class Player : PlayerController
         //checks if the player is pressing all the way up
         if (input > verticalTransitionThreshold && am.currentAreaIndex < am.areas.Length - 1)
         {
-            gm.currentState = GameManager.GameState.isTransitioning;
+            gm.currentState = GameState.isTransitioning;
             am.AreaUp();
 
         }
@@ -160,7 +169,7 @@ public class Player : PlayerController
         //checks if the player is pressing all the way down
         else if (input < -verticalTransitionThreshold && am.currentAreaIndex > 0)
         {
-            gm.currentState = GameManager.GameState.isTransitioning;
+            gm.currentState = GameState.isTransitioning;
             am.AreaDown();
         }
     }
@@ -168,7 +177,7 @@ public class Player : PlayerController
     //resets player's ability to move, and makes sure they can't transition unless they go to another transition point or re enter the current one
     public void ResetPlayer()
     {
-        gm.currentState = GameManager.GameState.NotTalking;
+        gm.currentState = GameState.NotTalking;
         canTransition = false;
     }
     #endregion

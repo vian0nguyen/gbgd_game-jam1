@@ -23,23 +23,23 @@ public class Dialogue_Writer_Prototype_3 : Dialogue_Writer
 		{
 			switch (gmp3.currentState)
 			{
-				case GameManager.GameState.NotTalking:
+				case GameState.NotTalking:
 					//checks if the npc has dialogue to begin with
 					if (gmp3.currentNPC.GetComponent<NPCScript>().dialogueArcs.Length > 0)
 					{
-						gm.currentState = GameManager.GameState.Talking;
+						gm.currentState = GameState.Talking;
 						GetNPCTextAsset();
 						ShowUI();
 						StartStory();
 					}
 					break;
 
-				case GameManager.GameState.Talking:
+				case GameState.Talking:
 					SkipScroll();
 					break;
 
-				case GameManager.GameState.WaitingToAdvance:
-					gm.currentState = GameManager.GameState.Talking;
+				case GameState.WaitingToAdvance:
+					gm.currentState = GameState.Talking;
 					RefreshView();
 					//play sound here?
 					break;
