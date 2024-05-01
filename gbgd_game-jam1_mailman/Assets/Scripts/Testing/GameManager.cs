@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private EventSystem es;
 
+    [Header("Sound")]
+    public AudioManager am;
+
     public int arc;
 
     public NPCScript currentNPC = null;

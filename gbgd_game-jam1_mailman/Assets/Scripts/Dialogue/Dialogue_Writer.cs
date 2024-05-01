@@ -249,6 +249,7 @@ public class Dialogue_Writer : MonoBehaviour
 				//tweens the text into the text box
 				StartCoroutine(LerpText(verts[k], k, verts));
 			}
+			gm.am.PlaySoundNoContextRandomizePitch(gm.am.defaultLetterBlip);
 			yield return new WaitForSeconds(1 - (scrollSpeed / 100));
 		}
 
@@ -545,7 +546,7 @@ public class Dialogue_Writer : MonoBehaviour
 			case GameState.WaitingToAdvance:
 				gm.currentState = GameState.Talking;
 				RefreshView();
-				//play sound here?
+				gm.am.PlaySoundNoContext(gm.am.defaultLineBlip);
 				break;
 		}
 	}
