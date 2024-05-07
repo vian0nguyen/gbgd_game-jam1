@@ -15,6 +15,8 @@ public class Player : PlayerController
     public float verticalTransitionThreshold;
     public bool canTransition;
     public areaManager am;
+    [SerializeField]
+    private TransitionLimitScript currentTransitionData;
     #endregion
 
     List<GameObject> NPCsInRange = new List<GameObject>();
@@ -115,6 +117,7 @@ public class Player : PlayerController
             case "transition":
 
                 canTransition = true;
+                currentTransitionData = collision.gameObject.GetComponent<TransitionLimitScript>();
                 break;
 
         }
@@ -146,6 +149,7 @@ public class Player : PlayerController
             case "transition":
 
                 canTransition = false;
+                currentTransitionData = null;
                 break;
                 
         }
@@ -162,16 +166,26 @@ public class Player : PlayerController
         //checks if the player is pressing all the way up
         if (input > verticalTransitionThreshold && am.currentAreaIndex < am.areas.Length - 1)
         {
-            gm.currentState = GameState.isTransitioning;
-            am.AreaUp();
+            //checks to see if this current road is not a dead end
+            if (currentTransitionData.paths[am.currentAreaIndex].pathEnd == TransitionLimitScript.endType.None || currentTransitionData.paths[am.currentAreaIndex].pathEnd == TransitionLimitScript.endType.Bottom)
+            {
+                gm.currentState = GameState.isTransitioning;
+                am.AreaUp();
+                currentTransitionData.ChangeSprite(am.currentAreaIndex);
+            }
 
         }
 
         //checks if the player is pressing all the way down
         else if (input < -verticalTransitionThreshold && am.currentAreaIndex > 0)
         {
-            gm.currentState = GameState.isTransitioning;
-            am.AreaDown();
+            //checks to see if this current road is not a dead end
+            if (currentTransitionData.paths[am.currentAreaIndex].pathEnd == TransitionLimitScript.endType.None || currentTransitionData.paths[am.currentAreaIndex].pathEnd == TransitionLimitScript.endType.Top)
+            {
+                gm.currentState = GameState.isTransitioning;
+                am.AreaDown();
+                currentTransitionData.ChangeSprite(am.currentAreaIndex);
+            }
         }
     }
 
