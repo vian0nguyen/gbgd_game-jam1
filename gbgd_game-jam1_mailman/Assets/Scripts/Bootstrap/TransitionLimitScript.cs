@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TransitionLimitScript : MonoBehaviour
 {
-    public enum endType { None, Top, Bottom };
+    public enum endType { None, Both, Top, Bottom };
     [System.Serializable]
     public struct path
     {
@@ -27,8 +27,11 @@ public class TransitionLimitScript : MonoBehaviour
             case TransitionLimitScript.endType.Bottom:
                 ValidateSpriteChange(bottomEnd, TransitionLimitScript.endType.Bottom);
                 break;
+            case TransitionLimitScript.endType.None:
+                sr.sprite = null;
+                break;
             default:
-                ValidateSpriteChange(defaultEnd, TransitionLimitScript.endType.None);
+                ValidateSpriteChange(defaultEnd, TransitionLimitScript.endType.Both);
                 break;
         }
     }

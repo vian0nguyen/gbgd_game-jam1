@@ -3844,6 +3844,7 @@ MonoBehaviour:
   verticalTransitionThreshold: 0.5
   canTransition: 0
   am: {fileID: 570161029}
+  currentTransitionData: {fileID: 0}
 --- !u!4 &1720226523
 Transform:
   m_ObjectHideFlags: 0
@@ -6427,7 +6428,7 @@ PrefabInstance:
     - target: {fileID: 8625609835163380316, guid: 2ebe4561781d20742814f301d2710b70,
         type: 3}
       propertyPath: paths.Array.data[1].pathEnd
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ebe4561781d20742814f301d2710b70, type: 3}

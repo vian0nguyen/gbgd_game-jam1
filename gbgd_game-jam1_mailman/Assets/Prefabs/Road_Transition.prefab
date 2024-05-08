@@ -122,9 +122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paths:
-  - pathEnd: 0
-  - pathEnd: 0
-  - pathEnd: 0
+  - pathEnd: 1
+  - pathEnd: 1
+  - pathEnd: 1
   sr: {fileID: 2690095545833001399}
   topEnd: {fileID: 0}
   bottomEnd: {fileID: 0}
