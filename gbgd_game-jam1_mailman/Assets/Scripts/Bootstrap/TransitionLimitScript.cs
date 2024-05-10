@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TransitionLimitScript : MonoBehaviour
 {
-    public enum endType { None, Both, Top, Bottom };
+    public enum connectionType { None, Both, Top, Bottom };
     [System.Serializable]
     public struct path
     {
-        public endType pathEnd;
+        public connectionType pathConnect;
     }
     public path[] paths;
     public SpriteRenderer sr;
@@ -19,25 +19,25 @@ public class TransitionLimitScript : MonoBehaviour
     //checks what kind of road transition this is before changing the sprite
     public void ChangeSprite(int currentAreaNumber)
     {
-        switch (paths[currentAreaNumber].pathEnd)
+        switch (paths[currentAreaNumber].pathConnect)
         {
-            case TransitionLimitScript.endType.Top:
-                ValidateSpriteChange(topEnd, TransitionLimitScript.endType.Top);
+            case TransitionLimitScript.connectionType.Top:
+                ValidateSpriteChange(topEnd, TransitionLimitScript.connectionType.Top);
                 break;
-            case TransitionLimitScript.endType.Bottom:
-                ValidateSpriteChange(bottomEnd, TransitionLimitScript.endType.Bottom);
+            case TransitionLimitScript.connectionType.Bottom:
+                ValidateSpriteChange(bottomEnd, TransitionLimitScript.connectionType.Bottom);
                 break;
-            case TransitionLimitScript.endType.None:
+            case TransitionLimitScript.connectionType.None:
                 sr.sprite = null;
                 break;
             default:
-                ValidateSpriteChange(defaultEnd, TransitionLimitScript.endType.Both);
+                ValidateSpriteChange(defaultEnd, TransitionLimitScript.connectionType.Both);
                 break;
         }
     }
 
     //checks if there is a valid sprite to use (otherwise prints out changes)
-    public void ValidateSpriteChange(Sprite newSprite, TransitionLimitScript.endType pathType)
+    public void ValidateSpriteChange(Sprite newSprite, TransitionLimitScript.connectionType pathType)
     {
         if (newSprite != null)
             sr.sprite = newSprite;

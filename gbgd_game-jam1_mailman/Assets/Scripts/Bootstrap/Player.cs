@@ -167,7 +167,7 @@ public class Player : PlayerController
         if (input > verticalTransitionThreshold && am.currentAreaIndex < am.areas.Length - 1)
         {
             //checks to see if this current road is not a dead end
-            if (currentTransitionData.paths[am.currentAreaIndex].pathEnd == TransitionLimitScript.endType.Both || currentTransitionData.paths[am.currentAreaIndex].pathEnd == TransitionLimitScript.endType.Bottom)
+            if (currentTransitionData.paths[am.currentAreaIndex].pathConnect == TransitionLimitScript.connectionType.Both || currentTransitionData.paths[am.currentAreaIndex].pathConnect == TransitionLimitScript.connectionType.Bottom)
             {
                 gm.currentState = GameState.isTransitioning;
                 am.AreaUp();
@@ -180,7 +180,7 @@ public class Player : PlayerController
         else if (input < -verticalTransitionThreshold && am.currentAreaIndex > 0)
         {
             //checks to see if this current road is not a dead end
-            if (currentTransitionData.paths[am.currentAreaIndex].pathEnd == TransitionLimitScript.endType.Both || currentTransitionData.paths[am.currentAreaIndex].pathEnd == TransitionLimitScript.endType.Top)
+            if (currentTransitionData.paths[am.currentAreaIndex].pathConnect == TransitionLimitScript.connectionType.Both || currentTransitionData.paths[am.currentAreaIndex].pathConnect == TransitionLimitScript.connectionType.Top)
             {
                 gm.currentState = GameState.isTransitioning;
                 am.AreaDown();
