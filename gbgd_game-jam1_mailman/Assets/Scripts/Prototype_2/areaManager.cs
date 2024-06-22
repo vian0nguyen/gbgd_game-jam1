@@ -10,6 +10,7 @@ public class areaManager : MonoBehaviour
     public int currentAreaIndex;
     public Animation fade;
     public AnimationClip fadeAnimationClip;
+    bool movePlayer;
 
     // Start is called before the first frame update
     void Start()

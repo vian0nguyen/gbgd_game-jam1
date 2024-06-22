@@ -17,6 +17,7 @@ public class Player : PlayerController
     public areaManager am;
     [SerializeField]
     private TransitionLimitScript currentTransitionData;
+    public bool canMovePlayer;
     #endregion
 
     List<GameObject> NPCsInRange = new List<GameObject>();
@@ -194,6 +195,28 @@ public class Player : PlayerController
     {
         gm.currentState = GameState.NotTalking;
         canTransition = false;
+    }
+
+    //warps the player to wherever we want based on a TAG
+    public void WarpPlayer()
+    {
+        if (canMovePlayer)
+        {
+            am.fade.Play(am.fadeAnimationClip.name);
+            canMovePlayer = false;
+        }
+    }
+
+    //sets new area number and sets condition to warp player at end of dialogue
+    public void SetupWarpPlayer(string areaNumber)
+    {
+
+        if (int.TryParse(areaNumber, out int tempAreaNum) && int.Parse(areaNumber) > 0 && int.Parse(areaNumber) < am.areas.Length)
+            am.currentAreaIndex = tempAreaNum;
+        else
+            Debug.LogError("Please enter a valid area number");
+
+        canMovePlayer = true;
     }
     #endregion
 }
